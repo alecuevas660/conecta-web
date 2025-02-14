@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HomeBanner from '../components/HomeBanner.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout title="Inicio">
+	<HomeBanner />
+	
+	<section class="py-5">
+		<div class="container">
+			<div class="row g-4">
+				<div class="col-md-4">
+					<div class="text-center">
+						<div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+							<i class="bi bi-lightning-charge-fill fs-4"></i>
+						</div>
+						<h2 class="h4 fw-bold">Rápido</h2>
+						<p class="text-muted">Rendimiento optimizado para la mejor experiencia.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="text-center">
+						<div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+							<i class="bi bi-shield-check fs-4"></i>
+						</div>
+						<h2 class="h4 fw-bold">Seguro</h2>
+						<p class="text-muted">Seguridad y protección garantizadas.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="text-center">
+						<div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+							<i class="bi bi-stars fs-4"></i>
+						</div>
+						<h2 class="h4 fw-bold">Moderno</h2>
+						<p class="text-muted">Diseño actualizado y tecnología de punta.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

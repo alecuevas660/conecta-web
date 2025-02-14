@@ -1,0 +1,210 @@
+---
+import { Image } from 'astro:assets';
+import banner1 from '../assets/img/Banner1.jpg';
+import banner2 from '../assets/img/Banner2.jpg';
+import banner3 from '../assets/img/Banner3.jpg';
+---
+
+<div id="homeBanner" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicadores del carrusel -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#homeBanner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#homeBanner" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#homeBanner" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Slides del carrusel -->
+    <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="banner-slide">
+                <Image src={banner1 || "/placeholder.svg"} alt="Conecta Internacional" class="banner-image" width={1920} height={1080} />
+                <div class="overlay"></div>
+                <div class="container position-relative">
+                    <div class="row align-items-center min-vh-75">
+                        <div class="col-lg-8 col-md-10 text-white">
+                            <h1 class="display-4 fw-bold mb-4">¡Bienvenido a Conecta Internacional!</h1>
+                            <p class="lead mb-4">En un mundo cada vez más interconectado, el comercio exterior es una oportunidad emocionante para empresas de todos los tamaños.</p>
+                            <a href="/contact" class="btn btn-primary btn-lg">Contáctanos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <div class="banner-slide">
+                <Image src={banner2 || "/placeholder.svg"} alt="Soluciones en Comercio Exterior" class="banner-image" width={1920} height={1080} />
+                <div class="overlay"></div>
+                <div class="container position-relative">
+                    <div class="row align-items-center min-vh-75">
+                        <div class="col-lg-8 col-md-10 text-white">
+                            <h2 class="display-4 fw-bold mb-4">Soluciones en Comercio Exterior</h2>
+                            <p class="lead mb-4">Búsqueda de proveedores, transportes y asesoría integral en procesos de internación.</p>
+                            <a href="/services" class="btn btn-primary btn-lg">Nuestros Servicios</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+            <div class="banner-slide">
+                <Image src={banner3 || "/placeholder.svg"} alt="Externaliza tu Comercio Exterior" class="banner-image" width={1920} height={1080} />
+                <div class="overlay"></div>
+                <div class="container position-relative">
+                    <div class="row align-items-center min-vh-75">
+                        <div class="col-lg-8 col-md-10 text-white">
+                            <h2 class="display-4 fw-bold mb-4">Externaliza tu Comercio Exterior</h2>
+                            <p class="lead mb-4">Te ayudamos a gestionar eficientemente tus operaciones internacionales.</p>
+                            <a href="/about" class="btn btn-primary btn-lg">Conoce Más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controles de navegación -->
+    <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#homeBanner" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#homeBanner" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
+
+<!-- Script para inicializar el carrusel -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // @ts-ignore
+        new bootstrap.Carousel(document.querySelector('#homeBanner'), {
+            interval: 3000, // Cambia cada 3 segundos
+            pause: 'hover'
+        });
+    });
+</script>
+
+<!-- Estilos personalizados -->
+<style>
+    .min-vh-75 {
+        min-height: 85vh;
+    }
+
+    .banner-slide {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .banner-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+    }
+
+    .carousel-item h1,
+    .carousel-item h2 {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .carousel-item .lead {
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        font-size: 1.4rem;
+    }
+
+    .btn-primary {
+        background-color: #0056b3;
+        border-color: #0056b3;
+        padding: 0.8rem 2rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #004494;
+        border-color: #004494;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-arrow {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+  
+.custom-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-20%) scale(1.1);
+}
+    .carousel-control-prev {
+        left: 20px;
+    }
+
+    .carousel-control-next {
+        right: 20px;
+    }
+
+    @media (max-width: 768px) {
+    .custom-arrow {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: auto;
+        bottom: 40px; /* Coloca las flechas en la parte inferior */
+        transform: none; /* Quita la transformación vertical */
+    }
+
+    .carousel-control-prev {
+        left: calc(50% - 50px); /* Centra la flecha izquierda */
+    }
+
+    .carousel-control-next {
+        right: calc(50% - 50px); /* Centra la flecha derecha */
+    }
+}
+/* Ajuste para móviles más pequeños */
+@media (max-width: 576px) {
+    .custom-arrow {
+        width: 30px;
+        height: 30px;
+        bottom: 40px; /* Ajuste para menor espacio */
+    }
+
+    .carousel-control-prev {
+        left: calc(50% - 40px);
+    }
+
+    .carousel-control-next {
+        right: calc(50% - 40px);
+    }
+}
+
+</style>
