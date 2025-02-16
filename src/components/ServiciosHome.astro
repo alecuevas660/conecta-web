@@ -1,0 +1,141 @@
+---
+import { Image } from 'astro:assets';
+
+const services = [
+  {
+    title: "Búsqueda de Proveedores",
+    description: "Localizamos proveedores confiables para tu maquinaria especializada, repuestos e insumos.",
+    icon: "bi bi-search",
+    image: ""
+  },
+  {
+    title: "Búsqueda de Transportes",
+    description: "Optimizamos tus operaciones logísticas y de transporte internacional.",
+    icon: "bi bi-truck",
+    image: ""
+  },
+  {
+    title: "Asesoría en Internación",
+    description: "Te guiamos durante todo el proceso de internación y trámites aduaneros.",
+    icon: "bi bi-clipboard-check",
+    image: ""
+  },
+  {
+    title: "Externalización",
+    description: "Externalizamos tu área de comercio exterior, adaptándonos a las necesidades específicas de tu empresa.",
+    icon: "bi bi-gear",
+    image: ""
+  }
+];
+---
+
+<section class="services-section py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold text-primary mb-2 fade-in-up">Nuestros Servicios</h2>
+    <div class="text-center mb-4 fade-in-up">
+      <hr class="mx-auto" style="border: 2px solid #007bff; opacity: 0.7; width: 80px;" />
+    </div>
+    
+    <div class="row g-4">
+      {services.map((service, index) => (
+        <div class="col-md-6 col-lg-3">
+          <div class="service-card position-relative overflow-hidden rounded fade-in-up" data-delay={index * 200}>
+            <Image 
+              src={service.image || "/placeholder.svg"}
+              alt={service.title}
+              width={600}
+              height={400}
+              class="img-fluid w-100 h-100 object-fit-cover"
+            />
+            <div class="service-overlay d-flex flex-column justify-content-center align-items-center text-center p-3">
+              <i class={`${service.icon} service-icon mb-2`}></i>
+              <h3 class="fw-bold text-white mb-0">{service.title}</h3>
+              <p class="text-white-50 mt-2 service-description">{service.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f0f0f0' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .service-card {
+    height: 250px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .service-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .service-card:hover .service-overlay {
+    opacity: 0.9;
+  }
+
+  .service-icon {
+    font-size: 2.5rem;
+    color: #fff;
+  }
+
+  .service-description {
+    display: none;
+    font-size: 0.9rem;
+  }
+
+  .service-card:hover .service-description {
+    display: block;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.dataset.delay) {
+            entry.target.style.transitionDelay = `${entry.target.dataset.delay}ms`;
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    fadeElements.forEach(el => observer.observe(el));
+  });
+</script>

@@ -1,0 +1,145 @@
+---
+const features = [
+  {
+    icon: "bi bi-people-fill",
+    title: "Equipo Especializado",
+    description: "Contamos con profesionales expertos en comercio internacional, dedicados a encontrar las mejores soluciones para tu empresa."
+  },
+  {
+    icon: "bi bi-graph-up",
+    title: "Soluciones Personalizadas",
+    description: "Desarrollamos estrategias adaptadas a las necesidades específicas de tu negocio y tu sector."
+  },
+  {
+    icon: "bi bi-shield-check",
+    title: "Compromiso Total",
+    description: "Nos comprometemos con el éxito de tu proyecto, brindando acompañamiento continuo en cada etapa."
+  }
+];
+---
+
+<section class="why-choose-us py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class=" fw-bold text-primary mb-2 fade-in-up">¿Por qué elegirnos?</h2>
+      <div class="title-underline fade-in-up"></div>
+    </div>
+
+    <div class="row g-4">
+      {
+        features.map((feature, index) => (
+          <div class="col-md-4">
+            <div class="feature-card h-100 fade-in-up" data-delay={index * 200}>
+              <div class="text-center mb-4">
+                <div class="icon-wrapper">
+                  <i class={`${feature.icon} text-primary`}></i>
+                </div>
+              </div>
+              <h3 class="h4 text-center mb-3">{feature.title}</h3>
+              <p class="text-muted text-center mb-0">{feature.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-choose-us {
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f0f0f0' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .title-underline {
+    width: 80px;
+    height: 4px;
+    background: var(--bs-primary);
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .title-underline::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    background: var(--bs-primary);
+    right: -50px;
+    opacity: 0.5;
+  }
+
+  .feature-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  }
+
+  .icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background-color: var(--bs-primary-bg-subtle);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+  }
+
+  .icon-wrapper i {
+    font-size: 2.5rem;
+  }
+
+  .feature-card:hover .icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+    background-color: var(--bs-primary);
+  }
+
+  .feature-card:hover .icon-wrapper i {
+    color: white !important;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.dataset.delay) {
+            entry.target.style.transitionDelay = `${entry.target.dataset.delay}ms`;
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    fadeElements.forEach(el => observer.observe(el));
+  });
+</script>

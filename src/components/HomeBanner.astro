@@ -3,101 +3,75 @@ import { Image } from 'astro:assets';
 import banner1 from '../assets/img/Banner1.jpg';
 import banner2 from '../assets/img/Banner2.jpg';
 import banner3 from '../assets/img/Banner3.jpg';
+
+const banners = [
+  {
+    image: banner1,
+    alt: "Conecta Internacional",
+    title: "¡Bienvenido a Conecta Internacional!",
+    description: "En un mundo cada vez más interconectado, el comercio exterior es una oportunidad emocionante para empresas de todos los tamaños.",
+    buttonText: "Contáctanos",
+    buttonLink: "/contact"
+  },
+  {
+    image: banner2,
+    alt: "Soluciones en Comercio Exterior",
+    title: "Soluciones en Comercio Exterior",
+    description: "Búsqueda de proveedores, transportes y asesoría integral en procesos de internación.",
+    buttonText: "Nuestros Servicios",
+    buttonLink: "/services"
+  },
+  {
+    image: banner3,
+    alt: "Externaliza tu Comercio Exterior",
+    title: "Externaliza tu Comercio Exterior",
+    description: "Te ayudamos a gestionar eficientemente tus operaciones internacionales.",
+    buttonText: "Conoce Más",
+    buttonLink: "/about"
+  }
+];
 ---
 
 <div id="homeBanner" class="carousel slide" data-bs-ride="carousel">
-    <!-- Indicadores del carrusel -->
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#homeBanner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#homeBanner" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#homeBanner" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-
-    <!-- Slides del carrusel -->
     <div class="carousel-inner">
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-            <div class="banner-slide">
-                <Image src={banner1 || "/placeholder.svg"} alt="Conecta Internacional" class="banner-image" width={1920} height={1080} />
-                <div class="overlay"></div>
-                <div class="container position-relative">
-                    <div class="row align-items-center min-vh-75">
-                        <div class="col-lg-8 col-md-10 text-white">
-                            <h1 class="display-4 fw-bold mb-4">¡Bienvenido a Conecta Internacional!</h1>
-                            <p class="lead mb-4">En un mundo cada vez más interconectado, el comercio exterior es una oportunidad emocionante para empresas de todos los tamaños.</p>
-                            <a href="/contact" class="btn btn-primary btn-lg">Contáctanos</a>
+        {banners.map((banner, index) => (
+            <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
+                <div class="banner-slide">
+                    <Image src={banner.image || "/placeholder.svg"} alt={banner.alt} class="banner-image" width={1920} height={1100} quality={90} />
+                    <div class="overlay"></div>
+                    <div class="container position-relative">
+                        <div class="row align-items-center min-vh-75">
+                            <div class="col-lg-8 col-md-10 text-white">
+                                <h2 class="display-4 fw-bold mb-3">{banner.title}</h2>
+                                <p class="lead mb-4">{banner.description}</p>
+                                <a href={banner.buttonLink} class="btn btn-primary btn-lg">{banner.buttonText}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="carousel-item">
-            <div class="banner-slide">
-                <Image src={banner2 || "/placeholder.svg"} alt="Soluciones en Comercio Exterior" class="banner-image" width={1920} height={1080} />
-                <div class="overlay"></div>
-                <div class="container position-relative">
-                    <div class="row align-items-center min-vh-75">
-                        <div class="col-lg-8 col-md-10 text-white">
-                            <h2 class="display-4 fw-bold mb-4">Soluciones en Comercio Exterior</h2>
-                            <p class="lead mb-4">Búsqueda de proveedores, transportes y asesoría integral en procesos de internación.</p>
-                            <a href="/services" class="btn btn-primary btn-lg">Nuestros Servicios</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-item">
-            <div class="banner-slide">
-                <Image src={banner3 || "/placeholder.svg"} alt="Externaliza tu Comercio Exterior" class="banner-image" width={1920} height={1080} />
-                <div class="overlay"></div>
-                <div class="container position-relative">
-                    <div class="row align-items-center min-vh-75">
-                        <div class="col-lg-8 col-md-10 text-white">
-                            <h2 class="display-4 fw-bold mb-4">Externaliza tu Comercio Exterior</h2>
-                            <p class="lead mb-4">Te ayudamos a gestionar eficientemente tus operaciones internacionales.</p>
-                            <a href="/about" class="btn btn-primary btn-lg">Conoce Más</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        ))}
     </div>
-
-    <!-- Controles de navegación -->
-    <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#homeBanner" data-bs-slide="prev">
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#homeBanner" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Anterior</span>
     </button>
-    <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#homeBanner" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#homeBanner" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Siguiente</span>
     </button>
 </div>
 
-<!-- Script para inicializar el carrusel -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // @ts-ignore
-        new bootstrap.Carousel(document.querySelector('#homeBanner'), {
-            interval: 3000, // Cambia cada 3 segundos
-            pause: 'hover'
-        });
-    });
-</script>
-
-<!-- Estilos personalizados -->
 <style>
     .min-vh-75 {
-        min-height: 85vh;
+        min-height: 75vh;
     }
 
     .banner-slide {
         position: relative;
         overflow: hidden;
+        height: 85vh; /* Aumentado de 60vh a 75vh */
     }
 
     .banner-image {
@@ -115,17 +89,17 @@ import banner3 from '../assets/img/Banner3.jpg';
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4));
     }
 
-    .carousel-item h1,
     .carousel-item h2 {
+        font-size: 2.5rem;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
     .carousel-item .lead {
+        font-size: 1.2rem;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        font-size: 1.4rem;
     }
 
     .btn-primary {
@@ -145,66 +119,72 @@ import banner3 from '../assets/img/Banner3.jpg';
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .custom-arrow {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 5%;
+        opacity: 0.7;
+    }
 
-  
-.custom-arrow:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    transform: translateY(-20%) scale(1.1);
-}
     .carousel-control-prev {
-        left: 20px;
+        left: 30px;
     }
 
     .carousel-control-next {
-        right: 20px;
+        right: 30px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        background-size: 50%;
     }
 
     @media (max-width: 768px) {
-    .custom-arrow {
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        top: auto;
-        bottom: 40px; /* Coloca las flechas en la parte inferior */
-        transform: none; /* Quita la transformación vertical */
-    }
+        .banner-slide {
+            height: 60vh; /* Ajustado para dispositivos móviles */
+        }
 
-    .carousel-control-prev {
-        left: calc(50% - 50px); /* Centra la flecha izquierda */
-    }
+        .carousel-item h2 {
+            font-size: 2rem;
+        }
 
-    .carousel-control-next {
-        right: calc(50% - 50px); /* Centra la flecha derecha */
-    }
-}
-/* Ajuste para móviles más pequeños */
-@media (max-width: 576px) {
-    .custom-arrow {
-        width: 30px;
-        height: 30px;
-        bottom: 40px; /* Ajuste para menor espacio */
-    }
+        .carousel-item .lead {
+            font-size: 1rem;
+        }
 
-    .carousel-control-prev {
-        left: calc(50% - 40px);
-    }
+        .btn-primary {
+            padding: 0.6rem 1.5rem;
+        }
 
-    .carousel-control-next {
-        right: calc(50% - 40px);
-    }
-}
+        .carousel-control-prev,
+        .carousel-control-next {
+            bottom: 20px;
+            top: auto;
+            transform: none;
+        }
 
+        .carousel-control-prev {
+            left: auto;
+            right: 70px;
+        }
+
+        .carousel-control-next {
+            right: 20px;
+        }
+    }
 </style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const carousel = document.getElementById('homeBanner');
+    if (carousel) {
+      new window.bootstrap.Carousel(carousel, {
+        interval: 3000,
+        pause: false
+      });
+    }
+  });
+</script>

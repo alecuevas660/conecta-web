@@ -1,32 +1,126 @@
-<footer class="bg-dark text-light py-5">
-    <div class="container">
-        <div class="row gy-4">
-            <div class="col-md-4">
-                <h3 class="h5 mb-3">Sobre Nosotros</h3>
-                <p class="text-muted">
-                    Una breve descripción de tu empresa o proyecto aquí.
-                </p>
-            </div>
-            <div class="col-md-4">
-                <h3 class="h5 mb-3">Enlaces Rápidos</h3>
-                <ul class="list-unstyled">
-                    <li><a href="/" class="text-decoration-none text-muted">Inicio</a></li>
-                    <li><a href="/about" class="text-decoration-none text-muted">Acerca de</a></li>
-                    <li><a href="/contact" class="text-decoration-none text-muted">Contacto</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h3 class="h5 mb-3">Contacto</h3>
-                <ul class="list-unstyled text-muted">
-                    <li><i class="bi bi-envelope me-2"></i>info@ejemplo.com</li>
-                    <li><i class="bi bi-telephone me-2"></i>(123) 456-7890</li>
-                    <li><i class="bi bi-geo-alt me-2"></i>Tu dirección aquí</li>
-                </ul>
-            </div>
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer py-5">
+  <div class="container">
+    <div class="row gy-4">
+      <!-- Sobre Nosotros -->
+      <div class="col-lg-3 col-md-6">
+        <h3 class="text-white h5 mb-3">Sobre Nosotros</h3>
+        <p class="text-light mb-4">
+          Conecta Internacional es tu aliado estratégico en comercio exterior, ofreciendo soluciones integrales para impulsar tu negocio en el mercado global.
+        </p>
+        <div class="social-links">
+          <a href="#" class="me-3" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="#" class="me-3" aria-label="Twitter">
+            <i class="bi bi-twitter"></i>
+          </a>
+          <a href="#" class="me-3" aria-label="Facebook">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <i class="bi bi-instagram"></i>
+          </a>
         </div>
-        <hr class="my-4">
-        <div class="text-center text-muted">
-            <p class="mb-0">&copy; {new Date().getFullYear()} Tu Empresa. Todos los derechos reservados.</p>
-        </div>
+      </div>
+
+      <!-- Enlaces -->
+      <div class="col-lg-3 col-md-6">
+        <h3 class="text-white h5 mb-3">Enlaces</h3>
+        <ul class="list-unstyled footer-links">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">¿Por qué elegirnos?</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Servicios -->
+      <div class="col-lg-3 col-md-6">
+        <h3 class="text-white h5 mb-3">Servicios</h3>
+        <ul class="list-unstyled footer-links">
+          <li><a href="#">Búsqueda de Proveedores</a></li>
+          <li><a href="#">Búsqueda de Transportes</a></li>
+          <li><a href="#">Asesoría en Internación</a></li>
+          <li><a href="#">Externalización</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div class="col-lg-3 col-md-6">
+        <h3 class="text-white h5 mb-3">Contacto</h3>
+        <ul class="list-unstyled footer-contact">
+          <li>
+            <i class="bi bi-geo-alt me-2"></i>
+            Santiago, Chile
+          </li>
+          <li>
+            <i class="bi bi-telephone me-2"></i>
+            +56 2 2345 6789
+          </li>
+          <li>
+            <i class="bi bi-envelope me-2"></i>
+            contacto@conecta.com
+          </li>
+        </ul>
+      </div>
     </div>
-</footer> 
+
+    <hr class="mt-4 mb-3 border-light opacity-10">
+    
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="mb-0 text-light">&copy; {currentYear} Conecta Internacional. Todos los derechos reservados.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+        <a href="#" class="text-light text-decoration-none me-3">Política de Privacidad</a>
+        <a href="#" class="text-light text-decoration-none">Términos y Condiciones</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: #003B73;
+  }
+
+  .footer-links a,
+  .footer-contact li,
+  .social-links a {
+    color: #ffffff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    font-size: 1rem;
+  }
+
+  .footer-links a:hover,
+  .social-links a:hover {
+    opacity: 1;
+    color: #ffffff;
+  }
+
+  .footer-links li,
+  .footer-contact li {
+    margin-bottom: 0.75rem;
+  }
+
+  .social-links i {
+    font-size: 1rem;
+  }
+
+  hr {
+    background-color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    .footer-links,
+    .footer-contact {
+      margin-bottom: 2rem;
+    }
+  }
+</style>
