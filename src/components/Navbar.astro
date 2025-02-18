@@ -129,6 +129,37 @@ const carouselItems = [
       font-size: 14px;
     }
   }
+
+  /* Estilos para el hover de los enlaces de navegación */
+  .navbar-nav .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    color: #333;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Efecto de hover */
+  .navbar-nav .nav-link:hover {
+    color: #003B73;
+    transform: translateY(-2px); /* Le da un pequeño levantamiento al enlace */
+  }
+
+  /* Añadir sutil sombra cuando se pasa el mouse */
+  .navbar-nav .nav-link:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 59, 115, 0.1);
+    border-radius: 4px;
+    z-index: -1;
+  }
+
+  .navbar-nav .nav-link.active {
+    color: #003B73;
+  }
 </style>
 
 <script>

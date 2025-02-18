@@ -1,29 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
+import NosotrosImage from "../assets/img/comercio-exterior.webp"
 const title = "Nosotros - Conecta Internacional";
 ---
 
 <Layout title={title}>
   <!-- Hero Section -->
-  <section class="bg-light py-5 text-center">
+  <section class="text-center py-5">
     <div class="container">
-      <h1 class="display-4 fw-bold mb-4">Sobre Nosotros</h1>
-      <p class="lead">Conectando el mundo con soluciones innovadoras de comunicación</p>
+      <h1 class="display-4 fw-bold mb-4">Conecta Internacional</h1>
+      <p class="lead mb-4">Brindamos soluciones de telecomunicaciones globales para un mundo más conectado.</p>
+      <a href="/contacto" class="btn btn-primary btn-lg px-4 py-2">Conocer Más</a>
     </div>
   </section>
 
   <!-- Nuestra Historia Section -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h2 class="fw-bold mb-3">Nosotros</h2>
+          <p>
+            Somos un grupo de profesionales que, desde hace más de 15 años, nos dedicamos a las áreas de ventas, administración y comercio internacional. Contamos con una amplia red de contactos en estas áreas, lo que nos permite ayudarte a optimizar los servicios de tu empresa.
+          </p>
+        </div>
+        
+        
+        
+        <div class="col-md-6">
+          <img src={NosotrosImage.src} alt="nosotros" class="img-fluid rounded shadow-lg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Misión y Visión Section -->
   <section class="py-5">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-6 mb-4 mb-lg-0">
-          <img src="/placeholder.svg?height=400&width=600" alt="Nuestra Historia" class="img-fluid rounded">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h3 class="fw-bold mb-3">Nuestra Misión</h3>
+          <p>Conectar a las personas y empresas del mundo a través de soluciones tecnológicas innovadoras que faciliten la comunicación global.</p>
         </div>
-        <div class="col-lg-6">
-          <h2 class="fw-bold mb-4">Nuestra Historia</h2>
-          <p>Desde nuestra fundación en [año], Conecta Internacional ha estado a la vanguardia de las soluciones de comunicación global. Comenzamos con la visión de crear un mundo más conectado y hemos crecido hasta convertirnos en líderes en servicios de telecomunicaciones internacionales.</p>
-          <p>Nuestro compromiso con la innovación y la excelencia nos ha permitido expandir nuestros servicios y alcance, siempre manteniendo nuestro enfoque en la satisfacción del cliente y la calidad del servicio.</p>
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h3 class="fw-bold mb-3">Nuestra Visión</h3>
+          <p>Convertirnos en la empresa líder de telecomunicaciones globales, destacando por nuestra capacidad de innovación y el compromiso con la excelencia.</p>
         </div>
       </div>
     </div>
@@ -33,56 +54,22 @@ const title = "Nosotros - Conecta Internacional";
   <section class="bg-light py-5">
     <div class="container">
       <h2 class="text-center fw-bold mb-5">Nuestros Valores</h2>
-      <div class="row g-4">
-        {['Innovación', 'Integridad', 'Colaboración', 'Excelencia'].map((valor) => (
-          <div class="col-md-3">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body text-center">
+      <div class="row text-center">
+        {['Innovación', 'Responsabilidad', 'Transparencia', 'Trabajo en Equipo'].map((valor, index) => (
+          <div class="col-md-3 mb-4" key={index}>
+            <div class="card border-0 shadow-lg h-100">
+              <div class="card-body">
                 <i class={`bi bi-${valor.toLowerCase() === 'innovación' ? 'lightbulb' : 
-                             valor.toLowerCase() === 'integridad' ? 'shield-check' :
-                             valor.toLowerCase() === 'colaboración' ? 'people' : 'star'} 
-                           fs-1 text-primary mb-3`}></i>
-                <h3 class="card-title h5 fw-bold">{valor}</h3>
-                <p class="card-text">Descripción breve del valor y cómo lo aplicamos en nuestro trabajo diario.</p>
+                             valor.toLowerCase() === 'responsabilidad' ? 'shield-lock' :
+                             valor.toLowerCase() === 'transparencia' ? 'eye' : 'people'} 
+                           fs-2 text-primary mb-3`}></i>
+                <h4 class="card-title">{valor}</h4>
+                <p class="card-text">Cada valor define nuestra forma de operar y trabajar día a día, siempre enfocados en ofrecer lo mejor a nuestros clientes y colaboradores.</p>
               </div>
             </div>
           </div>
         ))}
       </div>
-    </div>
-  </section>
-
-  <!-- Nuestro Equipo Section -->
-  <section class="py-5">
-    <div class="container">
-      <h2 class="text-center fw-bold mb-5">Nuestro Equipo</h2>
-      <div class="row g-4">
-        {[
-          { name: 'Ana García', position: 'CEO' },
-          { name: 'Carlos Rodríguez', position: 'CTO' },
-          { name: 'Laura Martínez', position: 'Directora de Operaciones' },
-          { name: 'Miguel Sánchez', position: 'Director de Marketing' }
-        ].map((member) => (
-          <div class="col-md-3">
-            <div class="card h-100 border-0 shadow-sm">
-              <img src="/placeholder.svg?height=300&width=300" alt={member.name} class="card-img-top">
-              <div class="card-body text-center">
-                <h3 class="card-title h5 fw-bold">{member.name}</h3>
-                <p class="card-text">{member.position}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action Section -->
-  <section class="bg-primary text-white text-center py-5">
-    <div class="container">
-      <h2 class="fw-bold mb-4">¿Listo para conectarte con nosotros?</h2>
-      <p class="lead mb-4">Descubre cómo podemos ayudarte a alcanzar tus objetivos de comunicación global.</p>
-      <a href="/contacto" class="btn btn-light btn-lg">Contáctanos</a>
     </div>
   </section>
 </Layout>

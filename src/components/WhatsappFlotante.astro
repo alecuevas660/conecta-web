@@ -1,0 +1,41 @@
+---
+// Importamos el ícono de WhatsApp o podemos usar un enlace con una imagen.
+const whatsappLink = "https://wa.me/11234567890?text=¡Hola!%20Tengo%20una%20consulta.";
+---
+
+<a href={whatsappLink} target="_blank" class="whatsapp-float" aria-label="Chat en WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" alt="WhatsApp" class="whatsapp-icon" />
+</a>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px; /* Espacio desde la parte inferior */
+    right: 20px; /* Espacio desde la parte derecha */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1); /* Aumenta el tamaño del ícono cuando pasas el mouse sobre él */
+  }
+
+  .whatsapp-icon {
+    width: 60px; /* Tamaño del ícono */
+    height: 60px; /* Tamaño del ícono */
+  }
+
+  @media (max-width: 768px) {
+    .whatsapp-icon {
+      width: 50px; /* Tamaño del ícono en pantallas pequeñas */
+      height: 50px;
+    }
+  }
+</style>
