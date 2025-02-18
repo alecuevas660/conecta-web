@@ -1,6 +1,10 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import Proveedores from '../assets/img/busqueda-proveedores.jpg';
+import Transporte from '../assets/img/busqueda-transporte.jpg';
+import Internacion from '../assets/img/busqueda-asesor.jpg';
+import Externalizacion from '../assets/img/busqueda-externalizacion.jpg';
+import HeroBackground from '../assets/img/hero-background.jpg'; // Importa la imagen de fondo
+import Layout from '../layouts/Layout.astro';
 
 interface Props {
   title?: string;
@@ -8,249 +12,177 @@ interface Props {
 
 const { title = "Servicios - Conecta Internacional" } = Astro.props;
 ---
-
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  </head>
+<Layout title={title}> 
   <body>
-    <Navbar />
-    
     <main>
       <!-- Hero Section: Página de Servicios -->
-      <section class="intro-section py-5 bg-light">
-        <div class="container text-center">
+      <section class="intro-section py-5 bg-light text-white d-flex align-items-center justify-content-center" style="min-height: 70vh;">
+        <div class="container text-center position-relative z-2">
           <h1 class="display-4 fw-bold mb-4">Impulsa tu negocio con nuestros servicios especializados</h1>
           <p class="lead mb-5">En Conecta Internacional, ofrecemos soluciones adaptadas para mejorar la eficiencia de tu empresa a través de nuestros servicios profesionales.</p>
           <a href="#services" class="btn btn-primary btn-lg">Explora Nuestros Servicios</a>
         </div>
       </section>
       
-      
-
       <!-- Servicios con imágenes intercaladas -->
-      <section id="services" class="services-section py-5">
+      <section id="services" class="services-section py-5 mt-4">
         <div class="container">
           <h2 class="text-center fw-bold mb-5">Nuestros Servicios</h2>
-          <div class="row align-items-center mb-5">
+          <div class="row g-4">
             <!-- Servicio 1: Búsqueda de Proveedores -->
-            <div class="col-md-6 order-md-1 mb-4 mb-md-0">
-              <div class="service-card bg-white shadow-lg rounded-4 p-4 text-center position-relative">
-                <div class="service-icon mb-3">
+            <div class="col-md-6 col-lg-6 animate-on-scroll">
+              <div class="card service-card h-100 shadow-lg rounded-4">
+                <img src={Proveedores.src} class="card-img-top service-image" alt="Búsqueda de Proveedores" />
+                <div class="card-body text-center">
                   <i class="bi bi-search text-primary fs-2"></i>
+                  <h3 class="fs-5 fw-bold mb-3">Búsqueda de Proveedores</h3>
+                  <p class="text-muted">Localizamos a los proveedores más adecuados para tu empresa.</p>
+                  <a href="#" class="btn btn-outline-primary">Leer más</a>
                 </div>
-                <h3 class="fs-5 fw-bold mb-3">Búsqueda de Proveedores</h3>
-                <p class="text-muted">Localizamos a los proveedores más adecuados para tu empresa.</p>
-                <a href="#" class="btn btn-outline-primary">Leer más</a>
               </div>
             </div>
-            <div class="col-md-6 order-md-2">
-              <img src="/images/service-provider.jpg" class="img-fluid rounded-4" alt="Búsqueda de Proveedores" />
-            </div>
-          </div>
 
-          <div class="row align-items-center mb-5">
             <!-- Servicio 2: Búsqueda de Transportes -->
-            <div class="col-md-6">
-              <img src="/images/service-transport.jpg" class="img-fluid rounded-4" alt="Búsqueda de Transportes" />
-            </div>
-            <div class="col-md-6">
-              <div class="service-card bg-white shadow-lg rounded-4 p-4 text-center position-relative">
-                <div class="service-icon mb-3">
+            <div class="col-md-6 col-lg-6 animate-on-scroll">
+              <div class="card service-card h-100 shadow-lg rounded-4">
+                <img src={Transporte.src} class="card-img-top service-image" alt="Búsqueda de Transportes" />
+                <div class="card-body text-center">
                   <i class="bi bi-truck text-primary fs-2"></i>
+                  <h3 class="fs-5 fw-bold mb-3">Búsqueda de Transportes</h3>
+                  <p class="text-muted">Ofrecemos soluciones logísticas eficientes para tu negocio.</p>
+                  <a href="#" class="btn btn-outline-primary">Leer más</a>
                 </div>
-                <h3 class="fs-5 fw-bold mb-3">Búsqueda de Transportes</h3>
-                <p class="text-muted">Ofrecemos soluciones logísticas eficientes para tu negocio.</p>
-                <a href="#" class="btn btn-outline-primary">Leer más</a>
               </div>
             </div>
-          </div>
 
-          <div class="row align-items-center mb-5">
             <!-- Servicio 3: Asesoría en Internación -->
-            <div class="col-md-6 order-md-1">
-              <div class="service-card bg-white shadow-lg rounded-4 p-4 text-center position-relative">
-                <div class="service-icon mb-3">
+            <div class="col-md-6 col-lg-6 animate-on-scroll">
+              <div class="card service-card h-100 shadow-lg rounded-4">
+                <img src={Internacion.src} class="card-img-top service-image" alt="Asesoría en Internación" />
+                <div class="card-body text-center">
                   <i class="bi bi-globe text-primary fs-2"></i>
+                  <h3 class="fs-5 fw-bold mb-3">Asesoría en Internación</h3>
+                  <p class="text-muted">Te ayudamos en la importación y exportación de tus productos.</p>
+                  <a href="#" class="btn btn-outline-primary">Leer más</a>
                 </div>
-                <h3 class="fs-5 fw-bold mb-3">Asesoría en Internación</h3>
-                <p class="text-muted">Te ayudamos en la importación y exportación de tus productos.</p>
-                <a href="#" class="btn btn-outline-primary">Leer más</a>
               </div>
             </div>
-            <div class="col-md-6 order-md-2">
-              <img src="/images/service-import-export.jpg" class="img-fluid rounded-4" alt="Asesoría en Internación" />
-            </div>
-          </div>
 
-          <div class="row align-items-center mb-5">
             <!-- Servicio 4: Externalización -->
-            <div class="col-md-6">
-              <img src="/images/service-outsourcing.jpg" class="img-fluid rounded-4" alt="Externalización" />
-            </div>
-            <div class="col-md-6">
-              <div class="service-card bg-white shadow-lg rounded-4 p-4 text-center position-relative">
-                <div class="service-icon mb-3">
+            <div class="col-md-6 col-lg-6 animate-on-scroll">
+              <div class="card service-card h-100 shadow-lg rounded-4">
+                <img src={Externalizacion.src} class="card-img-top service-image" alt="Externalización" />
+                <div class="card-body text-center">
                   <i class="bi bi-people text-primary fs-2"></i>
+                  <h3 class="fs-5 fw-bold mb-3">Externalización</h3>
+                  <p class="text-muted">Externaliza tus procesos clave para mejorar la eficiencia.</p>
+                  <a href="#" class="btn btn-outline-primary">Leer más</a>
                 </div>
-                <h3 class="fs-5 fw-bold mb-3">Externalización</h3>
-                <p class="text-muted">Externaliza tus procesos clave para mejorar la eficiencia.</p>
-                <a href="#" class="btn btn-outline-primary">Leer más</a>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- Footer -->
-      <Footer />
     </main>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script para la animación de scroll -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const serviceCards = document.querySelectorAll('.animate-on-scroll');
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target); // Deja de observar el elemento una vez que es visible
+            }
+          });
+        }, {
+          threshold: 0.1 // Ajusta este valor para que la animación se active cuando el elemento esté parcialmente visible
+        });
+
+        serviceCards.forEach(card => {
+          observer.observe(card);
+        });
+      });
+    </script>
   </body>
-</html>
+</Layout>
+
 <style>
-    /* Estilos globales */
-:root {
-  --primary-color: #003B73;
-  --secondary-color: #00A8E8;
-  --text-color: #333;
-  --white: #fff;
-  --gray-light: #f8f9fa;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-color);
-  background-color: var(--gray-light);
-}
-
-/* Hero Section */
-.hero-section {
-  background-color: var(--primary-color);
-  background-image: url('/images/hero-bg.jpg');
+ .intro-section {
+  background-image: url('../assets/img/hero-background.jpg'); /* Ruta de la imagen de fondo */
   background-size: cover;
-  background-position: center;
-  color: var(--white);
-  padding: 4rem 0;
-}
-
-.hero-title {
-  font-size: 3rem;
-  font-weight: 700;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  opacity: 0.8;
-}
-
-.hero-section a {
-  font-size: 1.2rem;
-  padding: 0.75rem 2rem;
-  border-radius: 50px;
-  text-transform: uppercase;
-  background-color: var(--secondary-color);
-  color: var(--white);
-}
-
-.hero-section a:hover {
-  background-color: var(--primary-color);
-  color: var(--white);
-  border: 1px solid var(--primary-color);
-}
-
-/* Servicio Intercalado */
-.services-section {
-  background-color: #f8f9fa;
-}
-
-.service-card {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-position: center center; /* Cambia la posición a centro */
+  background-repeat: no-repeat;
   position: relative;
-  overflow: hidden;
-  height: 100%;
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.intro-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay oscuro para mejorar la legibilidad */
+  z-index: 1;
 }
 
-.service-icon {
-  font-size: 2rem;
-  color: var(--primary-color);
-  transition: color 0.3s ease;
+.intro-section .container {
+  position: relative;
+  z-index: 2;
 }
 
-.service-title {
-  color: var(--primary-color);
-  font-size: 1.25rem;
-  font-weight: 600;
+.intro-section h1 {
+  font-size: 2.5rem; /* Tamaño de fuente para pantallas grandes */
 }
 
-.service-description {
-  color: var(--text-color);
-  opacity: 0.8;
+.intro-section p {
+  font-size: 1.2rem; /* Tamaño de fuente para pantallas grandes */
 }
 
-.service-card:hover .service-icon {
-  color: var(--secondary-color);
+.intro-section .btn {
+  padding: 0.75rem 2rem; /* Aumentamos el tamaño del botón */
 }
 
-.service-card:hover .service-title {
-  color: var(--secondary-color);
-}
+@media (max-width: 768px) {
+  .intro-section h1 {
+    font-size: 1.8rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+  }
 
-/* Imágenes de servicio */
-.service-card img {
-  object-fit: cover;
-  max-height: 400px;
-  border-radius: 10px;
-}
+  .intro-section p {
+    font-size: 1rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+  }
 
-.service-card a {
-  text-transform: uppercase;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
+  .intro-section .btn {
+    padding: 0.5rem 1.5rem; /* Botón más pequeño para pantallas pequeñas */
+  }
 }
+  .service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  .service-image {
+    height: 250px;
+    object-fit: cover;
+  }
 
-.service-card a:hover {
-  background-color: var(--primary-color);
-  color: var(--white);
-  border: 1px solid var(--primary-color);
-}
+  /* Animaciones para los elementos de la sección de servicios */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
 
-/* Footer */
-footer {
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 2rem;
-  text-align: center;
-}
-
-footer a {
-  color: var(--white);
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>

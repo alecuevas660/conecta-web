@@ -1,190 +1,230 @@
 ---
-import { Image } from 'astro:assets';
 import banner1 from '../assets/img/Banner1.jpg';
 import banner2 from '../assets/img/Banner2.jpg';
 import banner3 from '../assets/img/Banner3.jpg';
-
-const banners = [
-  {
-    image: banner1,
-    alt: "Conecta Internacional",
-    title: "¡Bienvenido a Conecta Internacional!",
-    description: "En un mundo cada vez más interconectado, el comercio exterior es una oportunidad emocionante para empresas de todos los tamaños.",
-    buttonText: "Contáctanos",
-    buttonLink: "/contact"
-  },
-  {
-    image: banner2,
-    alt: "Soluciones en Comercio Exterior",
-    title: "Soluciones en Comercio Exterior",
-    description: "Búsqueda de proveedores, transportes y asesoría integral en procesos de internación.",
-    buttonText: "Nuestros Servicios",
-    buttonLink: "/services"
-  },
-  {
-    image: banner3,
-    alt: "Externaliza tu Comercio Exterior",
-    title: "Externaliza tu Comercio Exterior",
-    description: "Te ayudamos a gestionar eficientemente tus operaciones internacionales.",
-    buttonText: "Conoce Más",
-    buttonLink: "/about"
-  }
-];
 ---
-
-<div id="homeBanner" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        {banners.map((banner, index) => (
-            <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
-                <div class="banner-slide">
-                    <Image src={banner.image || "/placeholder.svg"} alt={banner.alt} class="banner-image" width={1920} height={1100} quality={90} />
-                    <div class="overlay"></div>
-                    <div class="container position-relative">
-                        <div class="row align-items-center min-vh-75">
-                            <div class="col-lg-8 col-md-10 text-white">
-                                <h2 class="display-4 fw-bold mb-3">{banner.title}</h2>
-                                <p class="lead mb-4">{banner.description}</p>
-                                <a href={banner.buttonLink} class="btn btn-primary btn-lg">{banner.buttonText}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        ))}
-    </div>
-    
-    <button class="carousel-control-prev" type="button" data-bs-target="#homeBanner" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#homeBanner" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-    </button>
-</div>
-
-<style>
-    .min-vh-75 {
-        min-height: 75vh;
+  <style>
+.banner {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+@media (min-width: 576px) {
+    .banner {
+        height: 400px;
     }
-
-    .banner-slide {
-        position: relative;
-        overflow: hidden;
-        height: 85vh; /* Aumentado de 60vh a 75vh */
+}
+@media (min-width: 992px) {
+    .banner {
+        height: 500px;
     }
+}
+.banner-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.banner-content.active {
+    opacity: 1;
+}
+.banner-content img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.banner-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.banner-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+.banner-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+.banner-nav button {
+    background-color: rgba(255,255,255,0.5);
+    border: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    padding: 0;
+}
+.banner-nav button.active {
+    background-color: white;
+}
 
-    .banner-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
+/* ===== NUEVO DISEÑO DE FLECHAS ===== */
+.banner-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    z-index: 2;
+    display: none; /* Ocultas por defecto */
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.banner-arrow:hover {
+    background: rgba(255, 255, 255, 0.7);
+    color: black;
+    transform: scale(1.1);
+}
+
+.banner-arrow.left {
+    left: 15px;
+}
+.banner-arrow.right {
+    right: 15px;
+}
+
+/* A partir de tablets (768px en adelante), mostrar flechas */
+@media (min-width: 768px) {
+    .banner-arrow {
+        display: flex;
     }
-
-    .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4));
-    }
-
-    .carousel-item h2 {
+    .banner-title {
         font-size: 2.5rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
-
-    .carousel-item .lead {
-        font-size: 1.2rem;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    .banner-description {
+        font-size: 1.25rem;
     }
+}
 
-    .btn-primary {
-        background-color: #0056b3;
-        border-color: #0056b3;
-        padding: 0.8rem 2rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: all 0.3s ease;
+@media (min-width: 992px) {
+    .banner-title {
+        font-size: 3rem;
     }
-
-    .btn-primary:hover {
-        background-color: #004494;
-        border-color: #004494;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    .banner-description {
+        font-size: 1.5rem;
     }
+}
 
-    .carousel-control-prev,
-    .carousel-control-next {
-        width: 5%;
-        opacity: 0.7;
-    }
 
-    .carousel-control-prev {
-        left: 30px;
-    }
+    </style>
 
-    .carousel-control-next {
-        right: 30px;
-    }
+<body>
+    <div class="banner">
+        <div class="banner-content active">
+            <img src={banner1.src}  alt="Banner 1">
+            <h1 class="banner-title">Banner Profesional 1</h1>
+            <p class="banner-description">Desliza para ver más contenido impresionante.</p>
+            <button class="btn btn-primary banner-button" onclick="alert('¡Botón 1 clickeado!')">Saber más</button>
+        </div>
+        <div class="banner-content">
+            <img src={banner2.src}  alt="Banner 2">
+            <h1 class="banner-title">Banner Profesional 2</h1>
+            <p class="banner-description">Descubre nuestras soluciones innovadoras.</p>
+            <button class="btn btn-success banner-button" onclick="alert('¡Botón 2 clickeado!')">Explorar</button>
+        </div>
+        <div class="banner-content">
+            <img src={banner3.src} alt="Banner 3">
+            <h1 class="banner-title">Banner Profesional 3</h1>
+            <p class="banner-description">Únete a nuestra comunidad en crecimiento.</p>
+            <button class="btn btn-warning banner-button" onclick="alert('¡Botón 3 clickeado!')">Unirse</button>
+        </div>
+        <button class="banner-arrow left" aria-label="Anterior slide"><i class="fas fa-chevron-left"></i></button>
+        <button class="banner-arrow right" aria-label="Siguiente slide"><i class="fas fa-chevron-right"></i></button>
+        <div class="banner-nav"></div>
+    </div>
 
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        width: 40px;
-        height: 40px;
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 50%;
-        background-size: 50%;
-    }
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bannerContents = document.querySelectorAll('.banner-content');
+            const bannerNav = document.querySelector('.banner-nav');
+            const leftArrow = document.querySelector('.banner-arrow.left');
+            const rightArrow = document.querySelector('.banner-arrow.right');
+            let currentSlide = 0;
+            let intervalId;
 
-    @media (max-width: 768px) {
-        .banner-slide {
-            height: 60vh; /* Ajustado para dispositivos móviles */
-        }
+            // Crear botones de navegación
+            bannerContents.forEach((_, index) => {
+                const button = document.createElement('button');
+                button.setAttribute('aria-label', `Ir al slide ${index + 1}`);
+                button.addEventListener('click', () => goToSlide(index));
+                bannerNav.appendChild(button);
+            });
 
-        .carousel-item h2 {
-            font-size: 2rem;
-        }
+            function updateBanner() {
+                bannerContents.forEach((content, index) => {
+                    content.classList.toggle('active', index === currentSlide);
+                });
+                document.querySelectorAll('.banner-nav button').forEach((button, index) => {
+                    button.classList.toggle('active', index === currentSlide);
+                });
+            }
 
-        .carousel-item .lead {
-            font-size: 1rem;
-        }
+            function goToSlide(n) {
+                currentSlide = n;
+                updateBanner();
+                resetInterval();
+            }
 
-        .btn-primary {
-            padding: 0.6rem 1.5rem;
-        }
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % bannerContents.length;
+                updateBanner();
+            }
 
-        .carousel-control-prev,
-        .carousel-control-next {
-            bottom: 20px;
-            top: auto;
-            transform: none;
-        }
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + bannerContents.length) % bannerContents.length;
+                updateBanner();
+            }
 
-        .carousel-control-prev {
-            left: auto;
-            right: 70px;
-        }
+            function resetInterval() {
+                clearInterval(intervalId);
+                intervalId = setInterval(nextSlide, 5000);
+            }
 
-        .carousel-control-next {
-            right: 20px;
-        }
-    }
-</style>
+            // Event listeners para las flechas
+            leftArrow.addEventListener('click', () => {
+                prevSlide();
+                resetInterval();
+            });
 
-<script>
-  document.addEventListener('astro:page-load', () => {
-    const carousel = document.getElementById('homeBanner');
-    if (carousel) {
-      new window.bootstrap.Carousel(carousel, {
-        interval: 3000,
-        pause: false
-      });
-    }
-  });
-</script>
+            rightArrow.addEventListener('click', () => {
+                nextSlide();
+                resetInterval();
+            });
+
+            // Inicializar el banner
+            updateBanner();
+            resetInterval();
+        });
+    </script>
+</body>
