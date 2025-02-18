@@ -3,30 +3,32 @@ import banner1 from '../assets/img/Banner1.jpg';
 import banner2 from '../assets/img/Banner2.jpg';
 import banner3 from '../assets/img/Banner3.jpg';
 ---
-  <style>
-.banner {
+
+<style>
+  .banner {
     position: relative;
     height: 300px;
     overflow: hidden;
-}
-@media (min-width: 576px) {
+  }
+  @media (min-width: 576px) {
     .banner {
-        height: 400px;
+      height: 400px;
     }
-}
-@media (min-width: 992px) {
+  }
+  @media (min-width: 992px) {
     .banner {
-        height: 500px;
+      height: 500px;
     }
-}
-.banner-content {
+  }
+  .banner-content {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transform: translateX(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,11 +36,12 @@ import banner3 from '../assets/img/Banner3.jpg';
     text-align: center;
     color: white;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-.banner-content.active {
+  }
+  .banner-content.active {
     opacity: 1;
-}
-.banner-content img {
+    transform: translateX(0);
+  }
+  .banner-content img {
     position: absolute;
     top: 0;
     left: 0;
@@ -46,17 +49,17 @@ import banner3 from '../assets/img/Banner3.jpg';
     height: 100%;
     object-fit: cover;
     z-index: -1;
-}
-.banner-title {
+  }
+  .banner-title {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-}
-.banner-description {
+  }
+  .banner-description {
     font-size: 1rem;
     margin-bottom: 1rem;
-}
-.banner-nav {
+  }
+  .banner-nav {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -64,8 +67,8 @@ import banner3 from '../assets/img/Banner3.jpg';
     z-index: 2;
     display: flex;
     justify-content: center;
-}
-.banner-nav button {
+  }
+  .banner-nav button {
     background-color: rgba(255,255,255,0.5);
     border: none;
     width: 12px;
@@ -74,13 +77,13 @@ import banner3 from '../assets/img/Banner3.jpg';
     margin: 0 5px;
     cursor: pointer;
     padding: 0;
-}
-.banner-nav button.active {
+  }
+  .banner-nav button.active {
     background-color: white;
-}
+  }
 
-/* ===== NUEVO DISEÑO DE FLECHAS ===== */
-.banner-arrow {
+  /* ===== NUEVO DISEÑO DE FLECHAS ===== */
+  .banner-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -99,132 +102,125 @@ import banner3 from '../assets/img/Banner3.jpg';
     border-radius: 50%;
     transition: background 0.3s ease, transform 0.2s ease;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.banner-arrow:hover {
+  }
+  .banner-arrow:hover {
     background: rgba(255, 255, 255, 0.7);
     color: black;
     transform: scale(1.1);
-}
-
-.banner-arrow.left {
+  }
+  .banner-arrow.left {
     left: 15px;
-}
-.banner-arrow.right {
+  }
+  .banner-arrow.right {
     right: 15px;
-}
-
-/* A partir de tablets (768px en adelante), mostrar flechas */
-@media (min-width: 768px) {
+  }
+  /* Mostrar flechas a partir de tablets */
+  @media (min-width: 768px) {
     .banner-arrow {
-        display: flex;
+      display: flex;
     }
     .banner-title {
-        font-size: 2.5rem;
+      font-size: 2.5rem;
     }
     .banner-description {
-        font-size: 1.25rem;
+      font-size: 1.25rem;
     }
-}
-
-@media (min-width: 992px) {
+  }
+  @media (min-width: 992px) {
     .banner-title {
-        font-size: 3rem;
+      font-size: 3rem;
     }
     .banner-description {
-        font-size: 1.5rem;
+      font-size: 1.5rem;
     }
-}
-
-
-    </style>
+  }
+</style>
 
 <body>
-    <div class="banner">
-        <div class="banner-content active">
-            <img src={banner1.src}  alt="Banner 1">
-            <h1 class="banner-title">Banner Profesional 1</h1>
-            <p class="banner-description">Desliza para ver más contenido impresionante.</p>
-            <button class="btn btn-primary banner-button" onclick="alert('¡Botón 1 clickeado!')">Saber más</button>
-        </div>
-        <div class="banner-content">
-            <img src={banner2.src}  alt="Banner 2">
-            <h1 class="banner-title">Banner Profesional 2</h1>
-            <p class="banner-description">Descubre nuestras soluciones innovadoras.</p>
-            <button class="btn btn-success banner-button" onclick="alert('¡Botón 2 clickeado!')">Explorar</button>
-        </div>
-        <div class="banner-content">
-            <img src={banner3.src} alt="Banner 3">
-            <h1 class="banner-title">Banner Profesional 3</h1>
-            <p class="banner-description">Únete a nuestra comunidad en crecimiento.</p>
-            <button class="btn btn-warning banner-button" onclick="alert('¡Botón 3 clickeado!')">Unirse</button>
-        </div>
-        <button class="banner-arrow left" aria-label="Anterior slide"><i class="fas fa-chevron-left"></i></button>
-        <button class="banner-arrow right" aria-label="Siguiente slide"><i class="fas fa-chevron-right"></i></button>
-        <div class="banner-nav"></div>
+  <div class="banner">
+    <div class="banner-content active">
+      <img src={banner1.src} alt="Banner 1">
+      <h1 class="banner-title">Banner Profesional 1</h1>
+      <p class="banner-description">Desliza para ver más contenido impresionante.</p>
+      <button class="btn btn-primary banner-button" onclick="alert('¡Botón 1 clickeado!')">Saber más</button>
     </div>
+    <div class="banner-content">
+      <img src={banner2.src} alt="Banner 2">
+      <h1 class="banner-title">Banner Profesional 2</h1>
+      <p class="banner-description">Descubre nuestras soluciones innovadoras.</p>
+      <button class="btn btn-success banner-button" onclick="alert('¡Botón 2 clickeado!')">Explorar</button>
+    </div>
+    <div class="banner-content">
+      <img src={banner3.src} alt="Banner 3">
+      <h1 class="banner-title">Banner Profesional 3</h1>
+      <p class="banner-description">Únete a nuestra comunidad en crecimiento.</p>
+      <button class="btn btn-warning banner-button" onclick="alert('¡Botón 3 clickeado!')">Unirse</button>
+    </div>
+    <button class="banner-arrow left" aria-label="Anterior slide"><i class="fas fa-chevron-left"></i></button>
+    <button class="banner-arrow right" aria-label="Siguiente slide"><i class="fas fa-chevron-right"></i></button>
+    <div class="banner-nav"></div>
+  </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const bannerContents = document.querySelectorAll('.banner-content');
-            const bannerNav = document.querySelector('.banner-nav');
-            const leftArrow = document.querySelector('.banner-arrow.left');
-            const rightArrow = document.querySelector('.banner-arrow.right');
-            let currentSlide = 0;
-            let intervalId;
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const bannerContents = document.querySelectorAll('.banner-content');
+      const bannerNav = document.querySelector('.banner-nav');
+      const leftArrow = document.querySelector('.banner-arrow.left');
+      const rightArrow = document.querySelector('.banner-arrow.right');
+      let currentSlide = 0;
+      let intervalId;
 
-            // Crear botones de navegación
-            bannerContents.forEach((_, index) => {
-                const button = document.createElement('button');
-                button.setAttribute('aria-label', `Ir al slide ${index + 1}`);
-                button.addEventListener('click', () => goToSlide(index));
-                bannerNav.appendChild(button);
-            });
+      // Crear botones de navegación
+      bannerContents.forEach((_, index) => {
+        const button = document.createElement('button');
+        button.setAttribute('aria-label', `Ir al slide ${index + 1}`);
+        button.addEventListener('click', () => goToSlide(index));
+        bannerNav.appendChild(button);
+      });
 
-            function updateBanner() {
-                bannerContents.forEach((content, index) => {
-                    content.classList.toggle('active', index === currentSlide);
-                });
-                document.querySelectorAll('.banner-nav button').forEach((button, index) => {
-                    button.classList.toggle('active', index === currentSlide);
-                });
-            }
-
-            function goToSlide(n) {
-                currentSlide = n;
-                updateBanner();
-                resetInterval();
-            }
-
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % bannerContents.length;
-                updateBanner();
-            }
-
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + bannerContents.length) % bannerContents.length;
-                updateBanner();
-            }
-
-            function resetInterval() {
-                clearInterval(intervalId);
-                intervalId = setInterval(nextSlide, 5000);
-            }
-
-            // Event listeners para las flechas
-            leftArrow.addEventListener('click', () => {
-                prevSlide();
-                resetInterval();
-            });
-
-            rightArrow.addEventListener('click', () => {
-                nextSlide();
-                resetInterval();
-            });
-
-            // Inicializar el banner
-            updateBanner();
-            resetInterval();
+      function updateBanner() {
+        bannerContents.forEach((content, index) => {
+          content.classList.toggle('active', index === currentSlide);
         });
-    </script>
+        document.querySelectorAll('.banner-nav button').forEach((button, index) => {
+          button.classList.toggle('active', index === currentSlide);
+        });
+      }
+
+      function goToSlide(n) {
+        currentSlide = n;
+        updateBanner();
+        resetInterval();
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % bannerContents.length;
+        updateBanner();
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + bannerContents.length) % bannerContents.length;
+        updateBanner();
+      }
+
+      function resetInterval() {
+        clearInterval(intervalId);
+        intervalId = setInterval(nextSlide, 5000);
+      }
+
+      // Event listeners para las flechas
+      leftArrow.addEventListener('click', () => {
+        prevSlide();
+        resetInterval();
+      });
+      rightArrow.addEventListener('click', () => {
+        nextSlide();
+        resetInterval();
+      });
+
+      // Inicializar el banner
+      updateBanner();
+      resetInterval();
+    });
+  </script>
 </body>
