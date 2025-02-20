@@ -1,0 +1,396 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TransporteImage from "../assets/img/imagen-servicio-transporte.webp";
+const title = "Servicio de búsqueda de transporte - Conecta Internacional";
+---
+
+<Layout title={title}>
+    <section class="hero-section d-flex align-items-center animate">
+        <div class="container hero-content text-center">
+            <h1 class="display-4 fw-bold mb-4">Búsqueda de Transportes</h1>
+            <p class="lead mb-4">Soluciones logísticas eficientes para tu negocio internacional</p>
+            <div class="d-flex justify-content-center gap-3">
+                <button class="btn btn-primary btn-lg">Cotizar Ahora</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-padding bg-light animate">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="fw-bold mb-4">Transporte Internacional de Carga</h2>
+                    <p class="lead text-muted mb-4">
+                        Ofrecemos soluciones integrales de transporte y logística para asegurar que tu carga llegue a su destino de manera segura y puntual.
+                    </p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Transporte terrestre, marítimo y aéreo
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Seguimiento en tiempo real
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Cobertura internacional
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <img src={TransporteImage.src} alt="Transporte Internacional" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding animate">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">Tipos de Servicios</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="service-type">
+                        <h3 class="h5 fw-bold">Transporte Terrestre</h3>
+                        <p class="mb-0 text-muted">Servicios de transporte por carretera con cobertura nacional e internacional.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="service-type">
+                        <h3 class="h5 fw-bold">Transporte Marítimo</h3>
+                        <p class="mb-0 text-muted">Servicios de carga FCL y LCL con conexiones a los principales puertos.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="service-type">
+                        <h3 class="h5 fw-bold">Transporte Aéreo</h3>
+                        <p class="mb-0 text-muted">Soluciones rápidas y eficientes para cargas urgentes y de alto valor.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="service-type">
+                        <h3 class="h5 fw-bold">Logística Integral</h3>
+                        <p class="mb-0 text-muted">Servicios completos de almacenaje, distribución y gestión de inventario.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-light animate">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">Características del Servicio</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card card border-0 h-100">
+                        <div class="card-body text-center">
+                            <div class="icon-circle mb-4">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <h3 class="h5 fw-bold mb-3">Seguimiento en Tiempo Real</h3>
+                            <p class="text-muted">Monitoreo constante de tu carga con actualizaciones en tiempo real.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card card border-0 h-100">
+                        <div class="card-body text-center">
+                            <div class="icon-circle mb-4">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h3 class="h5 fw-bold mb-3">Seguridad Garantizada</h3>
+                            <p class="text-muted">Transportes asegurados y monitoreados para la seguridad de tu carga.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card card border-0 h-100">
+                        <div class="card-body text-center">
+                            <div class="icon-circle mb-4">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+                            <h3 class="h5 fw-bold mb-3">Entregas Puntuales</h3>
+                            <p class="text-muted">Optimización de rutas y tiempos de entrega garantizados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="section-padding animate">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">Proceso de Servicio</h2>
+            <div class="timeline">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <!-- Timeline Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4 class="fw-bold mb-3">1. Cotización</h4>
+                                <p class="text-muted">Evaluamos tus necesidades y proporcionamos una cotización detallada.</p>
+                            </div>
+                        </div>
+                        <!-- Timeline Item 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4 class="fw-bold mb-3">2. Planificación</h4>
+                                <p class="text-muted">Organizamos la logística y coordinamos los recursos necesarios.</p>
+                            </div>
+                        </div>
+                        <!-- Timeline Item 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4 class="fw-bold mb-3">3. Ejecución</h4>
+                                <p class="text-muted">Realizamos el transporte con seguimiento en tiempo real.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section-padding bg-light animate">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">Beneficios del Servicio</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="benefit-item">
+                        <h4 class="fw-bold mb-3">
+                            <i class="bi bi-speedometer2 text-primary me-2"></i>
+                            Eficiencia Operativa
+                        </h4>
+                        <p class="text-muted mb-0">Optimización de rutas y recursos para maximizar la eficiencia.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="benefit-item">
+                        <h4 class="fw-bold mb-3">
+                            <i class="bi bi-graph-up text-primary me-2"></i>
+                            Costos Competitivos
+                        </h4>
+                        <p class="text-muted mb-0">Tarifas optimizadas y transparentes para tu negocio.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="benefit-item">
+                        <h4 class="fw-bold mb-3">
+                            <i class="bi bi-shield-check text-primary me-2"></i>
+                            Seguridad Total
+                        </h4>
+                        <p class="text-muted mb-0">Protección completa de tu carga durante todo el trayecto.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="benefit-item">
+                        <h4 class="fw-bold mb-3">
+                            <i class="bi bi-geo-alt text-primary me-2"></i>
+                            Cobertura Global
+                        </h4>
+                        <p class="text-muted mb-0">Red internacional de transportes y conexiones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section animate">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">¿Necesitas Transportar tu Carga?</h2>
+            <p class="lead mb-4">Obtén una cotización personalizada para tu servicio de transporte</p>
+            <button class="btn btn-light btn-lg px-5">Solicitar Cotización</button>
+        </div>
+    </section>
+
+    <div class="py-4 bg-light animate">
+        <div class="container text-center">
+            <p class="mb-0">
+                Llámanos al 
+                <a href="tel:+56223456789" class="text-primary text-decoration-none fw-bold">
+                    +56 2 2345 6789
+                </a>
+            </p>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .section-padding {
+        padding: 5rem 0;
+    }
+
+    .hero-section {
+        background-image: url('../assets/img/hero-background-transporte.jpg');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        min-height: 60vh;
+        color: white;
+    }
+
+    .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Feature Cards */
+    .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-circle {
+        width: 80px;
+        height: 80px;
+        background-color: #f8f9fa;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+    }
+
+    .icon-circle i {
+        font-size: 2rem;
+        color: #0d6efd;
+    }
+
+    /* Timeline */
+    .timeline {
+        position: relative;
+        padding: 2rem 0;
+    }
+
+    .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 100%;
+        background-color: #dee2e6;
+    }
+
+    .timeline-item {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .timeline-content {
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background: white;
+        position: relative;
+    }
+
+    .benefit-item {
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        background: #f8f9fa;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .benefit-item:hover {
+        transform: translateX(10px);
+    }
+
+    .cta-section {
+        background: linear-gradient(135deg, #0d6efd 0%, #0099ff 100%);
+        color: white;
+        padding: 4rem 0;
+    }
+
+    @media (max-width: 768px) {
+        .section-padding img {
+            object-fit: cover;
+            max-height: 400px;
+        }
+        .hero-section {
+            min-height: 60vh;
+            padding: 3rem 0;
+        }
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+        .hero-content p {
+            font-size: 1rem;
+        }
+        .hero-content .btn {
+            font-size: 0.9rem;
+            padding: 0.75rem 1.25rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .hero-section {
+            min-height: 50vh;
+            padding: 2rem 0;
+        }
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+        .hero-content p {
+            font-size: 0.9rem;
+        }
+        .hero-content .btn {
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .section-padding img {
+            object-fit: cover;
+            max-height: 500px;
+        }
+    }
+
+    /* Animations */
+    .animate {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate elements on scroll using IntersectionObserver
+        const animatedElements = document.querySelectorAll('.animate');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        animatedElements.forEach(el => observer.observe(el));
+    });
+</script>
