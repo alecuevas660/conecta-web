@@ -162,6 +162,25 @@ const { title = "Servicios - Conecta Internacional" } = Astro.props;
     padding: 0.5rem 1.5rem; /* Botón más pequeño para pantallas pequeñas */
   }
 }
+
+@media (max-width: 576px) {
+  .intro-section {
+    min-height: 50vh; /* Reduce la altura en móviles */
+    background-size: cover; /* Asegura que el fondo cubra todo el contenedor */
+    background-position: center; /* Centra la imagen de fondo */
+  }
+  .intro-section h1 {
+    font-size: 2rem; /* Reduce el tamaño del título */
+  }
+  .intro-section p {
+    font-size: 1rem; /* Reduce el tamaño del párrafo */
+  }
+  .intro-section .btn {
+    font-size: 0.9rem; /* Ajusta el tamaño de la letra del botón */
+    padding: 0.5rem 1rem; /* Ajusta el espacio interno del botón */
+  }
+}
+
   .service-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }

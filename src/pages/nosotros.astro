@@ -5,14 +5,15 @@ const title = "Nosotros - Conecta Internacional";
 ---
 
 <Layout title={title}>
-  <!-- Hero Section -->
-  <section class="text-center py-5">
-    <div class="container">
-      <h1 class="display-4 fw-bold mb-4">Conecta Internacional</h1>
-      <p class="lead mb-4">Brindamos soluciones de telecomunicaciones globales para un mundo más conectado.</p>
-      <a href="/contacto" class="btn btn-primary btn-lg px-4 py-2">Conocer Más</a>
-    </div>
-  </section>
+  
+    <!-- Hero Section: Página de nosotros-->
+    <section class="intro-section py-5 bg-light text-white d-flex align-items-center justify-content-center" style="min-height: 70vh;">
+      <div class="container text-center position-relative z-2">
+        <h1 class="display-4 fw-bold mb-4">Conecta Internacional</h1>
+        <p class="lead mb-5">En Conecta Internacional, Contamos con una amplia red de contactos en estas áreas, lo que nos permite ayudarte a optimizar los servicios de tu empresa.</p>
+        <a href="#services" class="btn btn-primary btn-lg">Conocer más</a>
+      </div>
+    </section>
 
   <!-- Nuestra Historia Section -->
   <section class="bg-light py-5">
@@ -72,4 +73,77 @@ const title = "Nosotros - Conecta Internacional";
       </div>
     </div>
   </section>
+  
 </Layout>
+
+
+<style>
+  .intro-section {
+  background-image: url('../assets/img/hero-background-nosotros.jpg'); /* Ruta de la imagen de fondo */
+  background-size: cover;
+  background-position: center center; /* Cambia la posición a centro */
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.intro-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay oscuro para mejorar la legibilidad */
+  z-index: 1;
+}
+
+.intro-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.intro-section h1 {
+  font-size: 2.5rem; /* Tamaño de fuente para pantallas grandes */
+}
+
+.intro-section p {
+  font-size: 1.2rem; /* Tamaño de fuente para pantallas grandes */
+}
+
+.intro-section .btn {
+  padding: 0.75rem 2rem; /* Aumentamos el tamaño del botón */
+}
+
+@media (max-width: 768px) {
+  .intro-section h1 {
+    font-size: 1.8rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+  }
+
+  .intro-section p {
+    font-size: 1rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+  }
+
+  .intro-section .btn {
+    padding: 0.5rem 1.5rem; /* Botón más pequeño para pantallas pequeñas */
+  }
+}
+
+@media (max-width: 576px) {
+  .intro-section {
+    min-height: 50vh; /* Reduce la altura en móviles */
+    background-size: cover; /* Asegura que el fondo cubra todo el contenedor */
+    background-position: center; /* Centra la imagen de fondo */
+  }
+  .intro-section h1 {
+    font-size: 2rem; /* Reduce el tamaño del título */
+  }
+  .intro-section p {
+    font-size: 1rem; /* Reduce el tamaño del párrafo */
+  }
+  .intro-section .btn {
+    font-size: 0.9rem; /* Ajusta el tamaño de la letra del botón */
+    padding: 0.5rem 1rem; /* Ajusta el espacio interno del botón */
+  }
+}
+
+</style>

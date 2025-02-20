@@ -6,13 +6,15 @@ const title = "Contacto - Conecta Internacional";
 ---
 
 <Layout title={title}>
-  <!-- Hero Section -->
-  <section class="bg-light py-5 text-center">
-    <div class="container">
-      <h1 class="display-4 fw-bold mb-4">Contáctanos</h1>
-      <p class="lead">Estamos aquí para ayudarte. ¡Conéctate con nosotros!</p>
-    </div>
-  </section>
+
+    <!-- Hero Section: Página de contacto-->
+    <section class="intro-section py-5 bg-light text-white d-flex align-items-center justify-content-center" style="min-height: 70vh;">
+      <div class="container text-center position-relative z-2">
+        <h1 class="display-4 fw-bold mb-4">Contáctanos</h1>
+        <p class="lead mb-5">Estamos aqui para ayudarte. ¡Conéctate con nosotros!</p>
+        <a href="#services" class="btn btn-primary btn-lg">Conocer más</a>
+      </div>
+    </section>
 
   <!-- Contact Information -->
   <section class="py-5">
@@ -54,3 +56,79 @@ const title = "Contacto - Conecta Internacional";
   <!-- Contact Form Section -->
   <Contacto />
 </Layout>
+<style>
+  .intro-section {
+  background-image: url('../assets/img/hero-background-contacto.jpg'); /* Ruta de la imagen de fondo */
+  background-size: cover;
+  background-position: center center; /* Cambia la posición a centro */
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.intro-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay oscuro para mejorar la legibilidad */
+  z-index: 1;
+}
+
+.intro-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.intro-section h1 {
+  font-size: 2.5rem; /* Tamaño de fuente para pantallas grandes */
+}
+
+.intro-section p {
+  font-size: 1.2rem; /* Tamaño de fuente para pantallas grandes */
+}
+
+.intro-section .btn {
+  padding: 0.75rem 2rem; /* Aumentamos el tamaño del botón */
+}
+
+@media (max-width: 768px) {
+  .intro-section h1 {
+    font-size: 1.8rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+  }
+
+  .intro-section p {
+    font-size: 1rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+  }
+
+  .intro-section .btn {
+    padding: 0.5rem 1.5rem; /* Botón más pequeño para pantallas pequeñas */
+  }
+}
+
+@media (max-width: 576px) {
+  .intro-section {
+    min-height: 50vh; /* Reduce la altura en móviles */
+    padding: 2rem 1rem; /* Ajusta el espacio interno */
+    background-size: cover; /* Asegura que el fondo cubra todo el contenedor */
+    background-position: center; /* Centra la imagen de fondo */
+  }
+  .intro-section .container {
+    padding: 0 1rem; /* Reduce márgenes internos del contenedor */
+  }
+  .intro-section h1 {
+    font-size: 1.8rem; /* Reduce el tamaño del título */
+    margin-bottom: 1.5rem; /* Ajusta el espacio inferior */
+  }
+  .intro-section p {
+    font-size: 0.9rem; /* Reduce el tamaño del párrafo */
+    margin-bottom: 1.5rem; /* Ajusta el espacio inferior */
+  }
+  .intro-section .btn {
+    font-size: 0.85rem; /* Ajusta el tamaño de la fuente del botón */
+    padding: 0.5rem 1rem; /* Reduce el padding del botón */
+  }
+}
+
+</style>
