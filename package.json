@@ -1,6 +1,6 @@
 {
   "name": "conecta-astro-app",
-  "type": "module",
+  "type": "commonjs",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
-    "astro": "^5.3.0"
+    "astro": "^5.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemailer": "^6.10.0"
   }
 }

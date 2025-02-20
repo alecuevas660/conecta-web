@@ -35,6 +35,7 @@ import banner3 from '../assets/img/Banner3.jpg';
     align-items: center;
     text-align: center;
     color: white;
+    padding: 0 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   }
   .banner-content.active {
@@ -48,7 +49,24 @@ import banner3 from '../assets/img/Banner3.jpg';
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: -2;
+  }
+  /* Capa overlay para mejorar el contraste */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
     z-index: -1;
+  }
+  /* Aseguramos que los textos y botones queden por encima */
+  .banner-title,
+  .banner-description,
+  .banner-button {
+    position: relative;
+    z-index: 1;
   }
   .banner-title {
     font-size: 2rem;
@@ -58,6 +76,19 @@ import banner3 from '../assets/img/Banner3.jpg';
   .banner-description {
     font-size: 1rem;
     margin-bottom: 1rem;
+    max-width: 800px;
+  }
+  .banner-button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .banner-button:hover {
+    background-color: #0056b3;
   }
   .banner-nav {
     position: absolute;
@@ -76,13 +107,10 @@ import banner3 from '../assets/img/Banner3.jpg';
     border-radius: 50%;
     margin: 0 5px;
     cursor: pointer;
-    padding: 0;
   }
   .banner-nav button.active {
     background-color: white;
   }
-
-  /* ===== NUEVO DISEÑO DE FLECHAS ===== */
   .banner-arrow {
     position: absolute;
     top: 50%;
@@ -94,7 +122,7 @@ import banner3 from '../assets/img/Banner3.jpg';
     padding: 12px;
     cursor: pointer;
     z-index: 2;
-    display: none; /* Ocultas por defecto */
+    display: none;
     align-items: center;
     justify-content: center;
     width: 45px;
@@ -114,7 +142,6 @@ import banner3 from '../assets/img/Banner3.jpg';
   .banner-arrow.right {
     right: 15px;
   }
-  /* Mostrar flechas a partir de tablets */
   @media (min-width: 768px) {
     .banner-arrow {
       display: flex;
@@ -136,25 +163,36 @@ import banner3 from '../assets/img/Banner3.jpg';
   }
 </style>
 
-<body>
   <div class="banner">
+    <!-- Slide 1: Servicios -->
     <div class="banner-content active">
       <img src={banner1.src} alt="Banner 1">
-      <h1 class="banner-title">Banner Profesional 1</h1>
-      <p class="banner-description">Desliza para ver más contenido impresionante.</p>
-      <button class="btn btn-primary banner-button" onclick="alert('¡Botón 1 clickeado!')">Saber más</button>
+      <div class="overlay"></div>
+      <h1 class="banner-title">Servicios Integrales</h1>
+      <p class="banner-description">
+        Proveedores · Transportes · Asesoría · Externalización
+      </p>
+      <button class="banner-button" onclick="alert('Ver Servicios')">Ver Servicios</button>
     </div>
+    <!-- Slide 2: Bienvenida -->
     <div class="banner-content">
       <img src={banner2.src} alt="Banner 2">
-      <h1 class="banner-title">Banner Profesional 2</h1>
-      <p class="banner-description">Descubre nuestras soluciones innovadoras.</p>
-      <button class="btn btn-success banner-button" onclick="alert('¡Botón 2 clickeado!')">Explorar</button>
+      <div class="overlay"></div>
+      <h1 class="banner-title">Conecta Internacional</h1>
+      <p class="banner-description">
+        Tu aliado en comercio exterior.
+      </p>
+      <button class="banner-button" onclick="alert('Conócenos')">Conócenos</button>
     </div>
+    <!-- Slide 3: Contacto -->
     <div class="banner-content">
       <img src={banner3.src} alt="Banner 3">
-      <h1 class="banner-title">Banner Profesional 3</h1>
-      <p class="banner-description">Únete a nuestra comunidad en crecimiento.</p>
-      <button class="btn btn-warning banner-button" onclick="alert('¡Botón 3 clickeado!')">Unirse</button>
+      <div class="overlay"></div>
+      <h1 class="banner-title">Contáctanos</h1>
+      <p class="banner-description">
+        Soluciones a medida para tu negocio.
+      </p>
+      <button class="banner-button" onclick="alert('Contacto')">Contacto</button>
     </div>
     <button class="banner-arrow left" aria-label="Anterior slide"><i class="fas fa-chevron-left"></i></button>
     <button class="banner-arrow right" aria-label="Siguiente slide"><i class="fas fa-chevron-right"></i></button>
@@ -170,7 +208,6 @@ import banner3 from '../assets/img/Banner3.jpg';
       let currentSlide = 0;
       let intervalId;
 
-      // Crear botones de navegación
       bannerContents.forEach((_, index) => {
         const button = document.createElement('button');
         button.setAttribute('aria-label', `Ir al slide ${index + 1}`);
@@ -208,7 +245,6 @@ import banner3 from '../assets/img/Banner3.jpg';
         intervalId = setInterval(nextSlide, 5000);
       }
 
-      // Event listeners para las flechas
       leftArrow.addEventListener('click', () => {
         prevSlide();
         resetInterval();
@@ -218,9 +254,8 @@ import banner3 from '../assets/img/Banner3.jpg';
         resetInterval();
       });
 
-      // Inicializar el banner
       updateBanner();
       resetInterval();
     });
   </script>
-</body>
+
