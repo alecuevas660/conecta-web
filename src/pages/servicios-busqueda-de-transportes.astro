@@ -15,7 +15,6 @@ const title = "Servicio de búsqueda de transporte - Conecta Internacional";
         </div>
     </section>
 
-
     <section class="section-padding bg-light animate">
         <div class="container">
             <div class="row align-items-center">
@@ -198,13 +197,6 @@ const title = "Servicio de búsqueda de transporte - Conecta Internacional";
         </div>
     </section>
 
-    <section class="cta-section animate">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-4">¿Necesitas Transportar tu Carga?</h2>
-            <p class="lead mb-4">Obtén una cotización personalizada para tu servicio de transporte</p>
-            <button class="btn btn-light btn-lg px-5">Solicitar Cotización</button>
-        </div>
-    </section>
 
     <div class="py-4 bg-light animate">
         <div class="container text-center">
@@ -219,8 +211,16 @@ const title = "Servicio de búsqueda de transporte - Conecta Internacional";
 </Layout>
 
 <style>
+    /* Se ha reducido el padding vertical de las secciones para unir un poco el contenido */
     .section-padding {
-        padding: 5rem 0;
+        padding: 3rem 0;
+    }
+
+    /* Para dispositivos móviles, se reduce aún más el espacio vertical */
+    @media (max-width: 768px) {
+        .section-padding {
+            padding: 2rem 0;
+        }
     }
 
     .hero-section {
@@ -319,27 +319,6 @@ const title = "Servicio de búsqueda de transporte - Conecta Internacional";
         background: linear-gradient(135deg, #0d6efd 0%, #0099ff 100%);
         color: white;
         padding: 4rem 0;
-    }
-
-    @media (max-width: 768px) {
-        .section-padding img {
-            object-fit: cover;
-            max-height: 400px;
-        }
-        .hero-section {
-            min-height: 60vh;
-            padding: 3rem 0;
-        }
-        .hero-content h1 {
-            font-size: 2.5rem;
-        }
-        .hero-content p {
-            font-size: 1rem;
-        }
-        .hero-content .btn {
-            font-size: 0.9rem;
-            padding: 0.75rem 1.25rem;
-        }
     }
 
     @media (max-width: 576px) {

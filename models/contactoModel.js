@@ -11,7 +11,7 @@ exports.sendEmail = async ({ name, email, telefono, mensaje }) => {
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD
-    },
+    },s
     tls: {
       rejectUnauthorized: false  // Evita problemas con certificados SSL
     }

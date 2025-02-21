@@ -192,14 +192,6 @@ const title = "Servicio de Externalización - Conecta Internacional";
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section animate">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-4">¿Listo para Externalizar y Optimizar?</h2>
-            <p class="lead mb-4">Solicita una consulta personalizada y transforma la eficiencia de tu negocio.</p>
-            <button class="btn btn-light btn-lg px-5">Solicitar Consulta</button>
-        </div>
-    </section>
 
     <!-- Contact Banner -->
     <div class="py-4 bg-light animate">
@@ -215,9 +207,14 @@ const title = "Servicio de Externalización - Conecta Internacional";
 </Layout>
 
 <style>
-    /* Global Section Padding */
+    /* Global Section Padding: 3rem en escritorio y 2rem en móviles */
     .section-padding {
-        padding: 5rem 0;
+        padding: 3rem 0;
+    }
+    @media (max-width: 768px) {
+        .section-padding {
+            padding: 2rem 0;
+        }
     }
 
     /* Hero Section Styles */
@@ -229,7 +226,6 @@ const title = "Servicio de Externalización - Conecta Internacional";
         min-height: 60vh;
         color: white;
     }
-
     .hero-section::before {
         content: "";
         position: absolute;
@@ -239,7 +235,6 @@ const title = "Servicio de Externalización - Conecta Internacional";
         bottom: 0;
         background: rgba(0, 0, 0, 0.6);
     }
-
     .hero-content {
         position: relative;
         z-index: 2;
@@ -250,12 +245,10 @@ const title = "Servicio de Externalización - Conecta Internacional";
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         height: 100%;
     }
-
     .feature-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
-
     .icon-circle {
         width: 80px;
         height: 80px;
@@ -266,7 +259,6 @@ const title = "Servicio de Externalización - Conecta Internacional";
         justify-content: center;
         margin: 0 auto 1rem;
     }
-
     .icon-circle i {
         font-size: 2rem;
         color: #0d6efd;
@@ -277,7 +269,6 @@ const title = "Servicio de Externalización - Conecta Internacional";
         position: relative;
         padding: 2rem 0;
     }
-
     .timeline::before {
         content: "";
         position: absolute;
@@ -287,12 +278,10 @@ const title = "Servicio de Externalización - Conecta Internacional";
         height: 100%;
         background-color: #dee2e6;
     }
-
     .timeline-item {
         margin-bottom: 2rem;
         position: relative;
     }
-
     .timeline-content {
         padding: 1.5rem;
         border-radius: 0.5rem;
@@ -309,7 +298,6 @@ const title = "Servicio de Externalización - Conecta Internacional";
         margin-bottom: 1rem;
         transition: transform 0.3s ease;
     }
-
     .benefit-item:hover {
         transform: translateX(10px);
     }
@@ -321,12 +309,7 @@ const title = "Servicio de Externalización - Conecta Internacional";
         padding: 4rem 0;
     }
 
-    /* Responsive adjustments */
     @media (max-width: 768px) {
-        .section-padding img {
-            object-fit: cover;
-            max-height: 400px;
-        }
         .hero-section {
             min-height: 60vh;
             padding: 3rem 0;
@@ -342,7 +325,6 @@ const title = "Servicio de Externalización - Conecta Internacional";
             padding: 0.75rem 1.25rem;
         }
     }
-
     @media (max-width: 576px) {
         .hero-section {
             min-height: 50vh;
@@ -359,7 +341,6 @@ const title = "Servicio de Externalización - Conecta Internacional";
             padding: 0.5rem 1rem;
         }
     }
-
     @media (min-width: 992px) {
         .section-padding img {
             object-fit: cover;
@@ -373,14 +354,13 @@ const title = "Servicio de Externalización - Conecta Internacional";
         transform: translateY(20px);
         transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
-
     .animate.visible {
         opacity: 1;
         transform: translateY(0);
     }
 </style>
 
-<script >
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         // Animate elements on scroll using IntersectionObserver
         const animatedElements = document.querySelectorAll('.animate');

@@ -4,6 +4,42 @@ import banner2 from '../assets/img/Banner2.jpg';
 import banner3 from '../assets/img/Banner3.jpg';
 ---
 
+<div class="banner">
+  <!-- Slide 1: Servicios -->
+  <div class="banner-content active">
+    <img src={banner1.src} alt="Banner 1">
+    <div class="overlay"></div>
+    <h1 class="banner-title">Servicios Integrales</h1>
+    <p class="banner-description">
+      Proveedores · Transportes · Asesoría · Externalización
+    </p>
+    <a  style="text-decoration: none;" class="banner-button" href="servicios">Ver servicios</a>
+  </div>
+  <!-- Slide 2: Nosotros -->
+  <div class="banner-content">
+    <img src={banner2.src} alt="Banner 2">
+    <div class="overlay"></div>
+    <h1 class="banner-title">Conecta Internacional</h1>
+    <p class="banner-description">
+      Tu aliado en comercio exterior.
+    </p>
+    <a style="text-decoration: none;" class="banner-button" href="nosotros">Saber más</a>
+  </div>
+  <!-- Slide 3: Contacto -->
+  <div class="banner-content">
+    <img src={banner3.src} alt="Banner 3">
+    <div class="overlay"></div>
+    <h1 class="banner-title">Contáctanos</h1>
+    <p class="banner-description">
+      Soluciones a medida para tu negocio.
+    </p>
+    <a class="banner-button "  style="text-decoration: none;" href="contacto">Contáctanos</a>
+  </div>
+  <button class="banner-arrow left" aria-label="Anterior slide"><i class="fas fa-chevron-left"></i></button>
+  <button class="banner-arrow right" aria-label="Siguiente slide"><i class="fas fa-chevron-right"></i></button>
+  <div class="banner-nav"></div>
+</div>
+
 <style>
   .banner {
     position: relative;
@@ -21,6 +57,7 @@ import banner3 from '../assets/img/Banner3.jpg';
     }
   }
   .banner-content {
+    text-decoration: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -162,100 +199,63 @@ import banner3 from '../assets/img/Banner3.jpg';
     }
   }
 </style>
+  
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const bannerContents = document.querySelectorAll('.banner-content');
+    const bannerNav = document.querySelector('.banner-nav');
+    const leftArrow = document.querySelector('.banner-arrow.left');
+    const rightArrow = document.querySelector('.banner-arrow.right');
+    let currentSlide = 0;
+    let intervalId;
 
-  <div class="banner">
-    <!-- Slide 1: Servicios -->
-    <div class="banner-content active">
-      <img src={banner1.src} alt="Banner 1">
-      <div class="overlay"></div>
-      <h1 class="banner-title">Servicios Integrales</h1>
-      <p class="banner-description">
-        Proveedores · Transportes · Asesoría · Externalización
-      </p>
-      <button class="banner-button" onclick="alert('Ver Servicios')">Ver Servicios</button>
-    </div>
-    <!-- Slide 2: Bienvenida -->
-    <div class="banner-content">
-      <img src={banner2.src} alt="Banner 2">
-      <div class="overlay"></div>
-      <h1 class="banner-title">Conecta Internacional</h1>
-      <p class="banner-description">
-        Tu aliado en comercio exterior.
-      </p>
-      <button class="banner-button" onclick="alert('Conócenos')">Conócenos</button>
-    </div>
-    <!-- Slide 3: Contacto -->
-    <div class="banner-content">
-      <img src={banner3.src} alt="Banner 3">
-      <div class="overlay"></div>
-      <h1 class="banner-title">Contáctanos</h1>
-      <p class="banner-description">
-        Soluciones a medida para tu negocio.
-      </p>
-      <button class="banner-button" onclick="alert('Contacto')">Contacto</button>
-    </div>
-    <button class="banner-arrow left" aria-label="Anterior slide"><i class="fas fa-chevron-left"></i></button>
-    <button class="banner-arrow right" aria-label="Siguiente slide"><i class="fas fa-chevron-right"></i></button>
-    <div class="banner-nav"></div>
-  </div>
+    bannerContents.forEach((_, index) => {
+      const button = document.createElement('button');
+      button.setAttribute('aria-label', `Ir al slide ${index + 1}`);
+      button.addEventListener('click', () => goToSlide(index));
+      bannerNav.appendChild(button);
+    });
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const bannerContents = document.querySelectorAll('.banner-content');
-      const bannerNav = document.querySelector('.banner-nav');
-      const leftArrow = document.querySelector('.banner-arrow.left');
-      const rightArrow = document.querySelector('.banner-arrow.right');
-      let currentSlide = 0;
-      let intervalId;
-
-      bannerContents.forEach((_, index) => {
-        const button = document.createElement('button');
-        button.setAttribute('aria-label', `Ir al slide ${index + 1}`);
-        button.addEventListener('click', () => goToSlide(index));
-        bannerNav.appendChild(button);
+    function updateBanner() {
+      bannerContents.forEach((content, index) => {
+        content.classList.toggle('active', index === currentSlide);
       });
-
-      function updateBanner() {
-        bannerContents.forEach((content, index) => {
-          content.classList.toggle('active', index === currentSlide);
-        });
-        document.querySelectorAll('.banner-nav button').forEach((button, index) => {
-          button.classList.toggle('active', index === currentSlide);
-        });
-      }
-
-      function goToSlide(n) {
-        currentSlide = n;
-        updateBanner();
-        resetInterval();
-      }
-
-      function nextSlide() {
-        currentSlide = (currentSlide + 1) % bannerContents.length;
-        updateBanner();
-      }
-
-      function prevSlide() {
-        currentSlide = (currentSlide - 1 + bannerContents.length) % bannerContents.length;
-        updateBanner();
-      }
-
-      function resetInterval() {
-        clearInterval(intervalId);
-        intervalId = setInterval(nextSlide, 5000);
-      }
-
-      leftArrow.addEventListener('click', () => {
-        prevSlide();
-        resetInterval();
+      document.querySelectorAll('.banner-nav button').forEach((button, index) => {
+        button.classList.toggle('active', index === currentSlide);
       });
-      rightArrow.addEventListener('click', () => {
-        nextSlide();
-        resetInterval();
-      });
+    }
 
+    function goToSlide(n) {
+      currentSlide = n;
       updateBanner();
       resetInterval();
-    });
-  </script>
+    }
 
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % bannerContents.length;
+      updateBanner();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + bannerContents.length) % bannerContents.length;
+      updateBanner();
+    }
+
+    function resetInterval() {
+      clearInterval(intervalId);
+      intervalId = setInterval(nextSlide, 5000);
+    }
+
+    leftArrow.addEventListener('click', () => {
+      prevSlide();
+      resetInterval();
+    });
+    rightArrow.addEventListener('click', () => {
+      nextSlide();
+      resetInterval();
+    });
+
+    updateBanner();
+    resetInterval();
+  });
+</script>
