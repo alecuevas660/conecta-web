@@ -2,16 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 import InternacionImage from "../assets/img/imagen-servicio-internacion.webp";
 const title = "Servicio de Asesoría en Internación - Conecta Internacional";
+const description = "Te ayudamos en la importación y exportación de tus productos, ofreciendo asesoría experta en aduanas, aranceles e impuestos internacionales. Conecta Internacional optimiza tus operaciones de comercio global y negocios internacionales, asegurando el cumplimiento normativo y una logística aduanera eficiente.";
+
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description}>
     <section class="hero-section d-flex align-items-center animate">
         <div class="container hero-content text-center">
             <h1 class="display-4 fw-bold mb-4">Asesoría en Internación</h1>
             <p class="lead mb-4">Te ayudamos en la importación y exportación de tus productos</p>
             <div class="d-flex justify-content-center gap-3">
-                <button class="btn btn-primary btn-lg">Solicitar Consulta</button>
-            </div>
+                <button class="btn btn-primary btn-lg" onclick="window.location.href='contacto'">
+                    Solicitar Consulta
+                  </button>            </div>
         </div>
     </section>
 
@@ -20,9 +23,8 @@ const title = "Servicio de Asesoría en Internación - Conecta Internacional";
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h2 class="fw-bold mb-4">Internación de Productos</h2>
-                    <p class="lead text-muted mb-4">
-                        Ofrecemos asesoría integral en importación y exportación, facilitando el proceso aduanero y la logística internacional para que tus productos lleguen a su destino sin contratiempos.
-                    </p>
+                    <p class="lead text-muted mb-4" style="text-align: justify;">
+                        ¿No sabes los requisitos para internar tu producto? Nosotros realizamos toda la investigación sobre la normativa legal que lo afecte y te asesoramos para que puedas cumplir con lo que se solicite para poder realizar el proceso.                    </p>
                     <ul class="list-unstyled">
                         <li class="mb-3">
                             <i class="bi bi-check-circle-fill text-primary me-2"></i>
@@ -184,8 +186,8 @@ const title = "Servicio de Asesoría en Internación - Conecta Internacional";
         <div class="container text-center">
             <p class="mb-0">
                 Llámanos al 
-                <a href="tel:+56223456789" class="text-primary text-decoration-none fw-bold">
-                    +56 2 2345 6789
+                <a href="tel:+56953352667" class="text-primary text-decoration-none fw-bold">
+                    +56 9 5335 2667                
                 </a>
             </p>
         </div>

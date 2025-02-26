@@ -5,9 +5,12 @@ import ServiciosHome from '../components/ServiciosHome.astro';
 import ComoTrabajamos from "../components/ComoTrabajamos.astro";
 import PorqueElegirnos from "../components/PorqueElegirnos.astro";
 import Contacto from "../components/Contacto.astro"
+const title = "Inicio | Conecta Internacional"
+const description = "Conecta Internacional es una empresa emergente en comercio exterior que ofrece soluciones integrales en logística, importaciones y exportaciones para impulsar el crecimiento de tu negocio global.";
+
 ---
 
-<Layout title="Inicio | Conecta Internacional">
+<Layout title={title} description={description}>
 	<HomeBanner />
 	<ServiciosHome  />
 	<ComoTrabajamos />

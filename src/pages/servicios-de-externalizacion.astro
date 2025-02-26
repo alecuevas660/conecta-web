@@ -2,17 +2,20 @@
 import Layout from "../layouts/Layout.astro";
 import ExternalizacionImage from "../assets/img/imagen-servicio-externalizacion.webp";
 const title = "Servicio de Externalización - Conecta Internacional";
+const description = "Externaliza tus procesos clave para mejorar la eficiencia operativa y reducir costos. Conecta Internacional ofrece soluciones integrales en importación, exportación y logística internacional, potenciando tus negocios internacionales y fortaleciendo tu posición en el comercio global.";
+
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description}>
     <!-- Hero Section -->
     <section class="hero-section d-flex align-items-center animate">
         <div class="container hero-content text-center">
             <h1 class="display-4 fw-bold mb-4">Externalización</h1>
             <p class="lead mb-4">Externaliza tus procesos clave para mejorar la eficiencia.</p>
             <div class="d-flex justify-content-center gap-3">
-                <button class="btn btn-primary btn-lg">Solicitar Consulta</button>
-            </div>
+                <button class="btn btn-primary btn-lg" onclick="window.location.href='contacto'">
+                    Solicitar Consulta
+                  </button>              </div>
         </div>
     </section>
 
@@ -22,9 +25,8 @@ const title = "Servicio de Externalización - Conecta Internacional";
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h2 class="fw-bold mb-4">Externalización de Procesos</h2>
-                    <p class="lead text-muted mb-4">
-                        Nuestro servicio de externalización te permite delegar los procesos clave de tu empresa, permitiéndote concentrarte en lo esencial, reduciendo costos y aumentando la eficiencia operativa.
-                    </p>
+                    <p class="lead text-muted mb-4 " style="text-align: justify;">
+                        ¿Deseas comenzar a vender o a comprar en el extranjero, y no tienes un área especialista? Tenemos planes que desarrollamos a la medida de cada empresa, con lo cual no necesitarás contratar personal especialista, ya que realizaremos todas las operaciones que necesites para que tu negocio funcione.                    </p>
                     <ul class="list-unstyled">
                         <li class="mb-3">
                             <i class="bi bi-check-circle-fill text-primary me-2"></i>
@@ -198,8 +200,8 @@ const title = "Servicio de Externalización - Conecta Internacional";
         <div class="container text-center">
             <p class="mb-0">
                 Llámanos al 
-                <a href="tel:+56223456789" class="text-primary text-decoration-none fw-bold">
-                    +56 2 2345 6789
+                <a href="tel:+56953352667" class="text-primary text-decoration-none fw-bold">
+                    +56 9 5335 2667                
                 </a>
             </p>
         </div>

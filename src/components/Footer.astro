@@ -4,49 +4,48 @@ const currentYear = new Date().getFullYear();
 
 <footer class="footer py-5">
   <div class="container">
-    <div class="row gy-4">
+    <div class="row gy-5">
       <!-- Sobre Nosotros -->
       <div class="col-lg-3 col-md-6">
-        <h3 class="text-white h5 mb-3">Sobre Nosotros</h3>
-        <p class="text-light mb-4">
+        <h3 class="footer-title">Sobre Nosotros</h3>
+        <p class="footer-text" style="text-align: justify;">
           Conecta Internacional es tu aliado estratégico en comercio exterior, ofreciendo soluciones integrales para impulsar tu negocio en el mercado global.
         </p>
-      
       </div>
 
       <!-- Enlaces -->
       <div class="col-lg-3 col-md-6">
-        <h3 class="text-white h5 mb-3">Enlaces</h3>
+        <h3 class="footer-title">Enlaces</h3>
         <ul class="list-unstyled footer-links">
           <li><a href="/">Inicio</a></li>
-          <li><a href="servicios">Servicios</a></li>
-          <li><a href="nosotros">Nosotros</a></li>
-          <li><a href="contacto">Contacto</a></li>
+          <li><a href="/servicios-comercio-exterior">Servicios</a></li>
+          <li><a href="/nosotros">Nosotros</a></li>
+          <li><a href="/contacto">Contacto</a></li>
         </ul>
       </div>
 
       <!-- Servicios -->
       <div class="col-lg-3 col-md-6">
-        <h3 class="text-white h5 mb-3">Servicios</h3>
+        <h3 class="footer-title">Servicios</h3>
         <ul class="list-unstyled footer-links">
-          <li><a href="servicios-busqueda-de-proveedores">Búsqueda de Proveedores</a></li>
-          <li><a href="servicios-busqueda-de-transportes">Búsqueda de Transportes</a></li>
-          <li><a href="servicios-asesoria-de-internacion">Asesoría en Internación</a></li>
-          <li><a href="servicios-de-externalizacion">Externalización</a></li>
+          <li><a href="/servicios-busqueda-de-proveedores">Búsqueda de Proveedores</a></li>
+          <li><a href="/servicios-busqueda-de-transportes">Búsqueda de Transportes</a></li>
+          <li><a href="/servicios-asesoria-de-internacion">Asesoría en Internación</a></li>
+          <li><a href="/servicios-de-externalizacion">Externalización</a></li>
         </ul>
       </div>
 
       <!-- Contacto -->
       <div class="col-lg-3 col-md-6">
-        <h3 class="text-white h5 mb-3">Contacto</h3>
+        <h3 class="footer-title">Contacto</h3>
         <ul class="list-unstyled footer-contact">
           <li>
-            <i class="bi bi-clock   me-2"></i>
+            <i class="bi bi-clock me-2"></i>
             9:00AM - 18:00PM
           </li>
           <li>
             <i class="bi bi-telephone me-2"></i>
-            +56 2 2345 6789
+            +56 9 5335 2667
           </li>
           <li>
             <i class="bi bi-envelope me-2"></i>
@@ -56,55 +55,80 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
 
-    <hr class="mt-4 mb-3 border-light opacity-10">
-    
+    <hr class="mt-4 mb-3">
+
     <div class="row align-items-center">
       <div class="col-md-6 text-center text-md-start">
-        <p class="mb-0 text-light">&copy; {currentYear} Conecta Internacional. Todos los derechos reservados.</p>
+        <p class="footer-copy mb-0">&copy; {currentYear} Conecta Internacional. Todos los derechos reservados.</p>
       </div>
-     
+      <!-- Aquí puedes agregar enlaces a redes sociales u otros elementos si lo deseas -->
     </div>
   </div>
 </footer>
 
 <style>
+  /* Fondo y espaciado general */
   .footer {
     background-color: #003B73;
+    padding: 3rem 0;
+  }
+  @media (max-width: 768px) {
+    .footer {
+      padding: 2rem 0;
+    }
   }
 
+  /* Títulos del footer */
+  .footer-title {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 0.5rem;
+  }
+
+  /* Texto y enlaces */
+  .footer-text {
+    color: #ffffff;
+    opacity: 0.9;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
   .footer-links a,
-  .footer-contact li,
-  .social-links a {
+  .footer-contact li {
     color: #ffffff;
     text-decoration: none;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     font-size: 1rem;
   }
-
-  .footer-links a:hover,
-  .social-links a:hover {
+  .footer-links a:hover {
     opacity: 1;
-    color: #ffffff;
+    transform: translateX(5px);
   }
-
   .footer-links li,
   .footer-contact li {
     margin-bottom: 0.75rem;
   }
-
-  .social-links i {
-    font-size: 1rem;
+  .footer-contact li i {
+    margin-right: 0.5rem;
   }
 
+  /* Separador */
   hr {
-    background-color: #ffffff;
+    border: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
   }
 
-  @media (max-width: 768px) {
-    .footer-links,
-    .footer-contact {
-      margin-bottom: 2rem;
-    }
+  /* Copyright */
+  .footer-copy {
+    color: #ffffff;
+    font-size: 0.9rem;
+    opacity: 0.9;
   }
 </style>

@@ -2,9 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import ProveedoresImage from "../assets/img/imagen-servicio-proveedores.webp";
 const title = "Servicio de búsqueda de proveedores - Conecta Internacional";
+const description = "Localizamos a los proveedores más adecuados para tu empresa, optimizando tu cadena de suministro y facilitando procesos de importación y exportación. Conecta Internacional te conecta con fabricantes y distribuidores estratégicos en el comercio global, potenciando tus negocios internacionales y fortaleciendo tus finanzas internacionales.";
+
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description}>
     <!-- Hero Section -->
     <section class="hero-section d-flex align-items-center animate">
         <div class="container hero-content text-center">
@@ -13,19 +15,20 @@ const title = "Servicio de búsqueda de proveedores - Conecta Internacional";
                 Conectamos tu negocio con los mejores proveedores internacionales
             </p>
             <div class="d-flex justify-content-center gap-3">
-                <button class="btn btn-primary btn-lg">Solicitar Consulta</button>
-            </div>
+                <button class="btn btn-primary btn-lg" onclick="window.location.href='contacto'">
+                    Solicitar Consulta
+                  </button>              </div>
         </div>
     </section>
 
-    <!-- Service Overview -->
+
     <section class="section-padding bg-light animate">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h2 class="fw-bold mb-4">Optimiza tu Cadena de Suministro</h2>
-                    <p class="lead text-muted mb-4">
-                        Nuestro servicio de búsqueda de proveedores te ayuda a encontrar los mejores socios comerciales para tu negocio, garantizando calidad y competitividad.
+                    <p class="lead text-muted mb-4"  style="text-align: justify;">
+                        ¿Necesitas repuestos o deseas importar directamente tus productos, eliminando intermediarios? Este es el servicio que necesitas, buscamos proveedor, realizamos la negociación y te guiamos en todo el proceso hasta que el producto este en tu bodega o donde lo necesites.                    
                     </p>
                     <ul class="list-unstyled">
                         <li class="mb-3">
@@ -198,10 +201,9 @@ const title = "Servicio de búsqueda de proveedores - Conecta Internacional";
         <div class="container text-center">
             <p class="mb-0">
                 Llámanos al
-                <a href="tel:+56223456789" class="text-primary text-decoration-none fw-bold">
-                    +56 2 2345 6789
+                <a href="tel:+56953352667" class="text-primary text-decoration-none fw-bold">
+                    +56 9 5335 2667                
                 </a>
-            </p>
         </div>
     </div>
 </Layout>

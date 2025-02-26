@@ -4,19 +4,23 @@ import Footer from '../components/Footer.astro';
 import WhatsappFlotante from '../components/WhatsappFlotante.astro';
 interface Props {
 	title?: string;
+	description?:string;
 }
 
-const { title = "Astro Basics" } = Astro.props;
+const { title = "Conecta Internacional | Comercio Exterior y Logística Global" } = Astro.props;
+const { description = "Conecta Internacional: Soluciones integrales en comercio exterior, logística y asesoría para importaciones y exportaciones. Impulsa tu negocio en el mercado global." } = Astro.props; 
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale"/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<meta name="description" content={description}>
+
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
