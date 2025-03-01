@@ -1,7 +1,13 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-dotenv.config();
+
+(async () => {
+  const { handler: astroHandler } = await import('./dist/server/entry.mjs');
+  app.use(astroHandler)
+})();
+
+dotenv.config()
 
 const contactoRoutes = require('./routes/contactoRoutes.js');
 
