@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000;
 
 // Configuración de CORS
 const corsOptions = {
-  origin: 'http://localhost:4321', // Permite solicitudes desde este origen
+  origin: 'https://conectainternacional.cl', // Permite solicitudes desde este origen
   optionsSuccessStatus: 200 // Para navegadores antiguos que no soportan 204
 };
 
