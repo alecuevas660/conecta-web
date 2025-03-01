@@ -13,7 +13,7 @@ const contactoRoutes = require('./routes/contactoRoutes.js');
 
 // Configuración de CORS
 const corsOptions = {
-  origin: 'https://conectainternacional.cl/', // Permite solicitudes desde este origen
+  origin: 'https://conectainternacional.cl', // Permite solicitudes desde este origen
   optionsSuccessStatus: 200 // Para navegadores antiguos que no soportan 204
 };
 
