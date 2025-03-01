@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Rutas para el contacto
-app.use('/contacto', contactoRoutes);
+app.use('/', contactoRoutes);
 
 // Importar y usar astroHandler de forma asíncrona, y luego iniciar el servidor
 (async () => {
