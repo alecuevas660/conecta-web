@@ -2,21 +2,18 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-(async () => {
-  const { handler: astroHandler } = await import('./dist/server/entry.mjs');
-  app.use(astroHandler)
-})();
-
-dotenv.config()
-
-const contactoRoutes = require('./routes/contactoRoutes.js');
+// Cargar variables de entorno
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Rutas para el contacto
+const contactoRoutes = require('./routes/contactoRoutes.js');
+
 // Configuración de CORS
 const corsOptions = {
-  origin: 'https://conectainternacional.cl', // Permite solicitudes desde este origen
+  origin: 'https://conectainternacional.cl/', // Permite solicitudes desde este origen
   optionsSuccessStatus: 200 // Para navegadores antiguos que no soportan 204
 };
 
@@ -30,6 +27,12 @@ app.use(express.urlencoded({ extended: true }));
 // Rutas para el contacto
 app.use('/contacto', contactoRoutes);
 
-app.listen(port, () => {
-  console.log(`Servidor corriendo en el puerto ${port}`);
-});
+// Importar y usar astroHandler de forma asíncrona, y luego iniciar el servidor
+(async () => {
+  const { handler: astroHandler } = await import('./dist/server/entry.mjs');
+  app.use(astroHandler);
+
+  app.listen(port, () => {
+    console.log(`Servidor corriendo en el puerto ${port}`);
+  });
+})();
