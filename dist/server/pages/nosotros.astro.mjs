@@ -1,9 +1,10 @@
-import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead, b as addAttribute } from '../chunks/astro/server_ChfwcdJ8.mjs';
-import { $ as $$Layout } from '../chunks/Layout_2TqNa9W-.mjs';
+import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead, b as addAttribute } from '../chunks/astro/server_B2ZRg2VL.mjs';
+import 'kleur/colors';
+import { $ as $$Layout } from '../chunks/Layout_DPqe0fqJ.mjs';
 /* empty css                                    */
 export { renderers } from '../renderers.mjs';
 
-const NosotrosImage = new Proxy({"src":"/https://conectainternacional.cl/_astro/comercio-exterior.BVHwUGLz.webp","width":800,"height":450,"format":"webp"}, {
+const NosotrosImage = new Proxy({"src":"/_astro/comercio-exterior.BVHwUGLz.webp","width":800,"height":450,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -26,7 +27,7 @@ Somos un grupo de profesionales que, desde hace más de 15 años, nos dedicamos 
 }, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/nosotros.astro", void 0);
 
 const $$file = "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/nosotros.astro";
-const $$url = "/https://conectainternacional.cl/nosotros";
+const $$url = "/nosotros";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 	__proto__: null,

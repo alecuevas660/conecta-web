@@ -1,6 +1,7 @@
-import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead, b as addAttribute, d as renderScript } from '../chunks/astro/server_ChfwcdJ8.mjs';
-import { b as busquedaProveedores, a as busquedaTranporte, c as busquedaAsesor, d as busquedaExternalizacion } from '../chunks/busqueda-externalizacion_DK3Tj1wB.mjs';
-import { $ as $$Layout } from '../chunks/Layout_2TqNa9W-.mjs';
+import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead, b as addAttribute, d as renderScript } from '../chunks/astro/server_B2ZRg2VL.mjs';
+import 'kleur/colors';
+import { b as busquedaProveedores, a as busquedaTranporte, c as busquedaAsesor, d as busquedaExternalizacion } from '../chunks/busqueda-externalizacion_BbmayPkw.mjs';
+import { $ as $$Layout } from '../chunks/Layout_DPqe0fqJ.mjs';
 /* empty css                                                       */
 export { renderers } from '../renderers.mjs';
 
@@ -11,7 +12,7 @@ const $$ServiciosComercioExterior = createComponent(($$result, $$props, $$slots)
 }, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/servicios-comercio-exterior.astro", void 0);
 
 const $$file = "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/servicios-comercio-exterior.astro";
-const $$url = "/https://conectainternacional.cl/servicios-comercio-exterior";
+const $$url = "/servicios-comercio-exterior";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,

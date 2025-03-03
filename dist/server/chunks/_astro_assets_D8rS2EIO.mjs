@@ -1,6 +1,7 @@
 import { i as isRemotePath, j as joinPaths } from './path_BuZodYwm.mjs';
-import { A as AstroError, E as ExpectedImage, L as LocalImageUsedWrongly, M as MissingImageDimension, U as UnsupportedImageFormat, I as IncompatibleDescriptorOptions, h as UnsupportedImageConversion, N as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, i as ExpectedImageOptions, j as ExpectedNotESMImage, k as InvalidImageService, t as toStyleString, c as createComponent, e as createAstro, l as ImageMissingAlt, r as renderTemplate, m as maybeRenderHead, b as addAttribute, s as spreadAttributes } from './astro/server_ChfwcdJ8.mjs';
+import { A as AstroError, E as ExpectedImage, L as LocalImageUsedWrongly, M as MissingImageDimension, U as UnsupportedImageFormat, I as IncompatibleDescriptorOptions, h as UnsupportedImageConversion, N as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, i as ExpectedImageOptions, j as ExpectedNotESMImage, k as InvalidImageService, t as toStyleString, c as createComponent, e as createAstro, l as ImageMissingAlt, r as renderTemplate, m as maybeRenderHead, b as addAttribute, s as spreadAttributes } from './astro/server_B2ZRg2VL.mjs';
 import * as mime from 'mrmime';
+import 'clsx';
 
 const VALID_SUPPORTED_FORMATS = [
   "jpeg",
@@ -364,7 +365,7 @@ const baseService = {
     Object.entries(params).forEach(([param, key]) => {
       options[key] && searchParams.append(param, options[key].toString());
     });
-    const imageEndpoint = joinPaths("/https://conectainternacional.cl", imageConfig.endpoint.route);
+    const imageEndpoint = joinPaths("/", imageConfig.endpoint.route);
     return `${imageEndpoint}?${searchParams}`;
   },
   parseURL(url) {
@@ -1242,7 +1243,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_CR8qxLNq.mjs'
+      './sharp_w-Jm6KtD.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;

@@ -1,9 +1,14 @@
-import { o as decryptString, p as createSlotValueFromString, q as isAstroComponentFactory, r as renderTemplate, a as renderComponent, R as ROUTE_TYPE_HEADER, u as REROUTE_DIRECTIVE_HEADER, A as AstroError, v as i18nNoLocaleFoundInPath, w as ResponseSentError, x as bold, y as red, z as yellow, B as dim, C as blue, D as MiddlewareNoDataOrNextCalled, G as MiddlewareNotAResponse, H as originPathnameSymbol, J as RewriteWithBodyUsed, K as GetStaticPathsRequired, O as InvalidGetStaticPathsReturn, P as InvalidGetStaticPathsEntry, Q as GetStaticPathsExpectedParams, S as GetStaticPathsInvalidRouteParam, T as PageNumberParamNotFound, V as DEFAULT_404_COMPONENT, W as NoMatchingStaticPathFound, X as PrerenderDynamicEndpointPathCollide, Y as ReservedSlotName, Z as renderSlotToString, _ as renderJSX, $ as chunkToString, a0 as isRenderInstruction, a1 as ForbiddenRewrite, a2 as SessionStorageSaveError, a3 as SessionStorageInitError, a4 as ASTRO_VERSION, a5 as LocalsReassigned, a6 as PrerenderClientAddressNotAvailable, a7 as clientAddressSymbol, a8 as ClientAddressNotAvailable, a9 as StaticClientAddressNotAvailable, aa as AstroResponseHeadersReassigned, ab as responseSentSymbol$1, ac as renderPage, ad as REWRITE_DIRECTIVE_HEADER_KEY, ae as REWRITE_DIRECTIVE_HEADER_VALUE, af as renderEndpoint, ag as LocalsNotAnObject, ah as REROUTABLE_STATUS_CODES } from './astro/server_ChfwcdJ8.mjs';
-import { c as cookieExports, U as UNDEFINED, a as NAN, P as POSITIVE_INFINITY, b as NEGATIVE_INFINITY, d as NEGATIVE_ZERO, e as encode64, H as HOLE, g as getActionQueryString, f as deserializeActionResult, D as DEFAULT_404_ROUTE, h as default404Instance, N as NOOP_MIDDLEWARE_FN, u as unflatten$1, i as ensure404Route } from './astro-designed-error-pages_CMauKlCn.mjs';
+import { o as decryptString, p as createSlotValueFromString, q as isAstroComponentFactory, r as renderTemplate, a as renderComponent, R as ROUTE_TYPE_HEADER, u as REROUTE_DIRECTIVE_HEADER, A as AstroError, v as i18nNoLocaleFoundInPath, w as ResponseSentError, x as MiddlewareNoDataOrNextCalled, y as MiddlewareNotAResponse, z as originPathnameSymbol, B as RewriteWithBodyUsed, G as GetStaticPathsRequired, C as InvalidGetStaticPathsReturn, D as InvalidGetStaticPathsEntry, H as GetStaticPathsExpectedParams, J as GetStaticPathsInvalidRouteParam, P as PageNumberParamNotFound, K as DEFAULT_404_COMPONENT, O as NoMatchingStaticPathFound, Q as PrerenderDynamicEndpointPathCollide, S as ReservedSlotName, T as renderSlotToString, V as renderJSX, W as chunkToString, X as isRenderInstruction, Y as ForbiddenRewrite, Z as SessionStorageSaveError, _ as SessionStorageInitError, $ as ASTRO_VERSION, a0 as LocalsReassigned, a1 as PrerenderClientAddressNotAvailable, a2 as clientAddressSymbol, a3 as ClientAddressNotAvailable, a4 as StaticClientAddressNotAvailable, a5 as AstroResponseHeadersReassigned, a6 as responseSentSymbol$1, a7 as renderPage, a8 as REWRITE_DIRECTIVE_HEADER_KEY, a9 as REWRITE_DIRECTIVE_HEADER_VALUE, aa as renderEndpoint, ab as LocalsNotAnObject, ac as REROUTABLE_STATUS_CODES } from './astro/server_B2ZRg2VL.mjs';
+import { bold, red, yellow, dim, blue } from 'kleur/colors';
+import 'clsx';
+import { serialize, parse } from 'cookie';
+import { g as getActionQueryString, d as deserializeActionResult, D as DEFAULT_404_ROUTE, a as default404Instance, N as NOOP_MIDDLEWARE_FN, e as ensure404Route } from './astro-designed-error-pages_DrHPZM1F.mjs';
+import 'es-module-lexer';
 import buffer from 'node:buffer';
 import crypto$1 from 'node:crypto';
 import { Http2ServerResponse } from 'node:http2';
 import { a as appendForwardSlash$1, j as joinPaths, r as removeTrailingForwardSlash, t as trimSlashes, f as fileExtension, s as slash, p as prependForwardSlash$1, c as collapseDuplicateTrailingSlashes, h as hasFileExtension$1 } from './path_BuZodYwm.mjs';
+import { unflatten as unflatten$1, stringify as stringify$1 } from 'devalue';
 import { createStorage, builtinDrivers } from 'unstorage';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import fs from 'node:fs';
@@ -515,7 +520,7 @@ class AstroCookies {
     };
     this.#ensureOutgoingMap().set(key, [
       DELETED_VALUE,
-      cookieExports.serialize(key, DELETED_VALUE, serializeOptions),
+      serialize(key, DELETED_VALUE, serializeOptions),
       false
     ]);
   }
@@ -589,7 +594,7 @@ class AstroCookies {
     }
     this.#ensureOutgoingMap().set(key, [
       serializedValue,
-      cookieExports.serialize(key, serializedValue, serializeOptions),
+      serialize(key, serializedValue, serializeOptions),
       true
     ]);
     if (this.#request[responseSentSymbol]) {
@@ -650,7 +655,7 @@ class AstroCookies {
     if (!raw) {
       return;
     }
-    this.#requestValues = cookieExports.parse(raw, options);
+    this.#requestValues = parse(raw, options);
   }
 }
 
@@ -809,323 +814,6 @@ const consoleLogDestination = {
     return true;
   }
 };
-
-/** @type {Record<string, string>} */
-
-class DevalueError extends Error {
-	/**
-	 * @param {string} message
-	 * @param {string[]} keys
-	 */
-	constructor(message, keys) {
-		super(message);
-		this.name = 'DevalueError';
-		this.path = keys.join('');
-	}
-}
-
-/** @param {any} thing */
-function is_primitive(thing) {
-	return Object(thing) !== thing;
-}
-
-const object_proto_names = /* @__PURE__ */ Object.getOwnPropertyNames(
-	Object.prototype
-)
-	.sort()
-	.join('\0');
-
-/** @param {any} thing */
-function is_plain_object(thing) {
-	const proto = Object.getPrototypeOf(thing);
-
-	return (
-		proto === Object.prototype ||
-		proto === null ||
-		Object.getOwnPropertyNames(proto).sort().join('\0') === object_proto_names
-	);
-}
-
-/** @param {any} thing */
-function get_type(thing) {
-	return Object.prototype.toString.call(thing).slice(8, -1);
-}
-
-/** @param {string} char */
-function get_escaped_char(char) {
-	switch (char) {
-		case '"':
-			return '\\"';
-		case '<':
-			return '\\u003C';
-		case '\\':
-			return '\\\\';
-		case '\n':
-			return '\\n';
-		case '\r':
-			return '\\r';
-		case '\t':
-			return '\\t';
-		case '\b':
-			return '\\b';
-		case '\f':
-			return '\\f';
-		case '\u2028':
-			return '\\u2028';
-		case '\u2029':
-			return '\\u2029';
-		default:
-			return char < ' '
-				? `\\u${char.charCodeAt(0).toString(16).padStart(4, '0')}`
-				: '';
-	}
-}
-
-/** @param {string} str */
-function stringify_string(str) {
-	let result = '';
-	let last_pos = 0;
-	const len = str.length;
-
-	for (let i = 0; i < len; i += 1) {
-		const char = str[i];
-		const replacement = get_escaped_char(char);
-		if (replacement) {
-			result += str.slice(last_pos, i) + replacement;
-			last_pos = i + 1;
-		}
-	}
-
-	return `"${last_pos === 0 ? str : result + str.slice(last_pos)}"`;
-}
-
-/** @param {Record<string | symbol, any>} object */
-function enumerable_symbols(object) {
-	return Object.getOwnPropertySymbols(object).filter(
-		(symbol) => Object.getOwnPropertyDescriptor(object, symbol).enumerable
-	);
-}
-
-const is_identifier = /^[a-zA-Z_$][a-zA-Z_$0-9]*$/;
-
-/** @param {string} key */
-function stringify_key(key) {
-	return is_identifier.test(key) ? '.' + key : '[' + JSON.stringify(key) + ']';
-}
-
-/**
- * Turn a value into a JSON string that can be parsed with `devalue.parse`
- * @param {any} value
- * @param {Record<string, (value: any) => any>} [reducers]
- */
-function stringify$1(value, reducers) {
-	/** @type {any[]} */
-	const stringified = [];
-
-	/** @type {Map<any, number>} */
-	const indexes = new Map();
-
-	/** @type {Array<{ key: string, fn: (value: any) => any }>} */
-	const custom = [];
-	if (reducers) {
-		for (const key of Object.getOwnPropertyNames(reducers)) {
-			custom.push({ key, fn: reducers[key] });
-		}
-	}
-
-	/** @type {string[]} */
-	const keys = [];
-
-	let p = 0;
-
-	/** @param {any} thing */
-	function flatten(thing) {
-		if (typeof thing === 'function') {
-			throw new DevalueError(`Cannot stringify a function`, keys);
-		}
-
-		if (indexes.has(thing)) return indexes.get(thing);
-
-		if (thing === undefined) return UNDEFINED;
-		if (Number.isNaN(thing)) return NAN;
-		if (thing === Infinity) return POSITIVE_INFINITY;
-		if (thing === -Infinity) return NEGATIVE_INFINITY;
-		if (thing === 0 && 1 / thing < 0) return NEGATIVE_ZERO;
-
-		const index = p++;
-		indexes.set(thing, index);
-
-		for (const { key, fn } of custom) {
-			const value = fn(thing);
-			if (value) {
-				stringified[index] = `["${key}",${flatten(value)}]`;
-				return index;
-			}
-		}
-
-		let str = '';
-
-		if (is_primitive(thing)) {
-			str = stringify_primitive(thing);
-		} else {
-			const type = get_type(thing);
-
-			switch (type) {
-				case 'Number':
-				case 'String':
-				case 'Boolean':
-					str = `["Object",${stringify_primitive(thing)}]`;
-					break;
-
-				case 'BigInt':
-					str = `["BigInt",${thing}]`;
-					break;
-
-				case 'Date':
-					const valid = !isNaN(thing.getDate());
-					str = `["Date","${valid ? thing.toISOString() : ''}"]`;
-					break;
-
-				case 'RegExp':
-					const { source, flags } = thing;
-					str = flags
-						? `["RegExp",${stringify_string(source)},"${flags}"]`
-						: `["RegExp",${stringify_string(source)}]`;
-					break;
-
-				case 'Array':
-					str = '[';
-
-					for (let i = 0; i < thing.length; i += 1) {
-						if (i > 0) str += ',';
-
-						if (i in thing) {
-							keys.push(`[${i}]`);
-							str += flatten(thing[i]);
-							keys.pop();
-						} else {
-							str += HOLE;
-						}
-					}
-
-					str += ']';
-
-					break;
-
-				case 'Set':
-					str = '["Set"';
-
-					for (const value of thing) {
-						str += `,${flatten(value)}`;
-					}
-
-					str += ']';
-					break;
-
-				case 'Map':
-					str = '["Map"';
-
-					for (const [key, value] of thing) {
-						keys.push(
-							`.get(${is_primitive(key) ? stringify_primitive(key) : '...'})`
-						);
-						str += `,${flatten(key)},${flatten(value)}`;
-						keys.pop();
-					}
-
-					str += ']';
-					break;
-
-				case "Int8Array":
-				case "Uint8Array":
-				case "Uint8ClampedArray":
-				case "Int16Array":
-				case "Uint16Array":
-				case "Int32Array":
-				case "Uint32Array":
-				case "Float32Array":
-				case "Float64Array":
-				case "BigInt64Array":
-				case "BigUint64Array": {
-					/** @type {import("./types.js").TypedArray} */
-					const typedArray = thing;
-					const base64 = encode64(typedArray.buffer);
-					str = '["' + type + '","' + base64 + '"]';
-					break;
-				}
-					
-				case "ArrayBuffer": {
-					/** @type {ArrayBuffer} */
-					const arraybuffer = thing;
-					const base64 = encode64(arraybuffer);
-					
-					str = `["ArrayBuffer","${base64}"]`;
-					break;
-				}
-				
-				default:
-					if (!is_plain_object(thing)) {
-						throw new DevalueError(
-							`Cannot stringify arbitrary non-POJOs`,
-							keys
-						);
-					}
-
-					if (enumerable_symbols(thing).length > 0) {
-						throw new DevalueError(
-							`Cannot stringify POJOs with symbolic keys`,
-							keys
-						);
-					}
-
-					if (Object.getPrototypeOf(thing) === null) {
-						str = '["null"';
-						for (const key in thing) {
-							keys.push(stringify_key(key));
-							str += `,${stringify_string(key)},${flatten(thing[key])}`;
-							keys.pop();
-						}
-						str += ']';
-					} else {
-						str = '{';
-						let started = false;
-						for (const key in thing) {
-							if (started) str += ',';
-							started = true;
-							keys.push(stringify_key(key));
-							str += `${stringify_string(key)}:${flatten(thing[key])}`;
-							keys.pop();
-						}
-						str += '}';
-					}
-			}
-		}
-
-		stringified[index] = str;
-		return index;
-	}
-
-	const index = flatten(value);
-
-	// special case — value is represented as a negative index
-	if (index < 0) return `${index}`;
-
-	return `[${stringified.join(',')}]`;
-}
-
-/**
- * @param {any} thing
- * @returns {string}
- */
-function stringify_primitive(thing) {
-	const type = typeof thing;
-	if (type === 'string') return stringify_string(thing);
-	if (thing instanceof String) return stringify_string(thing.toString());
-	if (thing === void 0) return UNDEFINED.toString();
-	if (thing === 0 && 1 / thing < 0) return NEGATIVE_ZERO.toString();
-	if (type === 'bigint') return `["BigInt","${thing}"]`;
-	return String(thing);
-}
 
 const ACTION_API_CONTEXT_SYMBOL = Symbol.for("astro.actionAPIContext");
 

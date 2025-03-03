@@ -1,4 +1,6 @@
-import { c as createComponent, r as renderTemplate, m as maybeRenderHead, d as renderScript } from './astro/server_ChfwcdJ8.mjs';
+import { c as createComponent, r as renderTemplate, m as maybeRenderHead, d as renderScript } from './astro/server_B2ZRg2VL.mjs';
+import 'kleur/colors';
+import 'clsx';
 /* empty css                            */
 
 const $$Contacto = createComponent(async ($$result, $$props, $$slots) => {

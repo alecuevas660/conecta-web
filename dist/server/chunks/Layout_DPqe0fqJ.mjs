@@ -1,8 +1,10 @@
-import { c as createComponent, r as renderTemplate, m as maybeRenderHead, a as renderComponent, d as renderScript, b as addAttribute, e as createAstro, f as renderHead, g as renderSlot } from './astro/server_ChfwcdJ8.mjs';
-import { $ as $$Image } from './_astro_assets_E1gbFJAB.mjs';
+import { c as createComponent, r as renderTemplate, m as maybeRenderHead, a as renderComponent, d as renderScript, b as addAttribute, e as createAstro, f as renderHead, g as renderSlot } from './astro/server_B2ZRg2VL.mjs';
+import 'kleur/colors';
+import { $ as $$Image } from './_astro_assets_D8rS2EIO.mjs';
 /* empty css                            */
+import 'clsx';
 
-const logo = new Proxy({"src":"/https://conectainternacional.cl/_astro/logo.vOsJ79zZ.png","width":309,"height":95,"format":"png"}, {
+const logo = new Proxy({"src":"/_astro/logo.vOsJ79zZ.png","width":309,"height":95,"format":"png"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);

@@ -1,54 +1,81 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import contactoRoutes from './routes/contactoRoutes.js'; // Añade extensión .js
+import contactoRoutes from './routes/contactoRoutes.js';
+import { handler as astroHandler } from './dist/server/entry.mjs'; // Importación directa
 
-// Configuración para Astro SSR (verifica si aún es necesario)
-import '@astrojs/node/register';
-
-// Configuración de __dirname para ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// Configuración inicial
+// Cargar variables de entorno
 dotenv.config();
+
 const app = express();
 const port = process.env.PORT || 3000;
 
-// 1. Configuración de seguridad y CORS para producción
-app.use(cors({
-  origin: [
-    'https://conectainternacional.cl',
-    'https://www.conectainternacional.cl'
-  ],
-  methods: ['POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
-  credentials: true
-}));
+// Configuración mejorada de CORS
+const corsOptions = {
+  origin: (origin, callback) => {
+    const allowedOrigins = process.env.NODE_ENV === 'production'
+      ? [
+          'https://conectainternacional.cl',
+          'https://www.conectainternacional.cl'
+        ]
+      : ['http://localhost:4321'];
 
-// 2. Middlewares esenciales
+    // Permitir solicitudes sin origen
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.some(allowed => origin === allowed)) {
+      callback(null, true);
+    } else {
+      console.log(`Origen bloqueado: ${origin}`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+
+// Middlewares
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 3. Servir archivos estáticos de Astro
-app.use(express.static(path.join(__dirname, './dist')));
+// Configuración de producción
+if (process.env.NODE_ENV === 'production') {
+  // Archivos estáticos con cache
+  app.use(express.static('./dist/client', {
+    index: false, // Astro maneja el index
+    maxAge: '1y',
+    immutable: true
+  }));
 
-// 4. Rutas de API
+  // Middleware SSR de Astro para rutas no API
+  app.use((req, res, next) => {
+    if (!req.path.startsWith('/contacto')) {
+      return astroHandler(req, res, next);
+    }
+    next();
+  });
+}
+
+// Rutas API
 app.use('/contacto', contactoRoutes);
 
-// 5. Manejo de rutas del frontend
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './dist', 'index.html'));
+// Manejo de 404 para SSR
+app.use((req, res) => {
+  res.status(404).send('Página no encontrada');
 });
 
-// 6. Iniciar servidor
+// Manejo explícito de OPTIONS
+app.options('*', cors(corsOptions));
+
+// Iniciar servidor
 app.listen(port, () => {
-  console.log(`🚀 Servidor en producción: ${port}`);
+  console.log(`🚀 Servidor en puerto: ${port}`);
   console.log(`➔ Modo: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`➔ Dominio: https://conectainternacional.cl`);
+  console.log('➔ CORS permitiendo:');
+  corsOptions.origin(null, (_, origins) => {
+    origins.forEach(origin => console.log(`   - ${origin}`));
+  });
 });
-
-export default app; // Opcional: útil para testing
