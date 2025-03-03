@@ -1,10 +1,9 @@
-import { c as createComponent, r as renderTemplate, a as renderComponent, d as renderScript, m as maybeRenderHead, b as addAttribute } from '../chunks/astro/server_B2ZRg2VL.mjs';
-import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_DPqe0fqJ.mjs';
+import { c as createComponent, r as renderTemplate, a as renderComponent, d as renderScript, m as maybeRenderHead, b as addAttribute } from '../chunks/astro/server_ChfwcdJ8.mjs';
+import { $ as $$Layout } from '../chunks/Layout_2TqNa9W-.mjs';
 /* empty css                                                             */
 export { renderers } from '../renderers.mjs';
 
-const TransporteImage = new Proxy({"src":"/_astro/imagen-servicio-transporte.wHCiXNJ9.webp","width":1080,"height":600,"format":"jpg"}, {
+const TransporteImage = new Proxy({"src":"/https://conectainternacional.cl/_astro/imagen-servicio-transporte.wHCiXNJ9.webp","width":1080,"height":600,"format":"jpg"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -45,7 +44,7 @@ Llámanos al
 }, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/servicios-busqueda-de-transportes.astro", void 0);
 
 const $$file = "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/servicios-busqueda-de-transportes.astro";
-const $$url = "/servicios-busqueda-de-transportes";
+const $$url = "/https://conectainternacional.cl/servicios-busqueda-de-transportes";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 	__proto__: null,

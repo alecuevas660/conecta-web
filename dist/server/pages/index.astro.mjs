@@ -1,14 +1,12 @@
-import { c as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, d as renderScript, a as renderComponent } from '../chunks/astro/server_B2ZRg2VL.mjs';
-import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_DPqe0fqJ.mjs';
-import 'clsx';
+import { c as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, d as renderScript, a as renderComponent } from '../chunks/astro/server_ChfwcdJ8.mjs';
+import { $ as $$Layout } from '../chunks/Layout_2TqNa9W-.mjs';
 /* empty css                                 */
-import { $ as $$Image } from '../chunks/_astro_assets_D8rS2EIO.mjs';
-import { b as busquedaProveedores, a as busquedaTranporte, c as busquedaAsesor, d as busquedaExternalizacion } from '../chunks/busqueda-externalizacion_BbmayPkw.mjs';
-import { $ as $$Contacto } from '../chunks/Contacto_BO4eqnXB.mjs';
+import { $ as $$Image } from '../chunks/_astro_assets_E1gbFJAB.mjs';
+import { b as busquedaProveedores, a as busquedaTranporte, c as busquedaAsesor, d as busquedaExternalizacion } from '../chunks/busqueda-externalizacion_DK3Tj1wB.mjs';
+import { $ as $$Contacto } from '../chunks/Contacto_CADyhBjl.mjs';
 export { renderers } from '../renderers.mjs';
 
-const banner1 = new Proxy({"src":"/_astro/Banner1.euCL14PH.jpg","width":4896,"height":1901,"format":"jpg"}, {
+const banner1 = new Proxy({"src":"/https://conectainternacional.cl/_astro/Banner1.euCL14PH.jpg","width":4896,"height":1901,"format":"jpg"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -21,7 +19,7 @@ const banner1 = new Proxy({"src":"/_astro/Banner1.euCL14PH.jpg","width":4896,"he
 						}
 					});
 
-const banner2 = new Proxy({"src":"/_astro/Banner2.DoeYVHGP.jpg","width":2560,"height":1438,"format":"jpg"}, {
+const banner2 = new Proxy({"src":"/https://conectainternacional.cl/_astro/Banner2.DoeYVHGP.jpg","width":2560,"height":1438,"format":"jpg"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -34,7 +32,7 @@ const banner2 = new Proxy({"src":"/_astro/Banner2.DoeYVHGP.jpg","width":2560,"he
 						}
 					});
 
-const banner3 = new Proxy({"src":"/_astro/Banner3.BGqagR40.jpg","width":2240,"height":1260,"format":"webp"}, {
+const banner3 = new Proxy({"src":"/https://conectainternacional.cl/_astro/Banner3.BGqagR40.jpg","width":2240,"height":1260,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -129,7 +127,7 @@ const $$Index = createComponent(($$result, $$props, $$slots) => {
 }, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/index.astro", void 0);
 
 const $$file = "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/index.astro";
-const $$url = "";
+const $$url = "/https://conectainternacional.cl";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 	__proto__: null,

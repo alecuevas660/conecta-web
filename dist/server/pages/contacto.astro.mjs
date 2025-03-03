@@ -1,7 +1,6 @@
-import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_B2ZRg2VL.mjs';
-import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_DPqe0fqJ.mjs';
-import { $ as $$Contacto$1 } from '../chunks/Contacto_BO4eqnXB.mjs';
+import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_ChfwcdJ8.mjs';
+import { $ as $$Layout } from '../chunks/Layout_2TqNa9W-.mjs';
+import { $ as $$Contacto$1 } from '../chunks/Contacto_CADyhBjl.mjs';
 /* empty css                                    */
 export { renderers } from '../renderers.mjs';
 
@@ -12,7 +11,7 @@ const $$Contacto = createComponent(($$result, $$props, $$slots) => {
 }, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/contacto.astro", void 0);
 
 const $$file = "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/contacto.astro";
-const $$url = "/contacto";
+const $$url = "/https://conectainternacional.cl/contacto";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,

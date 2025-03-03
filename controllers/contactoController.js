@@ -1,6 +1,6 @@
-const contactModel = require('../models/contactoModel.js');
+import { sendEmail } from '../models/contactoModel.js'; // Importa la función específica
 
-exports.sendContactEmail = async (req, res) => {
+export const sendContactEmail = async (req, res) => {
   const { name, email, telefono, mensaje } = req.body;
 
   // Validación simple de campos requeridos
@@ -10,7 +10,7 @@ exports.sendContactEmail = async (req, res) => {
 
   try {
     // Llama al modelo para enviar el correo
-    const info = await contactModel.sendEmail({ name, email, telefono, mensaje });
+    const info = await sendEmail({ name, email, telefono, mensaje });
     console.log('Mensaje enviado: %s', info.messageId);
     return res.status(200).json({ success: true, message: 'Mensaje enviado correctamente.' });
   } catch (error) {

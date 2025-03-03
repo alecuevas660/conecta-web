@@ -1,10 +1,9 @@
-import { c as createComponent, r as renderTemplate, a as renderComponent, d as renderScript, m as maybeRenderHead, b as addAttribute } from '../chunks/astro/server_B2ZRg2VL.mjs';
-import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_DPqe0fqJ.mjs';
+import { c as createComponent, r as renderTemplate, a as renderComponent, d as renderScript, m as maybeRenderHead, b as addAttribute } from '../chunks/astro/server_ChfwcdJ8.mjs';
+import { $ as $$Layout } from '../chunks/Layout_2TqNa9W-.mjs';
 /* empty css                                                        */
 export { renderers } from '../renderers.mjs';
 
-const ExternalizacionImage = new Proxy({"src":"/_astro/imagen-servicio-externalizacion.DnzlAj90.webp","width":612,"height":408,"format":"jpg"}, {
+const ExternalizacionImage = new Proxy({"src":"/https://conectainternacional.cl/_astro/imagen-servicio-externalizacion.DnzlAj90.webp","width":612,"height":408,"format":"jpg"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -45,7 +44,7 @@ Llámanos al
 }, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/servicios-de-externalizacion.astro", void 0);
 
 const $$file = "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/servicios-de-externalizacion.astro";
-const $$url = "/servicios-de-externalizacion";
+const $$url = "/https://conectainternacional.cl/servicios-de-externalizacion";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 	__proto__: null,

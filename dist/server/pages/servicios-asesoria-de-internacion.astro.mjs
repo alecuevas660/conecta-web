@@ -1,10 +1,9 @@
-import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead, b as addAttribute } from '../chunks/astro/server_B2ZRg2VL.mjs';
-import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_DPqe0fqJ.mjs';
+import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead, b as addAttribute } from '../chunks/astro/server_ChfwcdJ8.mjs';
+import { $ as $$Layout } from '../chunks/Layout_2TqNa9W-.mjs';
 /* empty css                                                             */
 export { renderers } from '../renderers.mjs';
 
-const InternacionImage = new Proxy({"src":"/_astro/imagen-servicio-internacion.BhjeU5jv.webp","width":970,"height":500,"format":"webp"}, {
+const InternacionImage = new Proxy({"src":"/https://conectainternacional.cl/_astro/imagen-servicio-internacion.BhjeU5jv.webp","width":970,"height":500,"format":"webp"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -49,7 +48,7 @@ Llámanos al
 }, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/servicios-asesoria-de-internacion.astro", void 0);
 
 const $$file = "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/servicios-asesoria-de-internacion.astro";
-const $$url = "/servicios-asesoria-de-internacion";
+const $$url = "/https://conectainternacional.cl/servicios-asesoria-de-internacion";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 	__proto__: null,

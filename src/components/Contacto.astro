@@ -1,28 +1,32 @@
 ---
 // ContactForm.astro
 ---
+
 <section class="contact-section py-5">
   <!-- Contenedor de notificaciones personalizado -->
   <div id="custom-notification" class="custom-notification d-none"></div>
-  
+
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="text-center mb-5">
-          <h2 class="display-6 fw-bold text-primary mb-2 fade-in-up">¡Contáctanos!</h2>
+          <h2 class="display-6 fw-bold text-primary mb-2 fade-in-up">
+            ¡Contáctanos!
+          </h2>
           <div class="title-underline fade-in-up"></div>
           <p class="text-muted mt-4 fade-in-up">
-            Desarrollamos planes de asesorías a la medida de tus necesidades y de tu empresa. ¡Estamos emocionados de conectarnos contigo!
+            Desarrollamos planes de asesorías a la medida de tus necesidades y
+            de tu empresa. ¡Estamos emocionados de conectarnos contigo!
           </p>
         </div>
 
         <div class="contact-card fade-in-up">
           <form class="needs-validation" novalidate>
             <div class="mb-4">
-              <input 
-                type="text" 
-                class="form-control form-control-lg" 
-                id="nombre" 
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                id="nombre"
                 placeholder="Nombre completo"
                 required
               />
@@ -30,42 +34,53 @@
             </div>
 
             <div class="mb-4">
-              <input 
-                type="email" 
-                class="form-control form-control-lg" 
-                id="email" 
+              <input
+                type="email"
+                class="form-control form-control-lg"
+                id="email"
                 placeholder="Correo electrónico"
                 required
               />
-              <div class="invalid-feedback">Por favor, ingresa un correo válido.</div>
+              <div class="invalid-feedback">
+                Por favor, ingresa un correo válido.
+              </div>
             </div>
 
             <div class="mb-4">
-              <input 
-                type="tel" 
-                class="form-control form-control-lg" 
-                id="telefono" 
+              <input
+                type="tel"
+                class="form-control form-control-lg"
+                id="telefono"
                 placeholder="Teléfono"
                 required
               />
-              <div class="invalid-feedback">Por favor, ingresa tu teléfono.</div>
+              <div class="invalid-feedback">
+                Por favor, ingresa tu teléfono.
+              </div>
             </div>
 
             <div class="mb-4">
-              <textarea 
-                class="form-control form-control-lg" 
-                id="mensaje" 
-                rows="5" 
+              <textarea
+                class="form-control form-control-lg"
+                id="mensaje"
+                rows="5"
                 placeholder="Cuéntanos sobre tu proyecto"
-                required
-              ></textarea>
+                required></textarea>
               <div class="invalid-feedback">Por favor, ingresa un mensaje.</div>
             </div>
 
             <div class="text-center">
-              <button type="submit" class="btn btn-primary btn-lg px-5" id="submit-button">
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg px-5"
+                id="submit-button"
+              >
                 <span id="button-text">ENVIAR MENSAJE</span>
-                <span id="button-loader" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                <span
+                  id="button-loader"
+                  class="spinner-border spinner-border-sm d-none"
+                  role="status"
+                  aria-hidden="true"></span>
               </button>
             </div>
           </form>
@@ -90,7 +105,7 @@
   }
 
   .title-underline::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 40px;
     height: 4px;
@@ -103,7 +118,7 @@
     background: white;
     padding: 3rem;
     border-radius: 1rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   }
 
   .form-control {
@@ -113,7 +128,7 @@
   }
 
   .form-control:focus {
-    box-shadow: 0 0 0 0.25rem rgba(0,123,255,0.1);
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.1);
     border-color: var(--bs-primary);
   }
 
@@ -126,13 +141,15 @@
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,123,255,0.2);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
   }
 
   .fade-in-up {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
   }
 
   .fade-in-up.visible {
@@ -173,82 +190,87 @@
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Función para mostrar la notificación personalizada
     function showNotification(message, type) {
-      const notification = document.getElementById('custom-notification');
+      const notification = document.getElementById("custom-notification");
       notification.textContent = message;
       notification.className = `custom-notification show ${type}`;
       setTimeout(() => {
-        notification.classList.remove('show');
+        notification.classList.remove("show");
       }, 3000);
     }
 
     // Animación de fade-in
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.1
+      rootMargin: "0px",
+      threshold: 0.1,
     };
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add("visible");
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
-    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+    document
+      .querySelectorAll(".fade-in-up")
+      .forEach((el) => observer.observe(el));
 
     // Validación del formulario
-    const form = document.querySelector('.needs-validation');
-    const submitButton = document.getElementById('submit-button');
-    const buttonText = document.getElementById('button-text');
-    const buttonLoader = document.getElementById('button-loader');
+    const form = document.querySelector(".needs-validation");
+    const submitButton = document.getElementById("submit-button");
+    const buttonText = document.getElementById("button-text");
+    const buttonLoader = document.getElementById("button-loader");
 
-    form.addEventListener('submit', async (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!form.checkValidity()) {
         event.stopPropagation();
-        form.classList.add('was-validated');
+        form.classList.add("was-validated");
         return;
       }
 
       // Mostrar loader y deshabilitar botón
       submitButton.disabled = true;
-      buttonText.classList.add('d-none');
-      buttonLoader.classList.remove('d-none');
+      buttonText.classList.add("d-none");
+      buttonLoader.classList.remove("d-none");
 
       const data = {
-        name: form.querySelector('#nombre').value,
-        email: form.querySelector('#email').value,
-        telefono: form.querySelector('#telefono').value,
-        mensaje: form.querySelector('#mensaje').value
+        name: form.querySelector("#nombre").value,
+        email: form.querySelector("#email").value,
+        telefono: form.querySelector("#telefono").value,
+        mensaje: form.querySelector("#mensaje").value,
       };
 
       try {
         // Cambia la URL para producción
-        const response = await fetch('/contacto/contact', { 
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(data)
-});
+        const response = await fetch(import.meta.env.PUBLIC_API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+          credentials: "include", // Esto debe coincidir con la configuración del servidor
+        });
         const result = await response.json();
         if (result.success) {
-          showNotification('Mensaje enviado correctamente.', 'success');
+          showNotification("Mensaje enviado correctamente.", "success");
           form.reset();
-          form.classList.remove('was-validated');
+          form.classList.remove("was-validated");
         } else {
-          showNotification('Error: ' + result.error, 'error');
+          showNotification("Error: " + result.error, "error");
         }
       } catch (err) {
         console.error(err);
-        showNotification('Ocurrió un error al enviar el mensaje.', 'error');
+        showNotification("Ocurrió un error al enviar el mensaje.", "error");
       } finally {
         // Ocultar loader y reactivar botón
         submitButton.disabled = false;
-        buttonText.classList.remove('d-none');
-        buttonLoader.classList.add('d-none');
+        buttonText.classList.remove("d-none");
+        buttonLoader.classList.add("d-none");
       }
     });
   });

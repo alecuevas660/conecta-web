@@ -1,53 +1,54 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const cors = require('cors');
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import contactoRoutes from './routes/contactoRoutes.js'; // Añade extensión .js
 
-// Cargar variables de entorno
+// Configuración para Astro SSR (verifica si aún es necesario)
+import '@astrojs/node/register';
+
+// Configuración de __dirname para ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Configuración inicial
 dotenv.config();
-
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Rutas para el contacto
-const contactoRoutes = require('./routes/contactoRoutes.js');
+// 1. Configuración de seguridad y CORS para producción
+app.use(cors({
+  origin: [
+    'https://conectainternacional.cl',
+    'https://www.conectainternacional.cl'
+  ],
+  methods: ['POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
+}));
 
-// Configuración de CORS para depuración: 
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log('Origin recibida:', origin);
-    // Permitir si no hay origin (como en Postman) o si es el dominio de producción
-    if (!origin || origin === 'https://conectainternacional.cl') {
-      return callback(null, true);
-    }
-    callback(new Error('Not allowed by CORS'));
-  },
-  optionsSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
-
-// Middleware para parsear JSON y datos de formulario
+// 2. Middlewares esenciales
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Rutas de la API de contacto (estas rutas se procesan primero)
+// 3. Servir archivos estáticos de Astro
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+// 4. Rutas de API
 app.use('/contacto', contactoRoutes);
 
-// Importar y usar astroHandler de forma asíncrona, 
-// asegurando que maneje solo las rutas que NO sean de la API.
-(async () => {
-  const { handler: astroHandler } = await import('./dist/server/entry.mjs');
+// 5. Manejo de rutas del frontend
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+});
 
-  app.use((req, res, next) => {
-    // Si la URL empieza con '/contacto', dejamos que siga el flujo normal
-    if (req.path.startsWith('/contacto')) {
-      return next();
-    }
-    // En otro caso, astroHandler se encarga de la solicitud.
-    astroHandler(req, res, next);
-  });
+// 6. Iniciar servidor
+app.listen(port, () => {
+  console.log(`🚀 Servidor en producción: ${port}`);
+  console.log(`➔ Modo: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`➔ Dominio: https://conectainternacional.cl`);
+});
 
-  app.listen(port, () => {
-    console.log(`Servidor corriendo en el puerto ${port}`);
-  });
-})();
+export default app; // Opcional: útil para testing

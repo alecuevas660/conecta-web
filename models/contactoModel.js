@@ -1,25 +1,25 @@
-const nodemailer = require('nodemailer');
-const dotenv = require('dotenv');
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
-dotenv.config(); // Cargar las variables de entorno antes de acceder a process.env
+dotenv.config();
 
-exports.sendEmail = async ({ name, email, telefono, mensaje }) => {
-  const port = parseInt(process.env.EMAIL_PORT, 10); // Convertir a número
+export const sendEmail = async ({ name, email, telefono, mensaje }) => {
+  const port = parseInt(process.env.EMAIL_PORT, 10);
   
-  let transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,  
-    port: port,  
-    secure: process.env.EMAIL_SECURE === 'true', // Convertir a booleano
+  const transporter = nodemailer.createTransport({
+    host: process.env.EMAIL_HOST,
+    port: port,
+    secure: process.env.EMAIL_SECURE === 'true',
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD
     },
     tls: {
-      rejectUnauthorized: false  // Evita problemas con certificados SSL
+      rejectUnauthorized: false
     }
   });
 
-  let mailOptions = {
+  const mailOptions = {
     from: `"${name}" <${email}>`,
     to: process.env.EMAIL_TO,
     subject: 'Nuevo mensaje de contacto',

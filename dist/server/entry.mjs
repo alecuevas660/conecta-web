@@ -1,6 +1,6 @@
 import { renderers } from './renderers.mjs';
-import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_C2gD93Ff.mjs';
-import { manifest } from './manifest_CBIDVS5n.mjs';
+import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_DDtXGzFE.mjs';
+import { manifest } from './manifest_B239vVd4.mjs';
 
 const serverIslandMap = new Map();;
 
@@ -32,7 +32,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "mode": "standalone",
+    "mode": "middleware",
     "client": "file:///C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/dist/client/",
     "server": "file:///C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/dist/server/",
     "host": false,
