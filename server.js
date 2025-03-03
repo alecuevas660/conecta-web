@@ -44,17 +44,15 @@ app.use(morgan('combined'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Servir archivos estáticos desde la carpeta 'dist' de Astro
-app.use(express.static(path.join(__dirname, 'dist')));
-
 // Rutas para el contacto
 const contactoRoutes = require('./routes/contactoRoutes.js');
 app.use('/contacto', contactoRoutes);
 
-// Manejar rutas de cliente (SPA)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
+// Importar y usar astroHandler de forma asíncrona, como fallback para otras rutas
+(async () => {
+  const { handler: astroHandler } = await import('./dist/server/entry.mjs');
+  app.use(astroHandler);
+})();
 
 // Manejo de errores 404
 app.use((req, res, next) => {
