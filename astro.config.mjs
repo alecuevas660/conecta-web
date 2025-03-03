@@ -4,11 +4,6 @@ import node from '@astrojs/node';
 export default defineConfig({
   output: 'server',
   adapter: node({
-    mode: 'middleware' // Cambiado a middleware para integración con Express
-  }),
-  vite: {
-    ssr: {
-      noExternal: ['@astrojs/node'] // Asegura la compatibilidad SSR
-    }
-  }
+    mode: 'middleware' // Puedes usar 'standalone' o 'hybrid' según tu necesidad
+  })
 });
