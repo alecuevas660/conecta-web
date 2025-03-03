@@ -11,16 +11,15 @@ const port = process.env.PORT || 3000;
 // Rutas para el contacto
 const contactoRoutes = require('./routes/contactoRoutes.js');
 
-// Configuración de CORS para permitir solo el dominio de producción
+// Configuración de CORS para depuración: 
 const corsOptions = {
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    const normalizedOrigin = origin.replace(/\/$/, "");
-    if (normalizedOrigin === 'https://conectainternacional.cl') {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+    console.log('Origin recibida:', origin);
+    // Permitir si no hay origin (como en Postman) o si es el dominio de producción
+    if (!origin || origin === 'https://conectainternacional.cl') {
+      return callback(null, true);
     }
+    callback(new Error('Not allowed by CORS'));
   },
   optionsSuccessStatus: 200,
 };
@@ -31,18 +30,20 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Rutas de la API de contacto
+// Rutas de la API de contacto (estas rutas se procesan primero)
 app.use('/contacto', contactoRoutes);
 
-// Importar y usar astroHandler de forma asíncrona, y luego iniciar el servidor
+// Importar y usar astroHandler de forma asíncrona, 
+// asegurando que maneje solo las rutas que NO sean de la API.
 (async () => {
   const { handler: astroHandler } = await import('./dist/server/entry.mjs');
-  
-  // Asegurar que astroHandler maneje solo las rutas que NO sean de la API
+
   app.use((req, res, next) => {
+    // Si la URL empieza con '/contacto', dejamos que siga el flujo normal
     if (req.path.startsWith('/contacto')) {
       return next();
     }
+    // En otro caso, astroHandler se encarga de la solicitud.
     astroHandler(req, res, next);
   });
 
