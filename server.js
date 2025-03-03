@@ -34,14 +34,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // 3. Servir archivos estáticos de Astro
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, './dist')));
 
 // 4. Rutas de API
 app.use('/contacto', contactoRoutes);
 
 // 5. Manejo de rutas del frontend
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, './dist', 'index.html'));
 });
 
 // 6. Iniciar servidor
