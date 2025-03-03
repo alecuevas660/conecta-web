@@ -1,16 +1,15 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const path = require('path');
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
-const morgan = require('morgan');
 
 // Cargar variables de entorno
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Rutas para el contacto
+const contactoRoutes = require('./routes/contactoRoutes.js');
 
 // Configuración de CORS para permitir solo el dominio de producción
 const corsOptions = {
@@ -25,47 +24,29 @@ const corsOptions = {
   },
   optionsSuccessStatus: 200,
 };
+
 app.use(cors(corsOptions));
-
-// Middleware para seguridad
-app.use(helmet());
-
-// Middleware para limitar solicitudes
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-});
-app.use(limiter);
-
-// Middleware para logs
-app.use(morgan('combined'));
 
 // Middleware para parsear JSON y datos de formulario
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Rutas para el contacto
-const contactoRoutes = require('./routes/contactoRoutes.js');
+// Rutas de la API de contacto
 app.use('/contacto', contactoRoutes);
 
-// Importar y usar astroHandler de forma asíncrona, como fallback para otras rutas
+// Importar y usar astroHandler de forma asíncrona, y luego iniciar el servidor
 (async () => {
   const { handler: astroHandler } = await import('./dist/server/entry.mjs');
-  app.use(astroHandler);
+  
+  // Asegurar que astroHandler maneje solo las rutas que NO sean de la API
+  app.use((req, res, next) => {
+    if (req.path.startsWith('/contacto')) {
+      return next();
+    }
+    astroHandler(req, res, next);
+  });
+
+  app.listen(port, () => {
+    console.log(`Servidor corriendo en el puerto ${port}`);
+  });
 })();
-
-// Manejo de errores 404
-app.use((req, res, next) => {
-  res.status(404).json({ message: 'Ruta no encontrada' });
-});
-
-// Manejo de errores generales
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Error interno del servidor' });
-});
-
-// Iniciar el servidor
-app.listen(port, () => {
-  console.log(`Servidor corriendo en el puerto ${port}`);
-});
