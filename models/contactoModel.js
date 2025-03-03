@@ -1,13 +1,15 @@
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 
-dotenv.config(); // 👈 Debe ir aquí, antes de acceder a process.env
+dotenv.config(); // Cargar las variables de entorno antes de acceder a process.env
 
 exports.sendEmail = async ({ name, email, telefono, mensaje }) => {
+  const port = parseInt(process.env.EMAIL_PORT, 10); // Convertir a número
+  
   let transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,  
-    port: process.env.EMAIL_PORT,  
-    secure: process.env.EMAIL_SECURE === 'true', // Asegura que sea un booleano
+    port: port,  
+    secure: process.env.EMAIL_SECURE === 'true', // Convertir a booleano
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD
@@ -28,5 +30,11 @@ exports.sendEmail = async ({ name, email, telefono, mensaje }) => {
            <p><strong>Mensaje:</strong><br>${mensaje}</p>`
   };
 
-  return transporter.sendMail(mailOptions);
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    return info;
+  } catch (error) {
+    console.error('Error al enviar el correo:', error);
+    throw error;
+  }
 };

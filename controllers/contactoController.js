@@ -10,11 +10,11 @@ exports.sendContactEmail = async (req, res) => {
 
   try {
     // Llama al modelo para enviar el correo
-    let info = await contactModel.sendEmail({ name, email, telefono, mensaje });
+    const info = await contactModel.sendEmail({ name, email, telefono, mensaje });
     console.log('Mensaje enviado: %s', info.messageId);
-    res.status(200).json({ success: true, message: 'Mensaje enviado correctamente.' });
+    return res.status(200).json({ success: true, message: 'Mensaje enviado correctamente.' });
   } catch (error) {
     console.error('Error al enviar el mensaje:', error);
-    res.status(500).json({ success: false, error: 'Error al enviar el mensaje.' });
+    return res.status(500).json({ success: false, error: 'Error al enviar el mensaje.' });
   }
 };
