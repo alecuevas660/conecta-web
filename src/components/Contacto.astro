@@ -26,6 +26,7 @@
                 placeholder="Nombre completo"
                 required
               />
+              <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
             </div>
 
             <div class="mb-4">
@@ -36,6 +37,7 @@
                 placeholder="Correo electrónico"
                 required
               />
+              <div class="invalid-feedback">Por favor, ingresa un correo válido.</div>
             </div>
 
             <div class="mb-4">
@@ -46,6 +48,7 @@
                 placeholder="Teléfono"
                 required
               />
+              <div class="invalid-feedback">Por favor, ingresa tu teléfono.</div>
             </div>
 
             <div class="mb-4">
@@ -56,6 +59,7 @@
                 placeholder="Cuéntanos sobre tu proyecto"
                 required
               ></textarea>
+              <div class="invalid-feedback">Por favor, ingresa un mensaje.</div>
             </div>
 
             <div class="text-center">
@@ -174,9 +178,7 @@
     function showNotification(message, type) {
       const notification = document.getElementById('custom-notification');
       notification.textContent = message;
-      // Asigna la clase adecuada según el tipo (success o error)
-      notification.className = 'custom-notification show ' + (type === 'error' ? 'error' : 'success');
-      // Oculta la notificación después de 3 segundos
+      notification.className = `custom-notification show ${type}`;
       setTimeout(() => {
         notification.classList.remove('show');
       }, 3000);
@@ -188,7 +190,7 @@
       rootMargin: '0px',
       threshold: 0.1
     };
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
@@ -199,18 +201,6 @@
     document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 
     // Validación del formulario
-    const forms = document.querySelectorAll('.needs-validation');
-    forms.forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-
-    // Envío del formulario y envío del correo
     const form = document.querySelector('.needs-validation');
     const submitButton = document.getElementById('submit-button');
     const buttonText = document.getElementById('button-text');
@@ -218,7 +208,11 @@
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      if (!form.checkValidity()) return;
+      if (!form.checkValidity()) {
+        event.stopPropagation();
+        form.classList.add('was-validated');
+        return;
+      }
 
       // Mostrar loader y deshabilitar botón
       submitButton.disabled = true;
@@ -233,7 +227,8 @@
       };
 
       try {
-        const response = await fetch('https://conectainternacional.cl/contact', {
+        // Cambia la URL para producción
+        const response = await fetch('https://conectainternacional.cl/contacto/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -244,6 +239,7 @@
         if (result.success) {
           showNotification('Mensaje enviado correctamente.', 'success');
           form.reset();
+          form.classList.remove('was-validated');
         } else {
           showNotification('Error: ' + result.error, 'error');
         }

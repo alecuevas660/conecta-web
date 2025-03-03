@@ -1,7 +1,7 @@
 import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_B2ZRg2VL.mjs';
 import 'kleur/colors';
 import { $ as $$Layout } from '../chunks/Layout_DPqe0fqJ.mjs';
-import { $ as $$Contacto$1 } from '../chunks/Contacto_RseLtUSc.mjs';
+import { $ as $$Contacto$1 } from '../chunks/Contacto_BO4eqnXB.mjs';
 /* empty css                                    */
 export { renderers } from '../renderers.mjs';
 

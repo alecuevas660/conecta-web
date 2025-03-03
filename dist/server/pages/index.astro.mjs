@@ -5,7 +5,7 @@ import 'clsx';
 /* empty css                                 */
 import { $ as $$Image } from '../chunks/_astro_assets_D8rS2EIO.mjs';
 import { b as busquedaProveedores, a as busquedaTranporte, c as busquedaAsesor, d as busquedaExternalizacion } from '../chunks/busqueda-externalizacion_BbmayPkw.mjs';
-import { $ as $$Contacto } from '../chunks/Contacto_RseLtUSc.mjs';
+import { $ as $$Contacto } from '../chunks/Contacto_BO4eqnXB.mjs';
 export { renderers } from '../renderers.mjs';
 
 const banner1 = new Proxy({"src":"/_astro/Banner1.euCL14PH.jpg","width":4896,"height":1901,"format":"jpg"}, {
