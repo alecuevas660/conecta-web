@@ -1,6 +1,6 @@
-import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, b as addAttribute } from '../chunks/astro/server_BAj2fOQH.mjs';
+import { c as createComponent, r as renderComponent, d as renderScript, a as renderTemplate, m as maybeRenderHead, b as addAttribute } from '../chunks/astro/server_BDmKomO-.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_Q_xMshy0.mjs';
+import { $ as $$Layout } from '../chunks/Layout_BIgwXetv.mjs';
 /* empty css                                                        */
 export { renderers } from '../renderers.mjs';
 
@@ -41,7 +41,7 @@ Enfoque Estratégico
 Llámanos al
 <a href="tel:+56953352667" class="text-primary text-decoration-none fw-bold" data-astro-cid-ebhyi35z>
 +56 9 5335 2667
-</a> </p> </div> </div> ` })}  `;
+</a> </p> </div> </div> ` })}  ${renderScript($$result, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/servicios-de-externalizacion.astro?astro&type=script&index=0&lang.ts")}`;
 }, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/servicios-de-externalizacion.astro", void 0);
 
 const $$file = "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/pages/servicios-de-externalizacion.astro";

@@ -1,137 +1,77 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import helmet from 'helmet';
-import compression from 'compression';
-import contactoRoutes from './routes/contactoRoutes.js';
-import { handler as astroHandler } from './dist/server/entry.mjs';
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const helmet = require('helmet');
+const compression = require('compression');
 
+// Configurar variables de entorno primero
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-const isProduction = process.env.NODE_ENV === 'production';
 
-app.set('trust proxy', true);
-
-// Configuración CORS para mismo dominio
-const allowedOrigins = isProduction
-  ? ['https://conectainternacional.cl', 'https://www.conectainternacional.cl']
-  : ['http://localhost:4321', 'http://localhost:3000'];
-
+// Configuración mejorada de CORS
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.warn(`Intento de acceso CORS bloqueado: ${origin}`);
-      callback(new Error('Acceso no permitido por política CORS'));
-    }
-  },
+  origin: [
+    'https://conectainternacional.cl',
+    'https://www.conectainternacional.cl'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-  optionsSuccessStatus: 204
+  optionsSuccessStatus: 200
 };
 
-// Configuración de seguridad mejorada
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'", 'https://conectainternacional.cl'],
-      scriptSrc: [
-        "'self'",
-        "'unsafe-inline'",
-        "'wasm-unsafe-eval'",
-        'https://cdn.jsdelivr.net'
-      ],
-      styleSrc: [
-        "'self'",
-        "'unsafe-inline'",
-        'https://fonts.googleapis.com'
-      ],
-      imgSrc: [
-        "'self'",
-        'data:',
-        'https://res.cloudinary.com',
-        'https://conectainternacional.cl'
-      ],
-      fontSrc: [
-        "'self'",
-        'https://fonts.gstatic.com'
-      ],
-      connectSrc: [
-        "'self'",
-        'https://conectainternacional.cl',
-        'https://api.conectainternacional.cl'
-      ],
-      frameSrc: ["'self'"]
-    }
-  },
-  hsts: {
-    maxAge: 63072000, // 2 años
-    includeSubDomains: true,
-    preload: true
-  }
-}));
-
-app.use(compression({ level: 9 }));
+// Middlewares esenciales
+app.use(helmet());
+app.use(compression());
 app.use(cors(corsOptions));
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Configuración de archivos estáticos y SSR
-if (isProduction) {
-  // Servir archivos estáticos con caché optimizado
+// Configuración para producción
+if (process.env.NODE_ENV === 'production') {
+  // Servir archivos estáticos
   app.use(express.static('./dist/client', {
     maxAge: '1y',
-    immutable: true,
-    setHeaders: (res, path) => {
-      if (path.endsWith('.html')) {
-        res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
-      }
-    }
-  }));
-
-  // Middleware SSR de Astro para rutas no API
-  app.use((req, res, next) => {
-    if (!req.path.startsWith('/api')) {
-      return astroHandler(req, res, next);
-    }
-    next();
-  });
-} else {
-  // Proxy para desarrollo con Vite
-  const { createProxyMiddleware } = await import('http-proxy-middleware');
-  app.use('*', createProxyMiddleware({
-    target: 'http://localhost:4321',
-    changeOrigin: true,
-    ws: true
+    immutable: true
   }));
 }
 
-// Rutas API
+// Importar y configurar Astro después de inicializar app
+(async () => {
+  try {
+    const { handler: astroHandler } = await import('./dist/server/entry.mjs');
+    
+    // Manejar rutas de Astro para las que no son API
+    app.use((req, res, next) => {
+      if (!req.path.startsWith('/api') && !req.path.startsWith('/contacto')) {
+        return astroHandler(req, res, next);
+      }
+      next();
+    });
+  } catch (error) {
+    console.error('Error al cargar el handler de Astro:', error);
+    process.exit(1);
+  }
+})();
+
+// Rutas
+const contactoRoutes = require('./routes/contactoRoutes.js');
 app.use('/api/contacto', contactoRoutes);
 
-// Manejo centralizado de errores
+// Manejo de errores centralizado
 app.use((err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
-  console.error(`[${new Date().toISOString()}] Error ${statusCode}: ${err.message}`);
-  
-  res.status(statusCode).json({
-    status: 'error',
-    message: isProduction && statusCode === 500
-      ? 'Ocurrió un error en el servidor'
-      : err.message,
-    ...(!isProduction && { stack: err.stack })
-  });
+  console.error(err.stack);
+  res.status(500).json({ error: 'Error interno del servidor' });
 });
+
+// Configuración importante para proxies inversos
+app.set('trust proxy', true);
 
 app.listen(port, () => {
   console.log(`
-🚀 Servidor operativo en: ${port}
-➔ Modo: ${isProduction ? 'Producción' : 'Desarrollo'}
-➔ Dominio principal: https://conectainternacional.cl
-➔ Orígenes permitidos: ${allowedOrigins.join(', ')}
+🚀 Servidor operativo en puerto: ${port}
+➔ Modo: ${process.env.NODE_ENV || 'development'}
+➔ URL: https://conectainternacional.cl
   `);
 });
