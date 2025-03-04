@@ -1,6 +1,6 @@
 import { renderers } from './renderers.mjs';
 import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_DJrtskyd.mjs';
-import { manifest } from './manifest_CxjZvaQ8.mjs';
+import { manifest } from './manifest_sMgQXsBS.mjs';
 
 const _page0 = () => import('./pages/_image.astro.mjs');
 const _page1 = () => import('./pages/contacto.astro.mjs');
@@ -31,7 +31,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "mode": "hybrid",
+    "mode": "standalone",
     "client": "file:///C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/dist/client/",
     "server": "file:///C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/dist/server/",
     "host": false,
