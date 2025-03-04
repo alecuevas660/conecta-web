@@ -6,24 +6,28 @@ import compression from 'compression';
 import contactoRoutes from './routes/contactoRoutes.js';
 import { handler as astroHandler } from './dist/server/entry.mjs';
 
-// Cargar variables de entorno
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+const isProduction = process.env.NODE_ENV === 'production';
+
 app.set('trust proxy', true);
-// Configuración mejorada de CORS
+
+// Configuración CORS
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(',')
-  : ['http://localhost:4321'];
+  : isProduction
+  ? ['https://tudominio.com']
+  : ['http://localhost:4321', 'http://localhost:3000'];
 
 const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      console.log(`Origen bloqueado: ${origin}`);
-      callback(new Error('Not allowed by CORS'));
+      console.log(`CORS bloqueado: ${origin}`);
+      callback(new Error('Acceso no permitido por CORS'));
     }
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -32,23 +36,45 @@ const corsOptions = {
   optionsSuccessStatus: 204
 };
 
-// Middlewares de seguridad y optimización
+// Middlewares esenciales
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net'],
-      styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-      imgSrc: ["'self'", 'data:', 'https://res.cloudinary.com'],
-      fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-      connectSrc: ["'self'", 'https://api.conectainternacional.cl']
+      scriptSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        "'wasm-unsafe-eval'",
+        'https://cdn.jsdelivr.net',
+        'https://unpkg.com'
+      ],
+      styleSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        'https://fonts.googleapis.com'
+      ],
+      imgSrc: [
+        "'self'",
+        'data:',
+        'https://res.cloudinary.com',
+        'https://images.unsplash.com'
+      ],
+      fontSrc: [
+        "'self'",
+        'https://fonts.gstatic.com'
+      ],
+      connectSrc: [
+        "'self'",
+        'https://api.tudominio.com'
+      ],
+      frameSrc: ["'self'"]
     }
   },
-  hsts: {
-    maxAge: 31536000, // 1 año
+  hsts: isProduction ? {
+    maxAge: 31536000,
     includeSubDomains: true,
     preload: true
-  }
+  } : false
 }));
 
 app.use(compression());
@@ -56,9 +82,9 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Configuración de producción
-if (process.env.NODE_ENV === 'production') {
-  // Archivos estáticos con cache
+// Configuración de archivos estáticos y SSR
+if (isProduction) {
+  // Servir archivos estáticos
   app.use(express.static('./dist/client', {
     index: false,
     maxAge: '1y',
@@ -70,11 +96,17 @@ if (process.env.NODE_ENV === 'production') {
     }
   }));
 
-  // Middleware SSR de Astro para rutas no API
+  // Middleware SSR de Astro después de archivos estáticos
   app.use((req, res, next) => {
     if (!req.path.startsWith('/api')) {
       return astroHandler(req, res, next);
     }
+    next();
+  });
+} else {
+  // Configuración para desarrollo
+  app.use((req, res, next) => {
+    console.log(`[Dev] ${req.method} ${req.path}`);
     next();
   });
 }
@@ -82,30 +114,34 @@ if (process.env.NODE_ENV === 'production') {
 // Rutas API
 app.use('/api/contacto', contactoRoutes);
 
-// Manejo de 404 para SSR
-app.use((req, res) => {
-  res.status(404).json({
-    status: 'error',
-    message: 'Recurso no encontrado'
-  });
-});
-
-// Manejo de errores global
+// Manejo de errores centralizado
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({
+  console.error(`[Error] ${err.stack}`);
+
+  const statusCode = err.statusCode || 500;
+  const response = {
     status: 'error',
-    message: process.env.NODE_ENV === 'development' ? err.message : 'Error interno del servidor'
-  });
+    message: isProduction && statusCode === 500 
+      ? 'Error interno del servidor'
+      : err.message
+  };
+
+  if (!isProduction) {
+    response.stack = err.stack;
+  }
+
+  res.status(statusCode).json(response);
 });
 
-// Manejo explícito de OPTIONS
+// Manejo de OPTIONS para CORS
 app.options('*', cors(corsOptions));
 
-// Iniciar servidor
+// Inicio del servidor
 app.listen(port, () => {
-  console.log(`🚀 Servidor en puerto: ${port}`);
-  console.log(`➔ Modo: ${process.env.NODE_ENV || 'development'}`);
-  console.log('➔ CORS permitiendo:');
-  allowedOrigins.forEach(origin => console.log(`   - ${origin}`));
+  console.log(`
+🚀 Servidor iniciado en puerto: ${port}
+➔ Modo: ${isProduction ? 'production' : 'development'}
+➔ Orígenes permitidos:
+${allowedOrigins.map(o => `   - ${o}`).join('\n')}
+  `);
 });

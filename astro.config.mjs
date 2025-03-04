@@ -1,9 +1,14 @@
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
+import nodejs from '@astrojs/node';
 
 export default defineConfig({
-  output: 'server', // Habilita SSR
-  adapter: node({
-    mode: 'standalone' // Genera un servidor Node.js independiente
-  })
+  output: 'server',
+  adapter: nodejs({
+    mode: 'middleware'
+  }),
+  vite: {
+    server: {
+      middlewareMode: true
+    }
+  }
 });
