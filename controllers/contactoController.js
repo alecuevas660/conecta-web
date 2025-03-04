@@ -1,6 +1,6 @@
-const { sendEmail } = require('../models/contactoModel'); // Importa la función específica usando require
+import { sendEmail } from '../models/contactoModel.js'; // Import usando ES Modules
 
-const sendContactEmail = async (req, res) => {
+export const sendContactEmail = async (req, res) => {
   const { name, email, telefono, mensaje } = req.body;
 
   // Validación simple de campos requeridos
@@ -18,5 +18,3 @@ const sendContactEmail = async (req, res) => {
     return res.status(500).json({ success: false, error: 'Error al enviar el mensaje.' });
   }
 };
-
-module.exports = { sendContactEmail }; // Exportación en CommonJS

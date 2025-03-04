@@ -14,10 +14,12 @@ const port = process.env.PORT || 3000;
 const corsOptions = {
   origin: [
     'https://conectainternacional.cl',
-    'https://www.conectainternacional.cl'
+    'https://www.conectainternacional.cl',
+    'http://localhost:4321'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // Permitir credenciales (cookies, headers de autenticación, etc.)
   optionsSuccessStatus: 200
 };
 
@@ -63,5 +65,5 @@ app.use((req, res) => {
 // Iniciar servidor
 app.listen(port, () => {
   console.log(`🚀 Servidor en puerto: ${port}`);
-  console.log(`➔ Modo: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`➔ Modo: ${process.env.NODE_ENV || 'production'}`);
 });
