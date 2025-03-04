@@ -111,7 +111,7 @@ function deserializeActionResult(res) {
         })
       };
     }
-    if (Object.assign(__vite_import_meta_env__, { PORT: "3000", OS: process.env.OS })?.PROD) {
+    if (Object.assign(__vite_import_meta_env__, { OS: process.env.OS })?.PROD) {
       return { error: ActionError.fromJson(json), data: void 0 };
     } else {
       const error = ActionError.fromJson(json);

@@ -1,6 +1,8 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const cors = require('cors');
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 // Cargar variables de entorno
 dotenv.config();
@@ -8,7 +10,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Configuración mejorada de CORS
+// Configuración CORS
 const corsOptions = {
   origin: [
     'https://conectainternacional.cl',
@@ -19,23 +21,47 @@ const corsOptions = {
   optionsSuccessStatus: 200
 };
 
-
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Rutas de API
-const contactoRoutes = require('./routes/contactoRoutes');
-app.use('/contacto', contactoRoutes);
+// Rutas API
+import contactoRoutes from './routes/contactoRoutes.js';
+app.use('/api/contacto', contactoRoutes);
 
-// Configuración importante para proxies inversos
-app.set('trust proxy', true);
+// Importar Astro SSR Handler
+const { handler: astroHandler } = await import('./dist/server/entry.mjs');
 
-(async () => {
-  const { handler: astroHandler } = await import('./dist/server/entry.mjs');
-  app.use(astroHandler);
+// Middleware para servir archivos estáticos en producción
+app.use(express.static('./dist/client', {
+  index: false,
+  maxAge: '1y',
+  immutable: true,
+  setHeaders: (res, path) => {
+    if (path.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'public, max-age=0');
+    }
+  }
+}));
 
-  app.listen(port, () => {
-    console.log(`Servidor corriendo en el puerto ${port}`);
+// Middleware de Astro para manejar rutas no API
+app.use((req, res, next) => {
+  if (!req.path.startsWith('/api')) {
+    return astroHandler(req, res, next);
+  }
+  next();
+});
+
+// Manejo de errores 404
+app.use((req, res) => {
+  res.status(404).json({
+    status: 'error',
+    message: 'Recurso no encontrado'
   });
-})();
+});
+
+// Iniciar servidor
+app.listen(port, () => {
+  console.log(`🚀 Servidor en puerto: ${port}`);
+  console.log(`➔ Modo: ${process.env.NODE_ENV || 'development'}`);
+});

@@ -2,8 +2,8 @@ import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
 
 export default defineConfig({
-  output: 'server',
+  output: 'server', // Modo de salida: server
   adapter: node({
-    mode: 'standalone' // Puedes usar 'standalone' o 'hybrid' según tu necesidad
-  })
+    mode: 'middleware', // Usa 'middleware' para integración con Express
+  }),
 });

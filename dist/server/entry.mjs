@@ -1,8 +1,8 @@
 import { renderers } from './renderers.mjs';
-import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_DRczz5UE.mjs';
-import { manifest } from './manifest_C4fa0hKf.mjs';
+import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_DA6VQzNX.mjs';
+import { manifest } from './manifest_CDWh5D_C.mjs';
 
-const serverIslandMap = new Map();;
+const serverIslandMap = new Map();
 
 const _page0 = () => import('./pages/_image.astro.mjs');
 const _page1 = () => import('./pages/contacto.astro.mjs');
@@ -32,7 +32,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "mode": "standalone",
+    "mode": "middleware",
     "client": "file:///C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/dist/client/",
     "server": "file:///C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/dist/server/",
     "host": false,
