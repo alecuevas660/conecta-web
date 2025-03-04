@@ -6,7 +6,7 @@
     "dev": "NODE_ENV=development astro dev",
     "build": "astro build",
     "preview": "NODE_ENV=production astro preview",
-    "start": "NODE_ENV=production node server/server.js",
+    "start": "NODE_ENV=production node server.js",
     "deploy": "npm run build && cp .env.production dist/ && cp -r server dist/",
     "lint": "eslint . --ext .js,.astro",
     "test": "echo 'No tests yet'"
