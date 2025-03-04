@@ -14,11 +14,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 app.set('trust proxy', true);
 
-// Configuración CORS
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(',')
-  : isProduction
-  ? ['https://tudominio.com']
+// Configuración CORS para mismo dominio
+const allowedOrigins = isProduction
+  ? ['https://conectainternacional.cl', 'https://www.conectainternacional.cl']
   : ['http://localhost:4321', 'http://localhost:3000'];
 
 const corsOptions = {
@@ -26,8 +24,8 @@ const corsOptions = {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      console.log(`CORS bloqueado: ${origin}`);
-      callback(new Error('Acceso no permitido por CORS'));
+      console.warn(`Intento de acceso CORS bloqueado: ${origin}`);
+      callback(new Error('Acceso no permitido por política CORS'));
     }
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -36,17 +34,16 @@ const corsOptions = {
   optionsSuccessStatus: 204
 };
 
-// Middlewares esenciales
+// Configuración de seguridad mejorada
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
-      defaultSrc: ["'self'"],
+      defaultSrc: ["'self'", 'https://conectainternacional.cl'],
       scriptSrc: [
         "'self'",
         "'unsafe-inline'",
         "'wasm-unsafe-eval'",
-        'https://cdn.jsdelivr.net',
-        'https://unpkg.com'
+        'https://cdn.jsdelivr.net'
       ],
       styleSrc: [
         "'self'",
@@ -57,7 +54,7 @@ app.use(helmet({
         "'self'",
         'data:',
         'https://res.cloudinary.com',
-        'https://images.unsplash.com'
+        'https://conectainternacional.cl'
       ],
       fontSrc: [
         "'self'",
@@ -65,38 +62,38 @@ app.use(helmet({
       ],
       connectSrc: [
         "'self'",
-        'https://api.tudominio.com'
+        'https://conectainternacional.cl',
+        'https://api.conectainternacional.cl'
       ],
       frameSrc: ["'self'"]
     }
   },
-  hsts: isProduction ? {
-    maxAge: 31536000,
+  hsts: {
+    maxAge: 63072000, // 2 años
     includeSubDomains: true,
     preload: true
-  } : false
+  }
 }));
 
-app.use(compression());
+app.use(compression({ level: 9 }));
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Configuración de archivos estáticos y SSR
 if (isProduction) {
-  // Servir archivos estáticos
+  // Servir archivos estáticos con caché optimizado
   app.use(express.static('./dist/client', {
-    index: false,
     maxAge: '1y',
     immutable: true,
     setHeaders: (res, path) => {
       if (path.endsWith('.html')) {
-        res.setHeader('Cache-Control', 'public, max-age=0');
+        res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
       }
     }
   }));
 
-  // Middleware SSR de Astro después de archivos estáticos
+  // Middleware SSR de Astro para rutas no API
   app.use((req, res, next) => {
     if (!req.path.startsWith('/api')) {
       return astroHandler(req, res, next);
@@ -104,44 +101,37 @@ if (isProduction) {
     next();
   });
 } else {
-  // Configuración para desarrollo
-  app.use((req, res, next) => {
-    console.log(`[Dev] ${req.method} ${req.path}`);
-    next();
-  });
+  // Proxy para desarrollo con Vite
+  const { createProxyMiddleware } = await import('http-proxy-middleware');
+  app.use('*', createProxyMiddleware({
+    target: 'http://localhost:4321',
+    changeOrigin: true,
+    ws: true
+  }));
 }
 
 // Rutas API
 app.use('/api/contacto', contactoRoutes);
 
-// Manejo de errores centralizado
+// Manejo centralizado de errores
 app.use((err, req, res, next) => {
-  console.error(`[Error] ${err.stack}`);
-
   const statusCode = err.statusCode || 500;
-  const response = {
+  console.error(`[${new Date().toISOString()}] Error ${statusCode}: ${err.message}`);
+  
+  res.status(statusCode).json({
     status: 'error',
-    message: isProduction && statusCode === 500 
-      ? 'Error interno del servidor'
-      : err.message
-  };
-
-  if (!isProduction) {
-    response.stack = err.stack;
-  }
-
-  res.status(statusCode).json(response);
+    message: isProduction && statusCode === 500
+      ? 'Ocurrió un error en el servidor'
+      : err.message,
+    ...(!isProduction && { stack: err.stack })
+  });
 });
 
-// Manejo de OPTIONS para CORS
-app.options('*', cors(corsOptions));
-
-// Inicio del servidor
 app.listen(port, () => {
   console.log(`
-🚀 Servidor iniciado en puerto: ${port}
-➔ Modo: ${isProduction ? 'production' : 'development'}
-➔ Orígenes permitidos:
-${allowedOrigins.map(o => `   - ${o}`).join('\n')}
+🚀 Servidor operativo en: ${port}
+➔ Modo: ${isProduction ? 'Producción' : 'Desarrollo'}
+➔ Dominio principal: https://conectainternacional.cl
+➔ Orígenes permitidos: ${allowedOrigins.join(', ')}
   `);
 });
