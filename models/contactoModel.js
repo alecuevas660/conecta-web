@@ -1,9 +1,9 @@
-import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+const nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
-export const sendEmail = async ({ name, email, telefono, mensaje }) => {
+const sendEmail = async ({ name, email, telefono, mensaje }) => {
   const port = parseInt(process.env.EMAIL_PORT, 10);
   
   const transporter = nodemailer.createTransport({
@@ -38,3 +38,5 @@ export const sendEmail = async ({ name, email, telefono, mensaje }) => {
     throw error;
   }
 };
+
+module.exports = { sendEmail }; // Exportación en CommonJS

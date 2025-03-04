@@ -1,9 +1,9 @@
-import express from 'express';
-import { sendContactEmail } from '../controllers/contactoController.js'; // Import específico
+const express = require('express');
+const { sendContactEmail } = require('../controllers/contactoController'); // Import usando require
 
 const router = express.Router();
 
 // Ruta POST para enviar el correo de contacto
 router.post('/contact', sendContactEmail);
 
-export default router; // Exportación por defecto
+module.exports = router; // Exportación usando module.exports
