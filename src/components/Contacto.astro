@@ -253,7 +253,7 @@
             "Content-Type": "application/json",
           },
           body: JSON.stringify(data),
-          credentials: "include", // Esto debe coincidir con la configuración del servidor
+          credentials: "include", // sujeto a posible error
         });
         const result = await response.json();
         if (result.success) {
