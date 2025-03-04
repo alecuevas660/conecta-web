@@ -1,4 +1,4 @@
-import { c as createComponent, r as renderTemplate, m as maybeRenderHead, d as renderScript } from './astro/server_B2ZRg2VL.mjs';
+import { c as createComponent, m as maybeRenderHead, a as renderTemplate } from './astro/server_BAj2fOQH.mjs';
 import 'kleur/colors';
 import 'clsx';
 /* empty css                            */
@@ -13,7 +13,7 @@ Desarrollamos planes de asesorías a la medida de tus necesidades y
 Por favor, ingresa un correo válido.
 </div> </div> <div class="mb-4" data-astro-cid-xjughlio> <input type="tel" class="form-control form-control-lg" id="telefono" placeholder="Teléfono" required data-astro-cid-xjughlio> <div class="invalid-feedback" data-astro-cid-xjughlio>
 Por favor, ingresa tu teléfono.
-</div> </div> <div class="mb-4" data-astro-cid-xjughlio> <textarea class="form-control form-control-lg" id="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto" required data-astro-cid-xjughlio></textarea> <div class="invalid-feedback" data-astro-cid-xjughlio>Por favor, ingresa un mensaje.</div> </div> <div class="text-center" data-astro-cid-xjughlio> <button type="submit" class="btn btn-primary btn-lg px-5" id="submit-button" data-astro-cid-xjughlio> <span id="button-text" data-astro-cid-xjughlio>ENVIAR MENSAJE</span> <span id="button-loader" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true" data-astro-cid-xjughlio></span> </button> </div> </form> </div> </div> </div> </div> </section>  ${renderScript($$result, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/components/Contacto.astro?astro&type=script&index=0&lang.ts")}`;
+</div> </div> <div class="mb-4" data-astro-cid-xjughlio> <textarea class="form-control form-control-lg" id="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto" required data-astro-cid-xjughlio></textarea> <div class="invalid-feedback" data-astro-cid-xjughlio>Por favor, ingresa un mensaje.</div> </div> <div class="text-center" data-astro-cid-xjughlio> <button type="submit" class="btn btn-primary btn-lg px-5" id="submit-button" data-astro-cid-xjughlio> <span id="button-text" data-astro-cid-xjughlio>ENVIAR MENSAJE</span> <span id="button-loader" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true" data-astro-cid-xjughlio></span> </button> </div> </form> </div> </div> </div> </div> </section>  `;
 }, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/components/Contacto.astro", void 0);
 
 export { $$Contacto as $ };

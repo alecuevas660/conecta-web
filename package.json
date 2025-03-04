@@ -3,33 +3,28 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "NODE_ENV=development astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
+    "preview": "NODE_ENV=production astro preview",
     "start": "NODE_ENV=production node server/server.js",
-    "deploy": "npm run build && cp .env ../client/dist/"
+    "deploy": "npm run build && cp .env.production dist/ && cp -r server dist/",
+    "lint": "eslint . --ext .js,.astro",
+    "test": "echo 'No tests yet'"
   },
   "dependencies": {
-    "@astrojs/node": "^9.1.2",
-    "@oslojs/encoding": "^1.1.0",
-    "aos": "^2.3.4",
-    "astro": "^5.3.0",
-    "clsx": "^2.1.1",
-    "cookie": "^1.0.2",
+    "@astrojs/node": "^8.1.0",
+    "astro": "^4.0.0",
+    "compression": "^1.7.4", 
     "cors": "^2.8.5",
-    "cssesc": "^3.0.0",
-    "devalue": "^5.1.1",
-    "dotenv": "^16.4.7",
-    "es-module-lexer": "^1.6.0",
-    "express": "^4.21.2",
-    "express-rate-limit": "^7.5.0",
-    "helmet": "^8.0.0",
-    "html-escaper": "^3.0.3",
-    "kleur": "^4.1.5",
-    "nodemailer": "^6.10.0"
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0"
   },
   "devDependencies": {
-    "terser": "^5.39.0"
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0", 
+    "eslint-plugin-import": "^2.29.0", 
+    "eslint-plugin-astro": "^0.29.0",
+    "terser": "^5.26.0"
   }
 }
