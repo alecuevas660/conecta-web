@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
     
     // Manejar rutas de Astro para las que no son API
     app.use((req, res, next) => {
-      if (!req.path.startsWith('/api') && !req.path.startsWith('/contacto')) {
+      if (!req.path.startsWith('/contacto')) {
         return astroHandler(req, res, next);
       }
       next();
@@ -57,7 +57,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // Rutas
 const contactoRoutes = require('./routes/contactoRoutes.js');
-app.use('/api/contacto', contactoRoutes);
+app.use('/contacto', contactoRoutes);
 
 // Manejo de errores centralizado
 app.use((err, req, res, next) => {
