@@ -27,7 +27,7 @@ const $$Navbar = createComponent(($$result, $$props, $$slots) => {
   const carouselItems = [
     { icon: "\u{1F680}", text: "Bienvenidos a Conecta Internacional" },
     { icon: "\u{1F4DE}", text: "Ll\xE1manos al +56 9 5335 2667" },
-    { icon: "\u{1F4E7}", text: "Escr\xEDbenos a contacto@conecta.com" }
+    { icon: "\u{1F4E7}", text: "Escr\xEDbenos a conectacontacto@conectainternacional.cl" }
   ];
   return renderTemplate`${maybeRenderHead()}<header class="header" data-astro-cid-5blmo7yk> <div id="carouselTopBar" class="carousel slide top-bar" data-bs-ride="carousel" data-astro-cid-5blmo7yk> <div class="carousel-inner" data-astro-cid-5blmo7yk> ${carouselItems.map((item, index) => renderTemplate`<div${addAttribute(`carousel-item ${index === 0 ? "active" : ""}`, "class")} data-astro-cid-5blmo7yk> <p data-astro-cid-5blmo7yk>${item.icon} ${item.text}</p> </div>`)} </div> </div> <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm animate__animated animate__fadeInDown" data-astro-cid-5blmo7yk> <div class="container" data-astro-cid-5blmo7yk> <a class="navbar-brand" href="/" aria-label="Conecta Internacional Home" data-astro-cid-5blmo7yk> ${renderComponent($$result, "Image", $$Image, { "src": logo || "/placeholder.svg", "alt": "Logo de Conecta Internacional", "class": "logo-navbar", "width": 180, "height": 60, "loading": "eager", "data-astro-cid-5blmo7yk": true })} </a> <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" data-astro-cid-5blmo7yk> <span class="navbar-toggler-icon" data-astro-cid-5blmo7yk></span> </button> <div class="collapse navbar-collapse" id="navbarNav" data-astro-cid-5blmo7yk> <ul class="navbar-nav ms-auto" data-astro-cid-5blmo7yk> ${navItems.map(({ href, label }) => renderTemplate`<li class="nav-item" data-astro-cid-5blmo7yk> <a class="nav-link"${addAttribute(href, "href")}${addAttribute(label, "data-active")} data-astro-cid-5blmo7yk>${label}</a> </li>`)} </ul> </div> </div> </nav> </header>  ${renderScript($$result, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/components/Navbar.astro?astro&type=script&index=0&lang.ts")}`;
 }, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/components/Navbar.astro", void 0);
@@ -41,7 +41,7 @@ Conecta Internacional es tu aliado estratégico en comercio exterior, ofreciendo
 </li> <li data-astro-cid-sz7xmlte> <i class="bi bi-telephone me-2" data-astro-cid-sz7xmlte></i>
 +56 9 5335 2667
 </li> <li data-astro-cid-sz7xmlte> <i class="bi bi-envelope me-2" data-astro-cid-sz7xmlte></i>
-contacto@conecta.com
+conectacontacto@<wbr data-astro-cid-sz7xmlte>conectainternacional.cl
 </li> </ul> </div> </div> <hr class="mt-4 mb-3" data-astro-cid-sz7xmlte> <div class="row align-items-center" data-astro-cid-sz7xmlte> <div class="col-md-6 text-center text-md-start" data-astro-cid-sz7xmlte> <p class="footer-copy mb-0" data-astro-cid-sz7xmlte>&copy; ${currentYear} Conecta Internacional. Todos los derechos reservados.</p> </div> <!-- Aquí puedes agregar enlaces a redes sociales u otros elementos si lo deseas --> </div> </div> </footer> `;
 }, "C:/Users/alexis/Desktop/WebCorporativaconecta/conecta-web/src/components/Footer.astro", void 0);
 

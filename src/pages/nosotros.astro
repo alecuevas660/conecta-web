@@ -12,7 +12,7 @@ const description = "Conecta Internacional es tu aliado estratégico en comercio
       <div class="container text-center position-relative z-2">
         <h1 class="display-4 fw-bold mb-4">Conecta Internacional</h1>
         <p class="lead mb-5">En Conecta Internacional, Contamos con una amplia red de contactos en estas áreas, lo que nos permite ayudarte a optimizar los servicios de tu empresa.</p>
-        <a href="servicios" class="btn btn-primary btn-lg">Conocer más</a>
+        <a href="servicios-comercio-exterior" class="btn btn-primary btn-lg">Conocer más</a>
       </div>
     </section>
 
@@ -42,31 +42,49 @@ const description = "Conecta Internacional es tu aliado estratégico en comercio
       <div class="row align-items-center">
         <div class="col-md-6 mb-4 mb-md-0" >
           <h3 class="fw-bold mb-3">Nuestra Misión</h3>
-          <p style="text-align: justify;">Conectar a las personas y empresas del mundo a través de soluciones tecnológicas innovadoras que faciliten la comunicación global.</p>
+          <p style="text-align: justify;">Acercar el comercio internacional a cualquier empresa en Chile, ya sea pequeña, mediana o grande, entregando soluciones a la medida de cada una de ellas.</p>
         </div>
         <div class="col-md-6 mb-4 mb-md-0">
           <h3 class="fw-bold mb-3">Nuestra Visión</h3>
-          <p style="text-align: justify;">Convertirnos en la empresa líder de telecomunicaciones globales, destacando por nuestra capacidad de innovación y el compromiso con la excelencia.</p>
+          <p style="text-align: justify;">Ser el socio estratégico líder en soluciones de comercio exterior para todas las empresas que desean beneficiarse de esto, ofreciendo soluciones innovadoras, personalizadas y efectivas, que faciliten su crecimiento y el éxito de cada negocio.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Nuestros Valores Section -->
-  <section class="bg-light py-5">
+
+   <section class="bg-light py-5">
     <div class="container">
       <h2 class="text-center fw-bold mb-5">Nuestros Valores</h2>
       <div class="row text-center">
-        {['Innovación', 'Responsabilidad', 'Transparencia', 'Trabajo en Equipo'].map((valor, index) => (
+        {[
+          {
+            nombre: 'Innovación',
+            descripcion: 'Fomentamos una cultura de innovación y adaptabilidad, que nos permita estar siempre delante de los cambios en el entorno comercial internacional y ofrece soluciones creativas y efectivas a nuestros clientes.'
+          },
+          {
+            nombre: 'Responsabilidad',
+            descripcion: 'Nos comprometemos con un servicio de calidad, personalizado y oportuno, cumpliendo cada uno de los compromisos que adquirimos con nuestros clientes, que nos permita lograr relaciones de largo plazo con cada uno de ellos.'
+          },
+          {
+            nombre: 'Transparencia',
+            descripcion: 'Nos guiamos por principios de integridad y transparencia en todas nuestras acciones, manteniendo la confidencialidad y discreción en la gestión de información de nuestros clientes.'
+          },
+          {
+            nombre: 'Trabajo en Equipo',
+            descripcion: 'Trabajamos en estrecha colaboración con nuestros clientes, entendiendo sus necesidades y objetivos, con el objetivo de lograr encontrar soluciones personalizadas para cada uno de ellos.'
+          }
+        ].map((valor, index) => (
           <div class="col-md-3 mb-4" key={index}>
             <div class="card border-0 shadow-lg h-100">
               <div class="card-body">
-                <i class={`bi bi-${valor.toLowerCase() === 'innovación' ? 'lightbulb' : 
-                             valor.toLowerCase() === 'responsabilidad' ? 'shield-lock' :
-                             valor.toLowerCase() === 'transparencia' ? 'eye' : 'people'} 
+                <i class={`bi bi-${valor.nombre.toLowerCase() === 'innovación' ? 'lightbulb' : 
+                             valor.nombre.toLowerCase() === 'responsabilidad' ? 'shield-lock' :
+                             valor.nombre.toLowerCase() === 'transparencia' ? 'eye' : 'people'} 
                            fs-2 text-primary mb-3`}></i>
-                <h4 class="card-title">{valor}</h4>
-                <p class="card-text">Cada valor define nuestra forma de operar y trabajar día a día, siempre enfocados en ofrecer lo mejor a nuestros clientes y colaboradores.</p>
+                <h4 class="card-title">{valor.nombre}</h4>
+                <p class="card-text">{valor.descripcion}</p>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, b as addAttribute, d as renderScript } from '../chunks/astro/server_BDmKomO-.mjs';
 import 'kleur/colors';
 import { b as busquedaProveedores, a as busquedaTranporte, c as busquedaAsesor, d as busquedaExternalizacion } from '../chunks/busqueda-externalizacion_BbmayPkw.mjs';
-import { $ as $$Layout } from '../chunks/Layout_BIgwXetv.mjs';
+import { $ as $$Layout } from '../chunks/Layout_DSblmhDh.mjs';
 /* empty css                                                       */
 export { renderers } from '../renderers.mjs';
 

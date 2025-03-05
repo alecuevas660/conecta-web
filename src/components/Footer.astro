@@ -49,7 +49,7 @@ const currentYear = new Date().getFullYear();
           </li>
           <li>
             <i class="bi bi-envelope me-2"></i>
-            contacto@conecta.com
+            conectacontacto@<wbr>conectainternacional.cl
           </li>
         </ul>
       </div>
@@ -71,10 +71,12 @@ const currentYear = new Date().getFullYear();
   .footer {
     background-color: #003B73;
     padding: 3rem 0;
+    font-size: 0.95rem; /* Tamaño base reducido */
   }
   @media (max-width: 768px) {
     .footer {
       padding: 2rem 0;
+      font-size: 0.9rem; /* Tamaño más pequeño en móviles */
     }
   }
 
@@ -87,12 +89,17 @@ const currentYear = new Date().getFullYear();
     border-bottom: 2px solid rgba(255, 255, 255, 0.4);
     padding-bottom: 0.5rem;
   }
+  @media (max-width: 768px) {
+    .footer-title {
+      font-size: 1rem; /* Reducir títulos en móviles */
+      margin-bottom: 0.75rem;
+    }
+  }
 
   /* Texto y enlaces */
   .footer-text {
     color: #ffffff;
     opacity: 0.9;
-    font-size: 1rem;
     line-height: 1.5;
     margin-bottom: 1.5rem;
   }
@@ -102,7 +109,6 @@ const currentYear = new Date().getFullYear();
     text-decoration: none;
     opacity: 0.85;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    font-size: 1rem;
   }
   .footer-links a:hover {
     opacity: 1;
@@ -112,6 +118,29 @@ const currentYear = new Date().getFullYear();
   .footer-contact li {
     margin-bottom: 0.75rem;
   }
+  .footer-contact li {
+    font-size: 0.9rem; /* Reducir tamaño de fuente */
+    line-height: 1.4; /* Ajustar interlineado */
+    margin-bottom: 0.5rem; /* Reducir espacio entre ítems */
+    word-wrap: break-word; /* Forzar salto de línea en palabras largas */
+  }
+  @media (max-width: 768px) {
+    .footer-links a,
+    .footer-contact li {
+      margin-bottom: 0.5rem; /* Menor espacio entre elementos */
+    }
+    .footer-contact li {
+      font-size: 0.85rem; /* Tamaño aún más pequeño para contacto en móviles */
+    }
+  }
+
+  /* Ajuste específico para el correo electrónico */
+  .footer-contact li:nth-child(3) {
+    word-break: break-all; /* Permite romper la dirección de correo */
+    padding-right: 15px; /* Espacio para evitar pegado al borde */
+  }
+
+  /* Iconos de contacto */
   .footer-contact li i {
     margin-right: 0.5rem;
   }

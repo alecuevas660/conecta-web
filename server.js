@@ -17,7 +17,8 @@ const corsOptions = {
   origin: [
     'https://conectainternacional.cl',
     'https://www.conectainternacional.cl',
-    'http://localhost:4321'
+    'http://localhost:4321',
+    'http://localhost:3000'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
