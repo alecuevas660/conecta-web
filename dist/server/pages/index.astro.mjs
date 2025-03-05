@@ -1,11 +1,11 @@
 import { c as createComponent, m as maybeRenderHead, b as addAttribute, d as renderScript, a as renderTemplate, r as renderComponent } from '../chunks/astro/server_BDmKomO-.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_DSblmhDh.mjs';
+import { $ as $$Layout } from '../chunks/Layout_BhGk3EyX.mjs';
 import 'clsx';
 /* empty css                                 */
 import { $ as $$Image } from '../chunks/_astro_assets_Bpb08QdQ.mjs';
 import { b as busquedaProveedores, a as busquedaTranporte, c as busquedaAsesor, d as busquedaExternalizacion } from '../chunks/busqueda-externalizacion_BbmayPkw.mjs';
-import { $ as $$Contacto } from '../chunks/Contacto_yg09Oi4T.mjs';
+import { $ as $$Contacto } from '../chunks/Contacto_81I21b5e.mjs';
 export { renderers } from '../renderers.mjs';
 
 const banner1 = new Proxy({"src":"/_astro/Banner1.euCL14PH.jpg","width":4896,"height":1901,"format":"jpg"}, {

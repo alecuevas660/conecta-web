@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import NosotrosImage from "../assets/img/comercio-exterior.webp"
 const title = "Nosotros - Conecta Internacional";
-const description = "Conecta Internacional es tu aliado estratégico en comercio exterior.Ofrecemos asesoría experta en importaciones, exportaciones y logística global."
+const description = "Conecta Internacional es tu aliado estratégico en comercio exterior. Ofrecemos asesoría experta en importaciones, exportaciones y logística global."
 ---
 
 <Layout title={title} description={description}>
@@ -11,7 +11,7 @@ const description = "Conecta Internacional es tu aliado estratégico en comercio
     <section class="intro-section py-5 bg-light text-white d-flex align-items-center justify-content-center" style="min-height: 70vh;">
       <div class="container text-center position-relative z-2">
         <h1 class="display-4 fw-bold mb-4">Conecta Internacional</h1>
-        <p class="lead mb-5">En Conecta Internacional, Contamos con una amplia red de contactos en estas áreas, lo que nos permite ayudarte a optimizar los servicios de tu empresa.</p>
+        <p class="lead mb-5">En Conecta Internacional, contamos con una amplia red de contactos en estas áreas, lo que nos permite ayudarte a optimizar los servicios de tu empresa.</p>
         <a href="servicios-comercio-exterior" class="btn btn-primary btn-lg">Conocer más</a>
       </div>
     </section>
@@ -26,9 +26,6 @@ const description = "Conecta Internacional es tu aliado estratégico en comercio
             Somos un grupo de profesionales que, desde hace más de 15 años, nos dedicamos a las áreas de ventas, administración y comercio internacional. Contamos con una amplia red de contactos en estas áreas, lo que nos permite ayudarte a optimizar los servicios de tu empresa.
           </p>
         </div>
-        
-        
-        
         <div class="col-md-6">
           <img src={NosotrosImage.src} alt="nosotros" class="img-fluid rounded shadow-lg">
         </div>
@@ -40,7 +37,7 @@ const description = "Conecta Internacional es tu aliado estratégico en comercio
   <section class="py-5">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-md-6 mb-4 mb-md-0" >
+        <div class="col-md-6 mb-4 mb-md-0">
           <h3 class="fw-bold mb-3">Nuestra Misión</h3>
           <p style="text-align: justify;">Acercar el comercio internacional a cualquier empresa en Chile, ya sea pequeña, mediana o grande, entregando soluciones a la medida de cada una de ellas.</p>
         </div>
@@ -53,8 +50,7 @@ const description = "Conecta Internacional es tu aliado estratégico en comercio
   </section>
 
   <!-- Nuestros Valores Section -->
-
-   <section class="bg-light py-5">
+  <section class="bg-light py-5">
     <div class="container">
       <h2 class="text-center fw-bold mb-5">Nuestros Valores</h2>
       <div class="row text-center">
@@ -95,74 +91,105 @@ const description = "Conecta Internacional es tu aliado estratégico en comercio
   
 </Layout>
 
-
 <style>
   .intro-section {
-  background-image: url('../assets/img/hero-background-nosotros.jpg'); /* Ruta de la imagen de fondo */
-  background-size: cover;
-  background-position: center center; /* Cambia la posición a centro */
-  background-repeat: no-repeat;
-  position: relative;
-}
+    background-image: url('../assets/img/hero-background-nosotros.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-position: center center; /* Cambia la posición a centro */
+    background-repeat: no-repeat;
+    position: relative;
+  }
 
-.intro-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Overlay oscuro para mejorar la legibilidad */
-  z-index: 1;
-}
+  .intro-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay oscuro para mejorar la legibilidad */
+    z-index: 1;
+  }
 
-.intro-section .container {
-  position: relative;
-  z-index: 2;
-}
+  .intro-section .container {
+    position: relative;
+    z-index: 2;
+  }
 
-.intro-section h1 {
-  font-size: 2.5rem; /* Tamaño de fuente para pantallas grandes */
-}
-
-.intro-section p {
-  font-size: 1.2rem; /* Tamaño de fuente para pantallas grandes */
-}
-
-.intro-section .btn {
-  padding: 0.75rem 2rem; /* Aumentamos el tamaño del botón */
-}
-
-@media (max-width: 768px) {
   .intro-section h1 {
-    font-size: 1.8rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+    font-size: 2.5rem; /* Tamaño de fuente para pantallas grandes */
   }
 
   .intro-section p {
-    font-size: 1rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+    font-size: 1.2rem; /* Tamaño de fuente para pantallas grandes */
   }
 
   .intro-section .btn {
-    padding: 0.5rem 1.5rem; /* Botón más pequeño para pantallas pequeñas */
+    padding: 0.75rem 2rem; /* Aumentamos el tamaño del botón */
   }
-}
 
-@media (max-width: 576px) {
-  .intro-section {
-    min-height: 50vh; /* Reduce la altura en móviles */
-    background-size: cover; /* Asegura que el fondo cubra todo el contenedor */
-    background-position: center; /* Centra la imagen de fondo */
-  }
-  .intro-section h1 {
-    font-size: 2rem; /* Reduce el tamaño del título */
-  }
-  .intro-section p {
-    font-size: 1rem; /* Reduce el tamaño del párrafo */
-  }
-  .intro-section .btn {
-    font-size: 0.9rem; /* Ajusta el tamaño de la letra del botón */
-    padding: 0.5rem 1rem; /* Ajusta el espacio interno del botón */
-  }
-}
+  @media (max-width: 768px) {
+    .intro-section h1 {
+      font-size: 2rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+    }
 
+    .intro-section p {
+      font-size: 1rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+    }
+
+    .intro-section .btn {
+      padding: 0.5rem 1.5rem; /* Botón más pequeño para pantallas pequeñas */
+    }
+
+    .intro-section {
+      min-height: 50vh; /* Reduce la altura en móviles */
+    }
+
+    .card-body {
+      padding: 1rem; /* Ajusta el padding de las tarjetas */
+    }
+
+    .card-title {
+      font-size: 1.25rem; /* Ajusta el tamaño del título de las tarjetas */
+    }
+
+    .card-text {
+      font-size: 0.9rem; /* Ajusta el tamaño del texto de las tarjetas */
+    }
+  }
+
+  @media (max-width: 576px) {
+    .intro-section h1 {
+      font-size: 1.8rem; /* Reduce el tamaño del título */
+    }
+
+    .intro-section p {
+      font-size: 0.9rem; /* Reduce el tamaño del párrafo */
+    }
+
+    .intro-section .btn {
+      font-size: 0.9rem; /* Ajusta el tamaño de la letra del botón */
+      padding: 0.5rem 1rem; /* Ajusta el espacio interno del botón */
+    }
+
+    .col-md-6 {
+      margin-bottom: 1.5rem; /* Ajusta el margen inferior en móviles */
+    }
+
+    .col-md-3 {
+      margin-bottom: 1.5rem; /* Ajusta el margen inferior en móviles */
+    }
+
+    .card-body {
+      padding: 0.75rem; /* Ajusta el padding de las tarjetas */
+    }
+
+    .card-title {
+      font-size: 1.1rem; /* Ajusta el tamaño del título de las tarjetas */
+    }
+
+    .card-text {
+      font-size: 0.8rem; /* Ajusta el tamaño del texto de las tarjetas */
+    }
+  }
 </style>
